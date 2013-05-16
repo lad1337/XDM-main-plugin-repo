@@ -2,7 +2,7 @@ from xdm.plugins import *
 import gntp.notifier
 
 class Growl(Notifier):
-    version = "0.1"
+    version = "0.2"
     identifier = 'de.lad1337.growl'
     _config = {}
 
