@@ -9,8 +9,8 @@
                 "desc": "Simple Growl notifier.",
                 "name": "Growl",
                 "type": "Notifier",
-                "update_url": "https: //raw.github.com/lad1337/XDM-plugin-de.lad1337.demopackage/master/meta.json",
-                "download_url": "https: //github.com/lad1337/XDM-plugin-de.lad1337.demopackage/archive/master.zip"
+                "update_url": "https://raw.github.com/lad1337/XDM-plugin-de.lad1337.demopackage/master/meta.json",
+                "download_url": "https://github.com/lad1337/XDM-plugin-de.lad1337.demopackage/archive/master.zip"
             }
         ],
         "de.lad1337.osxnotifications": [
@@ -21,8 +21,8 @@
                 "desc": "Sends Mac OS 10.8 Notification Center notifications. It will appear as \"terminal-notifer\" in the system settings.",
                 "name": "OSX Mountain Lion Notifications",
                 "type": "Notifier",
-                "update_url": "https: //raw.github.com/lad1337/XDM-plugin-de.lad1337.demopackage/master/meta.json",
-                "download_url": "https: //github.com/lad1337/XDM-plugin-de.lad1337.demopackage/archive/master.zip"
+                "update_url": "https://raw.github.com/lad1337/XDM-plugin-de.lad1337.demopackage/master/meta.json",
+                "download_url": "https://github.com/lad1337/XDM-plugin-de.lad1337.demopackage/archive/master.zip"
             }
         ]
     }
