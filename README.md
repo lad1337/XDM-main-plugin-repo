@@ -1,11 +1,11 @@
 XDM-main-plugin-repo
 ====================
 
-The official main Plugin Repository.
+The official main Plugin Repository for [https://github.com/lad1337/XDM](https://github.com/lad1337/XDM)<br>
 Some basic Plugins you can found here.
 
-The issue with this repo is that all plugins are downloaded on a single request.
-But that could be easily changed if the download url link to different zip files.
+The issue with this repo is that all plugins are downloaded on a single request.<br>
+But that could be easily changed if the download url link to different zip files.<br>
 This might be done later if plugins get big and alot.
 
 DEV
@@ -30,5 +30,5 @@ DEV
     }
 }
 </pre>
-See https://github.com/lad1337/XDM-main-plugin-repo/blob/master/meta.json for running example
-please make sure your json is valid, check at http://jsonlint.com/
+See https://github.com/lad1337/XDM-main-plugin-repo/blob/master/meta.json for running example.<br>
+**Please make sure your json is valid, check at [http://jsonlint.com/](http://jsonlint.com/)**
