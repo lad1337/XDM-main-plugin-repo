@@ -13,6 +13,7 @@ DEV
 <pre>
 {
     "name": "name of your repo",
+    "info_url": "url to some site that has information on yout repo",    
     "plugins": {
         "identifier.of.your.plugin": [
             {
@@ -22,7 +23,6 @@ DEV
                 "desc": "The description of your plugin",
                 "name": "The name/screen name. IMPORTEND: this must be the same as the folder name in the zip",
                 "type": "Notifier",
-                "info_url": "url to some site that has information on yout repo",
                 "update_url": "url to this json must be raw link on github",
                 "download_url": "download to the zip containing the plugin"
             }
