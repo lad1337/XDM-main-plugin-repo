@@ -10,7 +10,7 @@ This might be done later if plugins get big and alot.
 
 DEV
 ===
-
+<pre>
 {
     "name": "name of your repo",
     "plugins": {
@@ -22,12 +22,13 @@ DEV
                 "desc": "The description of your plugin",
                 "name": "The name/screen name. IMPORTEND: this must be the same as the folder name in the zip",
                 "type": "Notifier",
+                "info_url": "url to some site that has information on yout repo",
                 "update_url": "url to this json must be raw link on github",
                 "download_url": "download to the zip containing the plugin"
             }
         ]
     }
 }
-
+</pre>
 See https://github.com/lad1337/XDM-main-plugin-repo/blob/master/meta.json for running example
 please make sure your json is valid, check at http://jsonlint.com/
