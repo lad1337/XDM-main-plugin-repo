@@ -10,7 +10,6 @@
                 "desc": "Simple Growl notifier.",
                 "name": "Growl",
                 "type": "Notifier",
-                "update_url": "https://raw.github.com/lad1337/XDM-main-plugin-repo/master/meta.json",
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ],
@@ -22,7 +21,6 @@
                 "desc": "Sends Mac OS 10.8 Notification Center notifications. It will appear as \"terminal-notifer\" in the system settings.",
                 "name": "OSX Mountain Lion Notifications",
                 "type": "Notifier",
-                "update_url": "https://raw.github.com/lad1337/XDM-main-plugin-repo/master/meta.json",
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ],
@@ -34,7 +32,6 @@
                 "desc": "Add movies from your http://trakt.tv account. Get your apikey at http://trakt.tv/settings/api",
                 "name": "Trakt Watchlist",
                 "type": "MediaAdder",
-                "update_url": "https://raw.github.com/lad1337/XDM-main-plugin-repo/master/meta.json",
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ],
@@ -46,7 +43,17 @@
                 "desc": "This will move all the avi, mkv from the path that is given to the path.",
                 "name": "Movie Mover",
                 "type": "PostProcessor",
-                "update_url": "https://raw.github.com/lad1337/XDM-main-plugin-repo/master/meta.json",
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ],
+        "de.lad1337.music.mp32itunes": [
+            {
+                "major_version": 0,
+                "minor_version": 4,
+                "format": "zip",
+                "desc": "This will execute an apple script that adds all mp3's/m4a's to iTunes of the given download. MAC OSX only!",
+                "name": "MP32iTunes",
+                "type": "PostProcessor",
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ]
