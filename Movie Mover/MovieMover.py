@@ -29,7 +29,7 @@ import shutil
 
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
-    version = "0.2"
+    version = "0.3"
     _config = {"replace_space_with": " ",
                'final_movie_path': ""
                }
@@ -78,7 +78,10 @@ class MovieMover(PostProcessor):
                     newFileName = element.getName() + extension
                 newFileName = fixName(newFileName, self.c.replace_space_with)
                 processLogger("New Filename shall be: %s" % newFileName)
-                dest = os.path.join(destPath, newFileName)
+                destFolder = os.path.join(destPath, element.getName())
+                if not os.path.isisdir(destFolder):
+                    os.mkdir(destFolder)
+                dest = os.path.join(destFolder, newFileName)
                 processLogger("Moving File from: %s to: %s" % (curFile, dest))
                 shutil.move(curFile, dest)
             except Exception, msg:
