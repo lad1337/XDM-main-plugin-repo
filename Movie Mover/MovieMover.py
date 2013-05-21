@@ -29,7 +29,7 @@ import shutil
 
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
-    version = "0.1"
+    version = "0.2"
     _config = {"replace_space_with": " ",
                'final_movie_path': ""
                }
@@ -41,7 +41,7 @@ class MovieMover(PostProcessor):
     useConfigsForElementsAs = 'Path'
 
     def postProcessPath(self, element, filePath):
-        destPath = self.c.movie_path
+        destPath = self.c.final_movie_path
         if not destPath:
             log.warning("Destination path for %s is not set. Stopping PP." % element)
             return False
