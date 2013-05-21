@@ -41,7 +41,7 @@
         "de.lad1337.movie.simplemover": [
             {
                 "major_version": 0,
-                "minor_version": 3,
+                "minor_version": 4,
                 "format": "zip",
                 "desc": "This will move all the avi, mkv from the path that is given to the path.",
                 "name": "Movie Mover",
