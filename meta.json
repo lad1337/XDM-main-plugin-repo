@@ -56,6 +56,16 @@
                 "type": "PostProcessor",
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
+        ],
+        "de.lad1337.movies.xbmc": [
+            {
+                "major_version": "0",
+                "minor_version": "2",
+                "name": "XBMC Notifier",
+                "type": "Notifier",
+                "desc": "XBMC notifier. Sends screen messages and issues a library scan on a \"complet\" status.",
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
         ]
     }
 }
