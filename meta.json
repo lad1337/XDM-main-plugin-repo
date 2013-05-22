@@ -38,7 +38,7 @@
         "de.lad1337.movie.simplemover": [
             {
                 "major_version": 0,
-                "minor_version": 4,
+                "minor_version": 5,
                 "format": "zip",
                 "desc": "This will move all the avi, mkv from the path that is given to the path.",
                 "name": "Movie Mover",
@@ -49,7 +49,7 @@
         "de.lad1337.music.mp32itunes": [
             {
                 "major_version": 0,
-                "minor_version": 4,
+                "minor_version": 3,
                 "format": "zip",
                 "desc": "This will execute an apple script that adds all mp3's/m4a's to iTunes of the given download. MAC OSX only!",
                 "name": "MP32iTunes",

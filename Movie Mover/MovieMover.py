@@ -29,7 +29,7 @@ import shutil
 
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
-    version = "0.4"
+    version = "0.5"
     _config = {"replace_space_with": " ",
                'final_movie_path': ""
                }
@@ -43,8 +43,9 @@ class MovieMover(PostProcessor):
     def postProcessPath(self, element, filePath):
         destPath = self.c.final_movie_path
         if not destPath:
-            log.warning("Destination path for %s is not set. Stopping PP." % element)
-            return False
+            msg = "Destination path for %s is not set. Stopping PP." % element
+            log.warning(msg)
+            return (False, msg)
         # log of the whole process routine from here on except debug
         # this looks hacky: http://stackoverflow.com/questions/7935966/python-overwriting-variables-in-nested-functions
         processLog = [""]
@@ -103,4 +104,4 @@ class MovieMover(PostProcessor):
         except IOError:
             pass
 
-        return success
+        return (success, processLog[0])

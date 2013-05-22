@@ -27,6 +27,7 @@ import platform
 
 class MP32iTunes(PostProcessor):
     identfier = 'de.lad1337.music.mp32itunes'
+    version = "0.3"
     screenName = 'MP3 2 iTunes'
     _config = {'delete_files': False,
                'update_match': False,
@@ -48,8 +49,9 @@ class MP32iTunes(PostProcessor):
         scptPath = os.path.join(os.path.dirname(__file__), 'add_mp3s_to_itunes.scpt')
         log.info('MP32iTunes will run pp on %s' % filePath)
         if not os.path.isfile(scptPath):
-            log.error("My apple script is missing. it is supposed to be at %s" % scptPath)
-            return False
+            msg = "My apple script is missing. it is supposed to be at %s" % scptPath
+            log.error(msg)
+            return (False, msg)
 
         process = subprocess.Popen(['osascript', scptPath, filePath, str(int(self.c.delete_files)), str(int(self.c.update_match)), str(int(self.c.hide_itunes))], stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
         output, error = process.communicate()
