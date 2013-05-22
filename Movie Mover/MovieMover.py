@@ -29,7 +29,7 @@ import shutil
 
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
-    version = "0.5"
+    version = "0.6"
     _config = {"replace_space_with": " ",
                'final_movie_path': ""
                }
@@ -62,6 +62,8 @@ class MovieMover(PostProcessor):
         allImageLocations = []
         for root, dirnames, filenames in os.walk(filePath):
             for filename in fnmatch.filter(filenames, '*.avi') + fnmatch.filter(filenames, '*.mkv') + fnmatch.filter(filenames, '*.iso'):
+                if 'sample' in filename.lower():
+                    continue
                 curImage = os.path.join(root, filename)
                 allImageLocations.append(curImage)
                 processLogger("Found image: " + curImage)
