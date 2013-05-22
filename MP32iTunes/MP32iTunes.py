@@ -26,8 +26,8 @@ import platform
 
 
 class MP32iTunes(PostProcessor):
-    identfier = 'de.lad1337.music.mp32itunes'
-    version = "0.3"
+    identifier = 'de.lad1337.music.mp32itunes'
+    version = "0.4"
     screenName = 'MP3 2 iTunes'
     _config = {'delete_files': False,
                'update_match': False,
