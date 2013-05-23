@@ -67,6 +67,28 @@
                 "desc": "XBMC notifier. Sends screen messages and issues a library scan on a \"complet\" status.",
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
-        ]
+        ],
+         "de.lad1337.boxcar": [
+	        {
+	            "major_version": "0", 
+	            "minor_version": "1", 
+	            "name": "Boxcar", 
+	            "type": "Notifier", 
+	            "format": "zip", 
+	            "desc": "Simple Boxcar.io notifier. This uses the official XDM boxcar service and will subscribe you to it when the first message is send.", 
+	            "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+	        }
+        ],
+        "de.lad1337.boxcar.monitor": [
+	        {
+	            "major_version": "0", 
+	            "minor_version": "4", 
+	            "name": "Boxcar Monitor", 
+	            "type": "Notifier", 
+	            "format": "zip", 
+	            "desc": "Simple Boxcar.io notifier. This uses the generic Monitor Service. Enable the Monitor Service at http://boxcar.io. NOTE: this will only be available until the official XDM boxcar service is approved!", 
+	            "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+	        }
+	    ]
     }
 }
