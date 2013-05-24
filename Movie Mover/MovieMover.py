@@ -29,7 +29,7 @@ import shutil
 
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
-    version = "0.6"
+    version = "0.7"
     _config = {"replace_space_with": " ",
                'final_movie_path': ""
                }
@@ -56,7 +56,7 @@ class MovieMover(PostProcessor):
             processLog[0] = processLog[0] + createdDate + message + "\n"
 
         def fixName(name, replaceSpace):
-            return re.sub(r'[\\/:"*?<>|]+', "", name.replace(" ", replaceSpace))
+            return fileNameClean(name.replace(" ", replaceSpace))
 
         # gather all images -> .iso and .img
         allImageLocations = []
@@ -81,7 +81,7 @@ class MovieMover(PostProcessor):
                     newFileName = element.getName() + extension
                 newFileName = fixName(newFileName, self.c.replace_space_with)
                 processLogger("New Filename shall be: %s" % newFileName)
-                destFolder = os.path.join(destPath, element.getName())
+                destFolder = os.path.join(destPath, fixName(element.getName(), self.c.replace_space_with))
                 if not os.path.isdir(destFolder):
                     os.mkdir(destFolder)
                 dest = os.path.join(destFolder, newFileName)
