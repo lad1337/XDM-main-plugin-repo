@@ -20,6 +20,7 @@
 #along with this program.  If not, see http://www.gnu.org/licenses/.
 
 from xdm.plugins import *
+from xdm import helper
 import time
 import fnmatch
 import os
@@ -29,7 +30,7 @@ import shutil
 
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
-    version = "0.7"
+    version = "0.8"
     _config = {"replace_space_with": " ",
                'final_movie_path': ""
                }
@@ -56,7 +57,7 @@ class MovieMover(PostProcessor):
             processLog[0] = processLog[0] + createdDate + message + "\n"
 
         def fixName(name, replaceSpace):
-            return fileNameClean(name.replace(" ", replaceSpace))
+            return helper.fileNameClean(name.replace(" ", replaceSpace))
 
         # gather all images -> .iso and .img
         allImageLocations = []
