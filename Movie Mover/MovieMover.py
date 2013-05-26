@@ -30,7 +30,7 @@ import shutil
 
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
-    version = "0.9"
+    version = "0.11"
     _config = {"replace_space_with": " ",
                'final_movie_path': ""
                }
@@ -60,23 +60,27 @@ class MovieMover(PostProcessor):
             return helper.fileNameClean(name.replace(" ", replaceSpace))
 
         # gather all images -> .iso and .img
-        allImageLocations = []
+        allMovieFileLocations = []
         for root, dirnames, filenames in os.walk(filePath):
+            processLogger("I can see the files %s" % filenames)
             for filename in fnmatch.filter(filenames, '*.avi') + fnmatch.filter(filenames, '*.mkv') + fnmatch.filter(filenames, '*.iso') + fnmatch.filter(filenames, '*.mp4'):
                 if 'sample' in filename.lower():
                     continue
                 curImage = os.path.join(root, filename)
-                allImageLocations.append(curImage)
-                processLogger("Found image: " + curImage)
+                allMovieFileLocations.append(curImage)
+                processLogger("Found movie: " + curImage)
+        if not allMovieFileLocations:
+            processLogger("No files found!")
+            (False, processLog[0])
 
         processLogger("Renaming and Moving Movie")
         success = True
-        allImageLocations.sort()
-        for index, curFile in enumerate(allImageLocations):
+        allMovieFileLocations.sort()
+        for index, curFile in enumerate(allMovieFileLocations):
             processLogger("Processing movie: " + curFile)
             try:
                 extension = os.path.splitext(curFile)[1]
-                if len(allImageLocations) > 1:
+                if len(allMovieFileLocations) > 1:
                     newFileName = element.name + " CD" + str(index + 1) + extension
                 else:
                     newFileName = element.getName() + extension
