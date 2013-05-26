@@ -30,7 +30,7 @@ import shutil
 
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
-    version = "0.13"
+    version = "0.14"
     _config = {"replace_space_with": " ",
                'final_movie_path': ""
                }
@@ -59,21 +59,23 @@ class MovieMover(PostProcessor):
         def fixName(name, replaceSpace):
             return helper.fileNameClean(name.replace(" ", replaceSpace))
 
-
-        processLogger("Starting file scan on %s" % filePath)
-        # gather all images -> .iso and .img
         allMovieFileLocations = []
-        for root, dirnames, filenames in os.walk(filePath):
-            processLogger("I can see the files %s" % filenames)
-            for filename in fnmatch.filter(filenames, '*.avi') + fnmatch.filter(filenames, '*.mkv') + fnmatch.filter(filenames, '*.iso') + fnmatch.filter(filenames, '*.mp4'):
-                if 'sample' in filename.lower():
-                    continue
-                curImage = os.path.join(root, filename)
-                allMovieFileLocations.append(curImage)
-                processLogger("Found movie: " + curImage)
-        if not allMovieFileLocations:
-            processLogger("No files found!")
-            (False, processLog[0])
+        if os.path.isdir(filePath):
+            processLogger("Starting file scan on %s" % filePath)
+            # gather all images -> .iso and .img
+            for root, dirnames, filenames in os.walk(filePath):
+                processLogger("I can see the files %s" % filenames)
+                for filename in fnmatch.filter(filenames, '*.avi') + fnmatch.filter(filenames, '*.mkv') + fnmatch.filter(filenames, '*.iso') + fnmatch.filter(filenames, '*.mp4'):
+                    if 'sample' in filename.lower():
+                        continue
+                    curImage = os.path.join(root, filename)
+                    allMovieFileLocations.append(curImage)
+                    processLogger("Found movie: " + curImage)
+            if not allMovieFileLocations:
+                processLogger("No files found!")
+                (False, processLog[0])
+        else:
+            allMovieFileLocations = [filePath]
 
         processLogger("Renaming and Moving Movie")
         success = True
