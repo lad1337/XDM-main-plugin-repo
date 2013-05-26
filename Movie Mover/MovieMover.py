@@ -30,13 +30,13 @@ import shutil
 
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
-    version = "0.8"
+    version = "0.9"
     _config = {"replace_space_with": " ",
                'final_movie_path': ""
                }
     screenName = 'Movie Mover'
     addMediaTypeOptions = ['de.lad1337.movies']
-    config_meta = {'plugin_desc': 'This will move all the avi, mkv from the path that is given to the path.',
+    config_meta = {'plugin_desc': 'This will move all the avi, mkv, iso, mp4 from the path that is given to the path.',
                    'replace_space_with': {'desc': 'All spaces for the final file will be replaced with this.'}
                    }
     useConfigsForElementsAs = 'Path'
@@ -62,7 +62,7 @@ class MovieMover(PostProcessor):
         # gather all images -> .iso and .img
         allImageLocations = []
         for root, dirnames, filenames in os.walk(filePath):
-            for filename in fnmatch.filter(filenames, '*.avi') + fnmatch.filter(filenames, '*.mkv') + fnmatch.filter(filenames, '*.iso'):
+            for filename in fnmatch.filter(filenames, '*.avi') + fnmatch.filter(filenames, '*.mkv') + fnmatch.filter(filenames, '*.iso') + fnmatch.filter(filenames, '*.mp4'):
                 if 'sample' in filename.lower():
                     continue
                 curImage = os.path.join(root, filename)
