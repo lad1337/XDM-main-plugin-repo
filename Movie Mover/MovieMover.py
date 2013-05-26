@@ -30,7 +30,7 @@ import shutil
 
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
-    version = "0.11"
+    version = "0.12"
     _config = {"replace_space_with": " ",
                'final_movie_path': ""
                }
@@ -59,6 +59,8 @@ class MovieMover(PostProcessor):
         def fixName(name, replaceSpace):
             return helper.fileNameClean(name.replace(" ", replaceSpace))
 
+
+        processLogger("Starting file scan on %s" % filenames)
         # gather all images -> .iso and .img
         allMovieFileLocations = []
         for root, dirnames, filenames in os.walk(filePath):
