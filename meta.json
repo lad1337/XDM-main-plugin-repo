@@ -59,8 +59,8 @@
         ],
         "de.lad1337.movies.xbmc": [
             {
-                "major_version": "0",
-                "minor_version": "2",
+                "major_version": 0,
+                "minor_version": 2,
                 "name": "XBMC Notifier",
                 "format": "zip",
                 "type": "Notifier",
@@ -70,8 +70,8 @@
         ],
          "de.lad1337.boxcar": [
 	        {
-	            "major_version": "0", 
-	            "minor_version": "1", 
+	            "major_version": 0, 
+	            "minor_version": 1, 
 	            "name": "Boxcar", 
 	            "type": "Notifier", 
 	            "format": "zip", 
@@ -81,8 +81,8 @@
         ],
         "de.lad1337.boxcar.monitor": [
 	        {
-	            "major_version": "0", 
-	            "minor_version": "4", 
+	            "major_version": 0, 
+	            "minor_version": 4, 
 	            "name": "Boxcar Monitor", 
 	            "type": "Notifier", 
 	            "format": "zip", 
