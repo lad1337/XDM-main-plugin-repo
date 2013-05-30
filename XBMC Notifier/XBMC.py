@@ -2,7 +2,7 @@ from xdm.plugins import *
 import jsonrpclib
 
 class XBMC(Notifier):
-    version = "0.2"
+    version = "0.3"
     identifier = 'de.lad1337.movies.xbmc'
     screenName = 'XBMC Notifier'
     addMediaTypeOptions = False
