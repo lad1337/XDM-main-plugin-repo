@@ -89,17 +89,6 @@
                 "desc": "Simple Boxcar.io notifier. This uses the generic Monitor Service. Enable the Monitor Service at http://boxcar.io. NOTE: this will only be available until the official XDM boxcar service is approved!", 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
-        ],
-        "de.lad1337.absolute.path": [
-            {
-                "major_version": 0, 
-                "minor_version": 4, 
-                "name": "DONT INSTALL", 
-                "type": "Notifier", 
-                "format": "zip", 
-                "desc": "DONT INSTALL THIS ... this is only to test the security messurment for zips with absolute paths !!!", 
-                "download_url": "http://xdm.lad1337.de/abs.zip"
-            }
         ]
     }
 }
