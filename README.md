@@ -8,6 +8,8 @@ The issue with this repo is that all plugins are downloaded on a single request.
 But that could be easily changed if the download url link to different zip files.<br>
 This might be done later if plugins get big and alot.
 
+Please feel free to use these plugins to create your own plugin(s).
+
 DEV
 ===
 <pre>
@@ -23,7 +25,11 @@ DEV
                 "desc": "The description of your plugin",
                 "name": "The name/screen name. IMPORTEND: this must be the same as the folder name in the zip",
                 "type": "Notifier",
-                "update_url": "url to this json must be raw link on github",
+                "xdm_version": [ // minimal XDM version needed for this plugin since XDM Zim 0.4.16
+                    0, 
+                    4, 
+                    16
+                ], 
                 "download_url": "download to the zip containing the plugin"
             }
         ]
