@@ -89,6 +89,38 @@
                 "desc": "Simple Boxcar.io notifier. This uses the generic Monitor Service. Enable the Monitor Service at http://boxcar.io. NOTE: this will only be available until the official XDM boxcar service is approved!", 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
+        ],
+        "de.lad1337.books": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "Books", 
+                "type": "MediaTypeManager", 
+                "format": "zip", 
+                "desc": "Simple Books. Needs Core version 0.4.17 and version checking was only implemented in 0.4.16 so don't install if you don't have anything like that.", 
+                "xdm_version": [
+                    0, 
+                    4, 
+                    17
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ],
+        "de.lad1337.goodreads": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "Goodreads", 
+                "type": "Provider", 
+                "format": "zip", 
+                "desc": "Book information from http://www.goodreads.com/. Get your own developer api key from http://www.goodreads.com/api/keys.", 
+                "xdm_version": [
+                    0, 
+                    4, 
+                    16
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
         ]
     }
 }
