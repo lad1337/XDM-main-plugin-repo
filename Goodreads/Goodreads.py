@@ -29,7 +29,7 @@ BASE_URL = 'http://www.goodreads.com'
 class Goodreads(Provider):
     _config = {'api_key': ''}
     config_meta = {'plugin_desc': 'Book information from http://www.goodreads.com/. Get your own developer api key from http://www.goodreads.com/api/keys.'}
-    version = "0.2"
+    version = "0.3"
     identifier = "de.lad1337.goodreads"
     _tag = 'goodreads'
     screenName = 'Goodreads'
@@ -73,7 +73,7 @@ class Goodreads(Provider):
 
         book.saveTemp()
 
-    def getElement(self, id):
+    def getElement(self, id, element=None):
         """we like tmdb ids"""
         #TODO: find a way to get the book by id
         return False
