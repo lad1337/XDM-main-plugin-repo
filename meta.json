@@ -2,46 +2,14 @@
     "name": "XDM main repo", 
     "info_url": "https://github.com/lad1337/XDM-main-plugin-repo/tree/dev", 
     "plugins": {
-        "de.lad1337.blackhole": [
+        "de.lad1337.tmdb": [
             {
                 "major_version": 0, 
-                "minor_version": 2, 
-                "name": "Blackhole", 
-                "type": "Downloader", 
-                "format": "zip", 
-                "desc": "This will download the nzb/torrent file into the platform path. It can not check for the status of a game.", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    0
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
-            }
-        ], 
-        "de.lad1337.boxcar.discogs": [
-            {
-                "major_version": 0, 
-                "minor_version": 11, 
-                "name": "Discogs", 
+                "minor_version": 12, 
+                "name": "TheMovieDB", 
                 "type": "Provider", 
                 "format": "zip", 
-                "desc": "Information provider for music from http://www.discogs.com. Note: Image download is limited to 1000 per 24h per IP", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    0
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
-            }
-        ], 
-        "de.lad1337.music": [
-            {
-                "major_version": 0, 
-                "minor_version": 1, 
-                "name": "Music", 
-                "type": "MediaTypeManager", 
-                "format": "zip", 
-                "desc": "Music support. Good for Albums", 
+                "desc": "Movie information from http://www.themoviedb.org/.", 
                 "xdm_version": [
                     0, 
                     5, 
@@ -66,14 +34,14 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
             }
         ], 
-        "de.lad1337.newznab": [
+        "de.lad1337.boxcar.discogs": [
             {
                 "major_version": 0, 
-                "minor_version": 2, 
-                "name": "Newznab", 
-                "type": "Indexer", 
+                "minor_version": 11, 
+                "name": "Discogs", 
+                "type": "Provider", 
                 "format": "zip", 
-                "desc": "Generic Newznab indexer.", 
+                "desc": "Information provider for music from http://www.discogs.com. Note: Image download is limited to 1000 per 24h per IP", 
                 "xdm_version": [
                     0, 
                     5, 
@@ -98,14 +66,174 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
             }
         ], 
-        "de.lad1337.boxcar.tmdb": [
+        "de.lad1337.movie.simplemover": [
             {
                 "major_version": 0, 
-                "minor_version": 12, 
-                "name": "TheMovieDB", 
-                "type": "Provider", 
+                "minor_version": 14, 
+                "name": "Movie Mover", 
+                "type": "PostProcessor", 
                 "format": "zip", 
-                "desc": null, 
+                "desc": "This will move all the avi, mkv, iso, mp4 from the path that is given to the path.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
+        "de.lad1337.music": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "Music", 
+                "type": "MediaTypeManager", 
+                "format": "zip", 
+                "desc": "Music support. Good for Albums", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
+        "de.lad1337.sabnzbd": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "Sabnzbd", 
+                "type": "Downloader", 
+                "format": "zip", 
+                "desc": "Sabnzb downloader. Send Nzbs and check for status", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
+        "de.lad1337.blackhole": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "Blackhole", 
+                "type": "Downloader", 
+                "format": "zip", 
+                "desc": "This will download the nzb/torrent file into the platform path. It can not check for the status of a game.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
+        "de.lad1337.newznab": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "Newznab", 
+                "type": "Indexer", 
+                "format": "zip", 
+                "desc": "Generic Newznab indexer.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
+        "de.lad1337.traktwatchlist": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "Trakt Watchlist", 
+                "type": "MediaAdder", 
+                "format": "zip", 
+                "desc": "Add movies from your http://trakt.tv account. Get your apikey at http://trakt.tv/settings/api", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
+        "de.lad1337.osxnotifications": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "OSX Notification Center", 
+                "type": "Notifier", 
+                "format": "zip", 
+                "desc": "Sends Mac OS 10.8 Notification Center notifications. It will appear as \"terminal-notifer\" in the system settings.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
+        "de.lad1337.music.mp32itunes": [
+            {
+                "major_version": 0, 
+                "minor_version": 4, 
+                "name": "MP3 2 iTunes", 
+                "type": "PostProcessor", 
+                "format": "zip", 
+                "desc": "This will execute an apple script that adds all mp3's/m4a's to iTunes of the given download. MAC OSX only!", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
+        "de.lad1337.games.mover": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "Game Mover", 
+                "type": "PostProcessor", 
+                "format": "zip", 
+                "desc": "This will move all the iso, img, wbfs from the path that is given to the path of the games platform.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
+        "de.lad1337.boxcar.monitor": [
+            {
+                "major_version": 0, 
+                "minor_version": 4, 
+                "name": "Boxcar Monitor", 
+                "type": "Notifier", 
+                "format": "zip", 
+                "desc": "Simple Boxcar.io notifier. This uses the generic Monitor Service. Enable the Monitor Service at http://boxcar.io. NOTE: this will only be available until the official XDM boxcar service is approved!", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
+        "de.lad1337.boxcar": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "Boxcar", 
+                "type": "Notifier", 
+                "format": "zip", 
+                "desc": "Simple Boxcar.io notifier. This uses the official XDM boxcar service and will subscribe you to it when the first message is send.", 
                 "xdm_version": [
                     0, 
                     5, 
@@ -130,10 +258,58 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
             }
         ], 
+        "de.lad1337.movie.quality": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "Movie Quality", 
+                "type": "DownloadFilter", 
+                "format": "zip", 
+                "desc": null, 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
+        "de.lad1337.movies.xbmc": [
+            {
+                "major_version": 0, 
+                "minor_version": 3, 
+                "name": "XBMC Notifier", 
+                "type": "Notifier", 
+                "format": "zip", 
+                "desc": "XBMC notifier. Sends screen messages and issues a library scan on a \"complet\" status.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
+        "de.lad1337.goodreads": [
+            {
+                "major_version": 0, 
+                "minor_version": 3, 
+                "name": "Goodreads", 
+                "type": "Provider", 
+                "format": "zip", 
+                "desc": "Book information from http://www.goodreads.com/. Get your own developer api key from http://www.goodreads.com/api/keys.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
         "de.lad1337.books": [
             {
                 "major_version": 0, 
-                "minor_version": 1, 
+                "minor_version": 2, 
                 "name": "Books", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 
@@ -142,6 +318,22 @@
                     0, 
                     4, 
                     17
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
+            }
+        ], 
+        "de.lad1337.growl": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "Growl", 
+                "type": "Notifier", 
+                "format": "zip", 
+                "desc": "Simple Growl notifier.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    0
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
             }

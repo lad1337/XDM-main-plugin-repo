@@ -61,6 +61,8 @@
     transition: all 0.6s ease-in-out;
     background: url(stage.jpg);
     padding: 14px;
+    -o-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     box-sizing: border-box;
     border-bottom: 2px solid #333;
     overflow: hidden;
@@ -151,14 +153,31 @@
 
 .de-lad1337-movies .movie.active .door-left{
     -webkit-transform: rotateY(90deg);
+    -moz-transform: rotateY(90deg);
+    -ms-transform: rotateY(90deg);
+    -o-transform: rotateY(90deg);
+    transform: rotateY(90deg);
+    
     -webkit-transform-origin:0 0; /* Safari and Chrome */
+    -moz-transform-origin:0 0;
+    -ms-transform-origin:0 0;
+    -o-transform-origin:0 0;
+    transform-origin:0 0;
 }
 
 
 .de-lad1337-movies .movie.active .door-right{
     -webkit-transform: rotateY(-90deg);
+    -moz-transform: rotateY(-90deg);
+    -ms-transform: rotateY(-90deg);
+    -o-transform: rotateY(-90deg);
+    transform: rotateY(-90deg);
     
     -webkit-transform-origin:100% 0; /* Safari and Chrome */
+    -moz-transform-origin:100% 0;
+    -ms-transform-origin:100% 0;
+    -o-transform-origin:100% 0;
+    transform-origin:100% 0;
 }
 
 

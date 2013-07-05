@@ -26,13 +26,15 @@ import tmdb
 
 class Tmdb(Provider):
     version = "0.12"
-    identifier = "de.lad1337.boxcar.tmdb"
+    identifier = "de.lad1337.tmdb"
     _tag = 'tmdb'
     screenName = 'TheMovieDB'
     single = True
     types = ['de.lad1337.movies']
     _config = {'enabled': True,
                'img_size_select': 'm'}
+
+    config_meta = {'plugin_desc': 'Movie information from http://www.themoviedb.org/.'}
 
     def __init__(self, instance='Default'):
         tmdb.configure('5c235bb1b487932ebf0a9935c8b39b0a')

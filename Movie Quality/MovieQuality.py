@@ -24,7 +24,8 @@ import guessit
 
 
 class MovieQuality(DownloadFilter):
-    version = "0.1"
+    version = "0.2"
+    identifier = 'de.lad1337.movie.quality'
     screenName = 'Movie Quality'
     addMediaTypeOptions = 'runFor'
     _config = {'format_select': '',
