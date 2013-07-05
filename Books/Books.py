@@ -50,8 +50,10 @@ class Book(object):
                     <div class="clearfix"></div>
                     <span>Rating: {{this.rating}}</span>
                     <p>
-                    {{actionButtonsIcons}}
-                    {{infoButtonsIcons}}
+                    {{actionButtons}}
+                    </p>
+                    <p>
+                    {{infoButtons}}
                     </p>
                 </div>
             </div>
@@ -69,8 +71,8 @@ class Book(object):
 
 
 class Books(MediaTypeManager):
-    version = "0.2"
-    xdm_version = (0, 4, 17) # this is the greater or equal xdm version it needs
+    version = "0.3"
+    xdm_version = (0, 5, 0) # this is the greater or equal xdm version it needs
     # we need version 0.4.16 because _oderBy with multiple indexes was introduced
     _config = {}
     config_meta = {'plugin_desc': "Simple Books. Needs Core version 0.4.17 and version checking was only implemented in 0.4.16 so don't install if you don't have anything like that."}
