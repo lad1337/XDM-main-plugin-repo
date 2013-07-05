@@ -309,15 +309,15 @@
         "de.lad1337.books": [
             {
                 "major_version": 0, 
-                "minor_version": 2, 
+                "minor_version": 3, 
                 "name": "Books", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 
                 "desc": "Simple Books. Needs Core version 0.4.17 and version checking was only implemented in 0.4.16 so don't install if you don't have anything like that.", 
                 "xdm_version": [
                     0, 
-                    4, 
-                    17
+                    5, 
+                    0
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip"
             }
