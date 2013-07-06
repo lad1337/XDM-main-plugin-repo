@@ -23,7 +23,7 @@ from xdm.plugins import *
 from lib import requests
 
 
-class Boxcar(Notifier):
+class BoxcarMonitor(Notifier):
     version = "0.4"
     identifier = "de.lad1337.boxcar.monitor"
     screenName = "Boxcar Monitor"

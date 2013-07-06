@@ -61,6 +61,7 @@ class Goodreads(Provider):
         authorNameNode = bestBook.find('author').find('name')
         idNode = bestBook.find('id')
         imageNode = bestBook.find('image_url')
+        ratingNode = bookNode.find('average_rating')
 
         book = Element()
         book.mediaType = mediaType
@@ -68,6 +69,7 @@ class Goodreads(Provider):
         book.type = 'Book'
         book.setField('title', titleNode.text, self.tag)
         book.setField('author', authorNameNode.text, self.tag)
+        book.setField('rating', float(ratingNode.text), self.tag)
         book.setField('id', int(idNode.text), self.tag)
         book.setField('cover_image', imageNode.text, self.tag)
 

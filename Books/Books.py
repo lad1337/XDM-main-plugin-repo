@@ -27,28 +27,41 @@ class Book(object):
     title = ''
     author = ''
     cover_image = ''
+    rating = ''
 
     _orderBy = ('author', 'title')
 
     def getTemplate(self):
+        mod = self.id % 10
+        if not mod:
+            mod = 10
+        spine = '{{myUrl}}/book_%s.png' % mod
+
         return """
-        <div class="{{statusCssClass}}">
-            <img src="{{this.cover_image}}" class="pull-left"/>
-            <span class="pull-left">
-                <br/>
-                <span>{{this.author}}</span>
-                <strong>{{this.title}}</strong><br/>
-                <br/>
-                <span>
-                    {{actionButtons}}
-                    {{infoButtons}}
+        <div class="{{statusCssClass}} book" data-toggle="tooltip" title="{{this.title}} - {{this.author}}"  data-placement="bottom" >
+            <img src="%s" class="spine"/>
+            <img src="{{myUrl}}/paper_side.png" class="side"/>
+            <img src="{{myUrl}}/book_back.png" class="back"/>
+            <div class="inner">
+                <img src="{{this.cover_image}}">
+                <div class="paper">
+                    <h4>{{this.title}}</h4>
+                    <h5>{{this.author}}</h5>
+                    <div class="clearfix"></div>
+                    <span>Rating: {{this.rating}}</span>
+                    <p>
                     {{statusSelect}}
-                    {{downloadProgressBar}}
-                </span>
-            </span>
-            <div class="clearfix"></div>
+                    </p>
+                    <p>
+                    {{actionButtons}}
+                    </p>
+                    <p>
+                    {{infoButtons}}
+                    </p>
+                </div>
+            </div>
         </div>
-        """
+        """ % spine
 
     def getSearchTerms(self):
         fullName = self.getName()
@@ -61,11 +74,11 @@ class Book(object):
 
 
 class Books(MediaTypeManager):
-    version = "0.1"
-    xdm_version = (0, 4, 17) # this is the greater or equal xdm version it needs
+    version = "0.5"
+    xdm_version = (0, 5, 0) # this is the greater or equal xdm version it needs
     # we need version 0.4.16 because _oderBy with multiple indexes was introduced
     _config = {}
-    config_meta = {'plugin_desc': "Simple Books. Needs Core version 0.4.17 and version checking was only implemented in 0.4.16 so don't install if you don't have anything like that."}
+    config_meta = {'plugin_desc': "Simple Books."}
     order = (Book,)
     download = Book
     # a unique identifier for this mediatype
@@ -81,6 +94,6 @@ class Books(MediaTypeManager):
         book.downloadImages()
         return True
 
-
-
+    def headInject(self):
+        return self._defaultHeadInject()
 

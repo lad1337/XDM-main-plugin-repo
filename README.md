@@ -2,15 +2,27 @@ XDM-main-plugin-repo
 ====================
 
 The official main Plugin Repository for [https://github.com/lad1337/XDM](https://github.com/lad1337/XDM)<br>
-Some basic Plugins you can found here.
+
 
 The issue with this repo is that all plugins are downloaded on a single request.<br>
 But that could be easily changed if the download url link to different zip files.<br>
-This might be done later if plugins get big and alot.
+
+XDM >= 0.5.0 can batch install plugins and if and does not redownload the same file in a batch.
+
 
 Please feel free to use these plugins to create your own plugin(s).
 
-DEV
+## Development
+
+Easiest way to create your JSON is to use the "repoJSONmaker.py" that comes with XDM (>=0.5.0)
+
+e.g. my run command for the dev branch is:
+
+    python repoJSONmaker.py --download_url https://github.com/lad1337/XDM-main-plugin-repo/archive/dev.zip --info_url https://github.com/lad1337/XDM-main-plugin-repo/tree/dev --name XDM\ main\ repo --path /Volumes/HDD/lad1337/workspace/XDM-main-plugin-repo/
+
+This will load all of the plugins in **/Volumes/HDD/lad1337/workspace/XDM-main-plugin-repo/** and write the meta.json into it with all the info extracted from the plugins.
+It also warns about missing identifiers or wrong plugin folder names.
+
 ===
 <pre>
 {
