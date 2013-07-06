@@ -48,7 +48,7 @@ class Book(object):
                     <h4>{{this.title}}</h4>
                     <h5>{{this.author}}</h5>
                     <div class="clearfix"></div>
-                    <span>Rating: {{this.rating}}</span>
+                    <span>Rating: {{this.rating}}</span>{{statusSelect}}
                     <p>
                     {{actionButtons}}
                     </p>
@@ -71,7 +71,7 @@ class Book(object):
 
 
 class Books(MediaTypeManager):
-    version = "0.3"
+    version = "0.4"
     xdm_version = (0, 5, 0) # this is the greater or equal xdm version it needs
     # we need version 0.4.16 because _oderBy with multiple indexes was introduced
     _config = {}

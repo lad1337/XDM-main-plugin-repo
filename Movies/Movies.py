@@ -21,6 +21,7 @@
 
 from xdm.plugins import *
 
+
 class Movie(object):
     name = ''
     genres = ''
