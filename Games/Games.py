@@ -100,6 +100,7 @@ class Platform(object):
 
 
 class Games(MediaTypeManager):
+    version = "0.2"
     _config = {'enabled': True,
                'default_platform_select': '',
                'fanart_as_background': False,
@@ -143,7 +144,6 @@ class Games(MediaTypeManager):
         # dont be confused its the bootstrap grid thing
         return {3: 4, 4: 3, 6: 2}
 
-
     def makeReal(self, game):
         oldPlatform = game.parent
         for platform in Element.select().where(Element.type == oldPlatform.type, Element.mediaType == self.mt):
@@ -159,10 +159,7 @@ class Games(MediaTypeManager):
         return True
 
     def headInject(self):
-        return """
-        <link rel="stylesheet" href="{{webRoot}}/Games/style.css">
-        <script src="{{webRoot}}/Games/script.js"></script>
-        """
+        return self._defaultHeadInject()
 
     def getTemplate(self):
         return """

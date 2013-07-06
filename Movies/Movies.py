@@ -88,7 +88,7 @@ class Movie(object):
 
 
 class Movies(MediaTypeManager):
-    version = "0.2"
+    version = "0.3"
     _config = {'enabled': True}
     config_meta = {'plugin_desc': 'Movies'}
     order = (Movie,)
@@ -107,8 +107,5 @@ class Movies(MediaTypeManager):
         return True
 
     def headInject(self):
-        return """
-        <link rel="stylesheet" href="{{webRoot}}/Movies/style.css">
-        <script src="{{webRoot}}/Movies/script.js"></script>
-        """
+        return self._defaultHeadInject()
 

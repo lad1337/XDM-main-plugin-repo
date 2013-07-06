@@ -35,20 +35,23 @@ class Book(object):
         mod = self.id % 10
         if not mod:
             mod = 10
-        spine = '{{webRoot}}/Books/book_%s.png' % mod
+        spine = '{{myUrl}}/book_%s.png' % mod
 
         return """
         <div class="{{statusCssClass}} book" data-toggle="tooltip" title="{{this.title}} - {{this.author}}"  data-placement="bottom" >
             <img src="%s" class="spine"/>
-            <img src="{{webRoot}}/Books/paper_side.png" class="side"/>
-            <img src="{{webRoot}}/Books/book_back.png" class="back"/>
+            <img src="{{myUrl}}/paper_side.png" class="side"/>
+            <img src="{{myUrl}}/book_back.png" class="back"/>
             <div class="inner">
                 <img src="{{this.cover_image}}">
                 <div class="paper">
                     <h4>{{this.title}}</h4>
                     <h5>{{this.author}}</h5>
                     <div class="clearfix"></div>
-                    <span>Rating: {{this.rating}}</span>{{statusSelect}}
+                    <span>Rating: {{this.rating}}</span>
+                    <p>
+                    {{statusSelect}}
+                    </p>
                     <p>
                     {{actionButtons}}
                     </p>
@@ -71,11 +74,11 @@ class Book(object):
 
 
 class Books(MediaTypeManager):
-    version = "0.4"
+    version = "0.5"
     xdm_version = (0, 5, 0) # this is the greater or equal xdm version it needs
     # we need version 0.4.16 because _oderBy with multiple indexes was introduced
     _config = {}
-    config_meta = {'plugin_desc': "Simple Books. Needs Core version 0.4.17 and version checking was only implemented in 0.4.16 so don't install if you don't have anything like that."}
+    config_meta = {'plugin_desc': "Simple Books."}
     order = (Book,)
     download = Book
     # a unique identifier for this mediatype
@@ -92,9 +95,5 @@ class Books(MediaTypeManager):
         return True
 
     def headInject(self):
-        return """
-        <link rel="stylesheet" href="{{webRoot}}/Books/style.css">
-        <script src="{{webRoot}}/Books/script.js"></script>
-        """
-
+        return self._defaultHeadInject()
 

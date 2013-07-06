@@ -77,7 +77,7 @@ class Artist(object):
 
 
 class Music(MediaTypeManager):
-    version = "0.1"
+    version = "0.3"
     single = True
     _config = {'enabled': True}
     config_meta = {'plugin_desc': 'Music support. Good for Albums'}
@@ -114,7 +114,5 @@ class Music(MediaTypeManager):
             return True
 
     def headInject(self):
-        return """
-        <link rel="stylesheet" href="{{webRoot}}/Music/style.css">
-        <script src="{{webRoot}}/Music/script.js"></script>
-        """
+        return self._defaultHeadInject()
+
