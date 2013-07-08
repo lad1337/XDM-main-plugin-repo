@@ -25,7 +25,7 @@ from xdm import helper
 
 
 class Newznab(Indexer):
-    version = "0.2"
+    version = "0.3"
     identifier = "de.lad1337.newznab"
     _config = {'host': 'http://nzbs2go.com',
                'apikey': '',
@@ -63,7 +63,7 @@ class Newznab(Indexer):
         for term in terms:
             payload['q'] = term
             r = requests.get(self._baseUrlApi(self.c.host, self.c.port), params=payload)
-            log("Newsnab final search for term %s url %s" % (term, r.url))
+            log("Newsnab final search for term %s url %s" % (term, r.url), censor={self.c.apikey: 'apikey'})
             response = r.json()
             #log.info("jsonobj: " +jsonObject)
             if not 'item' in response["channel"]:
@@ -102,7 +102,7 @@ class Newznab(Indexer):
                    'id': download.external_id,
                    'text': msg}
         r = requests.get(self._baseUrlApi(self.c.host, self.c.port), params=payload)
-        log("Newsnab final comment for %s is %s on url %s" % (download.name, msg, r.url))
+        log("Newsnab final comment for %s is %s on url %s" % (download.name, msg, r.url), censor={self.c.apikey: 'apikey'})
         if 'error' in r.text:
             log("Error posting the comment: %s" % r.text)
             return False
@@ -171,7 +171,7 @@ class Newznab(Indexer):
                 function newsznab_""" + self.instance + """_spreadCategories(data){
                   console.log(data);
                   $.each(data, function(k,i){
-                      $('#""" + helper.replace_some(self.name) + """ input[name$="'+k+'"]').val(i)
+                      $('#""" + helper.idSafe(self.name) + """ input[name$="'+k+'"]').val(i)
                   });
                 };
                 </script>
