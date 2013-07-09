@@ -24,7 +24,7 @@ from lib import requests
 
 
 class Sabnzbd(Downloader):
-    version = "0.2"
+    version = "0.3"
     identifier = "de.lad1337.sabnzbd"
     _config = {'port': 8083,
                'host': 'http://localhost',
@@ -61,7 +61,7 @@ class Sabnzbd(Downloader):
         if cat is not None:
             payload['cat'] = cat
         try:
-            r = requests.get(self._baseUrl(), params=payload)
+            r = requests.get(self._baseUrl(), params=payload, verify=False)
         except:
             log.error("Unable to connect to Sanzbd. Most likely a timout. is Sab running")
             return False
@@ -80,7 +80,7 @@ class Sabnzbd(Downloader):
         payload = {'apikey': self.c.apikey,
                    'mode': 'history',
                    'output': 'json'}
-        r = requests.get(self._baseUrl(), params=payload, timeout=60)
+        r = requests.get(self._baseUrl(), params=payload, timeout=60, verify=False)
         log("Sab hitory url %s" % r.url, censor={self.c.apikey: 'apikey'})
         response = r.json()
         self._history = response['history']['slots']
@@ -91,7 +91,7 @@ class Sabnzbd(Downloader):
         payload = {'apikey': self.c.apikey,
                    'mode': 'qstatus',
                    'output': 'json'}
-        r = requests.get(self._baseUrl(), params=payload)
+        r = requests.get(self._baseUrl(), params=payload, verify=False)
         response = r.json()
         self._queue = response['jobs']
         return self._queue
@@ -146,15 +146,17 @@ class Sabnzbd(Downloader):
         payload = {'mode': 'version',
                    'output': 'json'}
         try:
-            requests.get(self._baseUrl(host, port), params=payload, timeout=10)
+            requests.get(self._baseUrl(host, port), params=payload, timeout=20, verify=False)
         except requests.Timeout:
+            log.error("Error while connecting to Sabnzbd+")
             return (False, {}, 'Connetion failure: Timeout. Check host and port.')
         except requests.ConnectionError:
+            log.error("Error while connecting to Sabnzbd+")
             return (False, {}, 'Connetion failure: ConnectionError. Check host and port.')
 
         payload['mode'] = 'queue'
         payload['apikey'] = apikey
-        r = requests.get(self._baseUrl(host, port), params=payload, timeout=20)
+        r = requests.get(self._baseUrl(host, port), params=payload, timeout=20, verify=False)
         response = r.json()
         log("Sab test url %s" % r.url, censor={self.c.apikey: 'apikey'})
         if 'status' in response and not response['status']:

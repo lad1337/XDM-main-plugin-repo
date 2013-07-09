@@ -101,7 +101,7 @@
         "de.lad1337.sabnzbd": [
             {
                 "major_version": 0, 
-                "minor_version": 2, 
+                "minor_version": 3, 
                 "name": "Sabnzbd", 
                 "type": "Downloader", 
                 "format": "zip", 
@@ -133,7 +133,7 @@
         "de.lad1337.newznab": [
             {
                 "major_version": 0, 
-                "minor_version": 3, 
+                "minor_version": 4, 
                 "name": "Newznab", 
                 "type": "Indexer", 
                 "format": "zip", 

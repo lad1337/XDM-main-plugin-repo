@@ -25,7 +25,7 @@ from xdm import helper
 
 
 class Newznab(Indexer):
-    version = "0.3"
+    version = "0.4"
     identifier = "de.lad1337.newznab"
     _config = {'host': 'http://nzbs2go.com',
                'apikey': '',
@@ -42,7 +42,10 @@ class Newznab(Indexer):
             host = 'http://%s' % host
         if port:
             return "%s:%s/" % (host, port)
-        return "%s/" % host
+        if host.endswith('/'):
+            return "%s" % host
+        else:
+            return "%s/" % host
 
     def _baseUrlApi(self, host, port=None):
         return "%sapi" % self._baseUrl(host, port)
@@ -118,6 +121,7 @@ class Newznab(Indexer):
         try:
             r = requests.get(self._baseUrlApi(host, port), params=payload)
         except:
+            log.error("Error during test connection on $s" % self)
             return (False, {}, 'Please check host!')
         if 'Incorrect user credentials' in r.text:
             return (False, {}, 'Wrong apikey!')
