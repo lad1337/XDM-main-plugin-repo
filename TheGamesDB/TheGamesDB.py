@@ -71,7 +71,7 @@ class TheGamesDB(Provider):
             genres.append(curG.text)
         return ", ".join(genres)
 
-    def _createGameFromTag(self, game_tag, base_url, rootElement):
+    def _createGameFromTag(self, game_tag, base_url, rootElement, mediaType):
         titleTag = game_tag.find('GameTitle')
         idTag = game_tag.find('id')
         platformTag = game_tag.find('Platform')
@@ -122,19 +122,18 @@ class TheGamesDB(Provider):
             g.setField('trailer', '', self.tag)
 
         if int(platformIDTag.text) not in self._pCache:
-            q = Element.select().where(Element.mediaType == rootElement.mediaType, Element.type == 'Platform')
-            for e in q:
-                if e.getField('id', self.tag) == int(platformIDTag.text):
-                    platform = e.copy()
-                    platform.parent = rootElement
-                    platform.saveTemp()
-                    self._pCache[int(platformIDTag.text)] = platform
-                    g.parent = platform
-                    g.saveTemp()
-                    self.progress.addItem()
-                    break
-            else:
-                return None
+            platform = Element()
+            platform.setField('id', int(platformIDTag.text), self.tag)
+            platform.setField('name', platformTag.text, self.tag)
+            platform.setField('alias', platformTag.text, self.tag)
+            platform.parent = rootElement
+            platform.mediaType = mediaType
+            platform.type = "Platform"
+            platform.saveTemp()
+            self._pCache[int(platformIDTag.text)] = platform
+            g.parent = platform
+            g.saveTemp()
+            self.progress.addItem()
         else:
             g.parent = self._pCache[int(platformIDTag.text)]
             g.saveTemp()
@@ -148,8 +147,8 @@ class TheGamesDB(Provider):
     def _searchForElement(self, term='', id=0):
         self.progress.reset()
         self._pCache = {}
-        mt = MediaType.get(MediaType.identifier == 'de.lad1337.games')
-        mtm = mt.manager
+        mediaType = MediaType.get(MediaType.identifier == 'de.lad1337.games')
+        mtm = mediaType.manager
         rootElement = mtm.getFakeRoot(term)
         payload = {}
         url = 'http://thegamesdb.net/api/GetGame.php?'
@@ -169,7 +168,7 @@ class TheGamesDB(Provider):
             base_url = "http://thegamesdb.net/banners/"
 
         for curGame in root.getiterator('Game'):
-            self._createGameFromTag(curGame, base_url, rootElement)
+            self._createGameFromTag(curGame, base_url, rootElement, mediaType)
 
         log("%s found %s games" % (self.name, self.progress.count))
 

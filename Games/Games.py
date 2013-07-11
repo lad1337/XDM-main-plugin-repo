@@ -127,12 +127,12 @@ class Games(MediaTypeManager):
     identifier = 'de.lad1337.games'
     addConfig = {}
     addConfig[Indexer] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'Games'}]
-    defaultElements = {}
+    """defaultElements = {}
     defaultElements[Platform] = [{'tgdb':{'name': 'Nintendo Wii', 'alias':'Wii', 'id': 9}},
                                  {'tgdb':{'name': 'Microsoft Xbox 360', 'alias': 'Xbox360', 'id': 15}},
                                  {'tgdb':{'name': 'Sony Playstation 3', 'alias': 'PS3', 'id': 12}},
                                  {'tgdb':{'name': 'PC', 'alias': 'PC', 'id': 1}},
-                                 {'tgdb':{'name': 'Nintendo Wii U', 'alias': 'WiiU', 'id': 38}}]
+                                 {'tgdb':{'name': 'Nintendo Wii U', 'alias': 'WiiU', 'id': 38}}]"""
 
     def _default_platform_select(self):
         out = {}
@@ -145,18 +145,23 @@ class Games(MediaTypeManager):
         return {3: 4, 4: 3, 6: 2}
 
     def makeReal(self, game):
-        oldPlatform = game.parent
-        for platform in Element.select().where(Element.type == oldPlatform.type, Element.mediaType == self.mt):
-            if platform.getField('id') == oldPlatform.getField('id'):
+        gamePlatform = game.parent
+        for platform in Element.select().where(Element.type == gamePlatform.type, Element.mediaType == self.mt):
+            if platform.getField('id') == gamePlatform.getField('id'):
                 break
         else:
-            log.error('We dont have the platform we need in the db ... what is this?')
-            return False
+            log.error('We dont have the platform we need in the db ... adding it happyly')
+            gamePlatform.parent = self.root
+            gamePlatform.save()
+            platform = gamePlatform
         game.parent = platform
         game.status = common.getStatusByID(self.c.default_new_status_select)
         game.save()
         game.downloadImages()
         return True
+
+    def deleteElement(self, element):
+        self._deleteElementAndEmptyParent(element)
 
     def headInject(self):
         return self._defaultHeadInject()
