@@ -26,15 +26,15 @@ import xmlrpclib
 from base64 import standard_b64encode
 
 
-class NZBget(Downloader):
-    version = "0.1"
+class NZBGet(Downloader):
+    version = "0.2"
     identifier = "de.lad1337.nzbget"
     _config = {'port': 6789,
                'host': 'localhost',
                'user': 'nzbget',
                'password': '',
                'ssl': False}
-    
+
     _history = []
     _queue = []
     types = ['de.lad1337.nzb']
@@ -61,7 +61,6 @@ class NZBget(Downloader):
                                 0,
                                 False,
                                 data)
-        print nzbgetResponse
         return nzbgetResponse
 
     def getDownloadPercentage(self, element):
@@ -110,7 +109,7 @@ class NZBget(Downloader):
                     return (common.DOWNLOADING, download, '')
 
                 if curListNameKey == 'Name': # history
-                    if i['ParStatus'] == 'SUCCESS' and i['ScriptStatus'] != 'FAILURE':
+                    if i['UnpackStatus'] == 'SUCCESS' and i['ScriptStatus'] != 'FAILURE':
                         return (common.DOWNLOADED, download, i['DestDir'])
                     elif i['ParStatus'] == 'FAILURE' or i['ScriptStatus'] == 'FAILURE':
                         return (common.FAILED, download, '')
@@ -121,7 +120,6 @@ class NZBget(Downloader):
 
     def _testConnection(self, host, port, password, user, ssl):
         url = self._baseUrl(host, port, password, user, ssl)
-        print url
         server = xmlrpclib.Server(url)
         try:
             v = server.version()
@@ -131,7 +129,7 @@ class NZBget(Downloader):
         return (True, {}, 'Connetion Established to NZBget v%s' % v)
     _testConnection.args = ['host', 'port', 'password', 'user', 'ssl']
 
-    config_meta = {'plugin_desc': 'NZBget downloader. Send Nzbs and check for status',
+    config_meta = {'plugin_desc': 'NZBGet downloader. Send NZBs and check for status',
                    'plugin_buttons': {'test_connection': {'action': _testConnection, 'name': 'Test connection'}},
                    'host': {'desc': 'Host without(!) the protocol scheme. NO http:// or http:// just localhost', 'on_live_change': _testConnection},
                    'port': {'on_live_change': _testConnection},
