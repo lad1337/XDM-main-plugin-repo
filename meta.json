@@ -17,7 +17,23 @@
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
-        ], 
+        ],
+        "de.lad1337.nzbget": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "NZBget", 
+                "type": "Downloader", 
+                "format": "zip", 
+                "desc": "NZBget downloader. Send Nzbs and check for status", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    3
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ],
         "de.lad1337.boxcar.TheGamesDB": [
             {
                 "major_version": 0, 
