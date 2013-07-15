@@ -25,21 +25,22 @@ import tmdb
 
 
 class Tmdb(Provider):
-    version = "0.12"
+    version = "0.13"
     identifier = "de.lad1337.tmdb"
     _tag = 'tmdb'
     screenName = 'TheMovieDB'
     single = True
     types = ['de.lad1337.movies']
     _config = {'enabled': True,
-               'img_size_select': 'm'}
+               'img_size_select': 'm',
+               'info_language_select': 'en'}
 
     config_meta = {'plugin_desc': 'Movie information from http://www.themoviedb.org/.'}
 
     def __init__(self, instance='Default'):
-        tmdb.configure('5c235bb1b487932ebf0a9935c8b39b0a')
         Provider.__init__(self, instance=instance)
-
+        tmdb.configure('5c235bb1b487932ebf0a9935c8b39b0a', self.c.info_language_select)
+        
     @profileMeMaybe
     def searchForElement(self, term=''):
         self.progress.reset()
@@ -61,6 +62,12 @@ class Tmdb(Provider):
                 'l': 'Large 500px wide',
                 'm': 'Medium 185px wide',
                 's': 'Small 92px wide'}
+
+    def _info_language_select(self):
+        return {"de": "Deutsch",
+                "en": "English",
+                "es": "Spanish",
+                "fr": "French"}
 
     def _createMovie(self, fakeRoot, mediaType, tmdbMovie):
         movie = Element()
@@ -107,8 +114,4 @@ class Tmdb(Provider):
                 return ele
         else:
             return False
-
-
-
-
 

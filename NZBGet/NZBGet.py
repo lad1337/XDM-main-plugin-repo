@@ -27,12 +27,13 @@ from base64 import standard_b64encode
 
 
 class NZBGet(Downloader):
-    version = "0.2"
+    version = "0.3"
     identifier = "de.lad1337.nzbget"
     _config = {'port': 6789,
                'host': 'localhost',
                'user': 'nzbget',
                'password': '',
+               'respect_script_status': True,
                'ssl': False}
 
     _history = []
@@ -109,12 +110,14 @@ class NZBGet(Downloader):
                     return (common.DOWNLOADING, download, '')
 
                 if curListNameKey == 'Name': # history
-                    if i['UnpackStatus'] == 'SUCCESS' and i['ScriptStatus'] != 'FAILURE':
-                        return (common.DOWNLOADED, download, i['DestDir'])
-                    elif i['ParStatus'] == 'FAILURE' or i['ScriptStatus'] == 'FAILURE':
+                    if self.c.respect_script_status: # do we respect script statuses ?
+                        if i['ParStatus'] == 'FAILURE' or i['ScriptStatus'] == 'FAILURE' or i['UnpackStatus'] == 'FAILURE':
+                            return (common.FAILED, download, '')
+
+                    if i['ParStatus'] == 'FAILURE' or i['UnpackStatus'] == 'FAILURE':
                         return (common.FAILED, download, '')
                     else:
-                        return (common.SNATCHED, download, '')
+                        return (common.DOWNLOADED, download, i['DestDir'])
         else:
             return (common.UNKNOWN, download, '')
 
@@ -133,6 +136,7 @@ class NZBGet(Downloader):
                    'plugin_buttons': {'test_connection': {'action': _testConnection, 'name': 'Test connection'}},
                    'host': {'desc': 'Host without(!) the protocol scheme. NO http:// or http:// just localhost', 'on_live_change': _testConnection},
                    'port': {'on_live_change': _testConnection},
+                   'respect_script_status': {'human': 'Respect script statuses', 'desc': 'If this is on a failed script from NZBGet will report FAILED to XDM.'},
                    'ssl': {'human': 'SSL', 'desc': 'Sorry untested!', 'on_live_change': _testConnection},
                    'password': {'on_live_change': _testConnection}
                    }

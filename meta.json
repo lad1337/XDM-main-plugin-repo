@@ -5,7 +5,7 @@
         "de.lad1337.tmdb": [
             {
                 "major_version": 0, 
-                "minor_version": 12, 
+                "minor_version": 13, 
                 "name": "TheMovieDB", 
                 "type": "Provider", 
                 "format": "zip", 
@@ -21,7 +21,7 @@
         "de.lad1337.nzbget": [
             {
                 "major_version": 0, 
-                "minor_version": 2, 
+                "minor_version": 3, 
                 "name": "NZBGet", 
                 "type": "Downloader", 
                 "format": "zip", 
