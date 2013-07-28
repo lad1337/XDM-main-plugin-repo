@@ -30,7 +30,7 @@ import shutil
 
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
-    version = "0.14"
+    version = "0.15"
     _config = {"replace_space_with": " ",
                'final_movie_path': ""
                }
@@ -40,6 +40,8 @@ class MovieMover(PostProcessor):
                    'replace_space_with': {'desc': 'All spaces for the final file will be replaced with this.'}
                    }
     useConfigsForElementsAs = 'Path'
+    
+    _allowed_extensions = ('.avi', '.mkv', '.iso', '.mp4')
 
     def postProcessPath(self, element, filePath):
         destPath = self.c.final_movie_path
@@ -62,30 +64,30 @@ class MovieMover(PostProcessor):
         allMovieFileLocations = []
         if os.path.isdir(filePath):
             processLogger("Starting file scan on %s" % filePath)
-            # gather all images -> .iso and .img
             for root, dirnames, filenames in os.walk(filePath):
                 processLogger("I can see the files %s" % filenames)
-                for filename in fnmatch.filter(filenames, '*.avi') + fnmatch.filter(filenames, '*.mkv') + fnmatch.filter(filenames, '*.iso') + fnmatch.filter(filenames, '*.mp4'):
-                    if 'sample' in filename.lower():
-                        continue
-                    curImage = os.path.join(root, filename)
-                    allMovieFileLocations.append(curImage)
-                    processLogger("Found movie: " + curImage)
+                for filename in filenames:
+                    if filename.endswith(self._allowed_extensions):
+                        if 'sample' in filename.lower():
+                            continue
+                        curImage = os.path.join(root, filename)
+                        allMovieFileLocations.append(curImage)
+                        processLogger("Found movie: %s" % curImage)
             if not allMovieFileLocations:
                 processLogger("No files found!")
                 (False, processLog[0])
         else:
             allMovieFileLocations = [filePath]
 
-        processLogger("Renaming and Moving Movie")
+        processLogger("Renaming and moving Movie")
         success = True
         allMovieFileLocations.sort()
         for index, curFile in enumerate(allMovieFileLocations):
-            processLogger("Processing movie: " + curFile)
+            processLogger("Processing movie: %s" % curFile)
             try:
                 extension = os.path.splitext(curFile)[1]
                 if len(allMovieFileLocations) > 1:
-                    newFileName = element.name + " CD" + str(index + 1) + extension
+                    newFileName = u"%s CD%s%s" % (element.getName(), (index + 1), extension)
                 else:
                     newFileName = element.getName() + extension
                 newFileName = fixName(newFileName, self.c.replace_space_with)
@@ -97,13 +99,13 @@ class MovieMover(PostProcessor):
                 processLogger("Moving File from: %s to: %s" % (curFile, dest))
                 shutil.move(curFile, dest)
             except Exception, msg:
-                processLogger("Unable to rename and move Movie: " + curFile + ". Please process manually")
+                processLogger("Unable to rename and move Movie: %s. Please process manually" % curFile)
                 processLogger("given ERROR: %s" % msg)
                 success = False
 
         processLogger("File processing done")
         # write process log
-        logFileName = fixName(element.getName() + ".log", self.c.replace_space_with)
+        logFileName = fixName("%s.log" % element.getName(), self.c.replace_space_with)
         logFilePath = os.path.join(filePath, logFileName)
         try:
             # This tries to open an existing file but creates a new file if necessary.

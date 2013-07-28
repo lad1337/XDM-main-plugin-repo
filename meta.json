@@ -85,7 +85,7 @@
         "de.lad1337.movie.simplemover": [
             {
                 "major_version": 0, 
-                "minor_version": 14, 
+                "minor_version": 15, 
                 "name": "Movie Mover", 
                 "type": "PostProcessor", 
                 "format": "zip", 
