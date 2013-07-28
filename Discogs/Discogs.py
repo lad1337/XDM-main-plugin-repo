@@ -38,7 +38,7 @@ class Discogs(Provider):
                    }
 
     search_range_select_map = {'master': {'t': 'Master Releases', 'c': ('MasterRelease',)},
-                               'both': {'t': 'Master & Normal Releases', 'c': ('MasterRelease','Release')},
+                               'both': {'t': 'Master & Normal Releases', 'c': ('MasterRelease', 'Release')},
                                'releases': {'t': 'Releases', 'c': ('Release',)}}
 
     def _search_range_select(self):

@@ -25,7 +25,7 @@ from xdm import helper
 
 
 class Newznab(Indexer):
-    version = "0.4"
+    version = "0.5"
     identifier = "de.lad1337.newznab"
     _config = {'host': 'http://nzbs2go.com',
                'apikey': '',
@@ -33,6 +33,7 @@ class Newznab(Indexer):
                'enabled': True,
                'comment_on_download': False,
                'retention': 900,
+               'verify_ssl_certificate': True
                }
 
     types = ['de.lad1337.nzb']
@@ -65,7 +66,7 @@ class Newznab(Indexer):
         terms = element.getSearchTerms()
         for term in terms:
             payload['q'] = term
-            r = requests.get(self._baseUrlApi(self.c.host, self.c.port), params=payload)
+            r = requests.get(self._baseUrlApi(self.c.host, self.c.port), params=payload, verify=self.c.verify_ssl_certificate)
             log("Newsnab final search for term %s url %s" % (term, r.url), censor={self.c.apikey: 'apikey'})
             response = r.json()
             #log.info("jsonobj: " +jsonObject)
@@ -104,7 +105,7 @@ class Newznab(Indexer):
                    't': 'commentadd',
                    'id': download.external_id,
                    'text': msg}
-        r = requests.get(self._baseUrlApi(self.c.host, self.c.port), params=payload)
+        r = requests.get(self._baseUrlApi(self.c.host, self.c.port), params=payload, verify=self.c.verify_ssl_certificate)
         log("Newsnab final comment for %s is %s on url %s" % (download.name, msg, r.url), censor={self.c.apikey: 'apikey'})
         if 'error' in r.text:
             log("Error posting the comment: %s" % r.text)
@@ -112,14 +113,14 @@ class Newznab(Indexer):
         log("Comment successful %s" % r.text)
         return True
 
-    def _testConnection(self, host, port, apikey):
+    def _testConnection(self, host, port, apikey, verify_ssl_certificate):
         payload = {'apikey': apikey,
            't': 'search',
            'o': 'json',
            'q': 'testing_apikey'
            }
         try:
-            r = requests.get(self._baseUrlApi(host, port), params=payload)
+            r = requests.get(self._baseUrlApi(host, port), params=payload, verify=verify_ssl_certificate)
         except:
             log.error("Error during test connection on $s" % self)
             return (False, {}, 'Please check host!')
@@ -127,15 +128,15 @@ class Newznab(Indexer):
             return (False, {}, 'Wrong apikey!')
 
         return (True, {}, 'Connection made!')
-    _testConnection.args = ['host', 'port', 'apikey']
+    _testConnection.args = ['host', 'port', 'apikey', 'verify_ssl_certificate']
 
     # this is neither clean nor pretty
     # but its just a gimick and should illustrate how to use ajax calls that send data back
-    def _gatherCategories(self, host, port):
+    def _gatherCategories(self, host, port, verify_ssl_certificate):
         payload = {'t': 'caps',
                    'o': 'json'
                    }
-        r = requests.get(self._baseUrlApi(self.c.host, self.c.port), params=payload)
+        r = requests.get(self._baseUrlApi(self.c.host, self.c.port), params=payload, verify=verify_ssl_certificate)
 
         data = {}
         for cat in r.json()['categories']['category']:
@@ -168,7 +169,7 @@ class Newznab(Indexer):
                        'functionData': data}
 
         return (True, dataWrapper, 'I found %s categories' % len(data))
-    _gatherCategories.args = ['host', 'port']
+    _gatherCategories.args = ['host', 'port', 'verify_ssl_certificate']
 
     def getConfigHtml(self):
         return """<script>
