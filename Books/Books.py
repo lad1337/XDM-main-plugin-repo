@@ -23,6 +23,54 @@ from xdm.plugins import *
 import re
 
 
+def _getNormalTemplate():
+    return """
+    <div class="{{statusCssClass}} book-container well">
+        <img src="{{this.cover_image}}" class="pull-left"/>
+        <div class="pull-left">
+            <h4>{{this.title}}</h4>
+            <h5>{{this.author}}</h5>
+            <p><span>Rating: {{this.rating}}</span></p>
+            {{statusSelect}}{{actionButtons}}{{infoButtons}}
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    """
+
+
+def _getFancyTemplate(bookID):
+    mod = bookID % 10
+    if not mod:
+        mod = 10
+    spine = '{{myUrl}}/images/book_%s.png' % mod
+
+    return """
+    <div class="{{statusCssClass}} book" data-toggle="tooltip" title="{{this.title}} - {{this.author}}"  data-placement="bottom">
+        <img src="%s" class="spine"/>
+        <img src="{{myUrl}}/images/paper_side.png" class="side"/>
+        <img src="{{myUrl}}/images/book_back.png" class="back"/>
+        <div class="inner">
+            <img src="{{this.cover_image}}"/>
+            <div class="paper">
+                <h4>{{this.title}}</h4>
+                <h5>{{this.author}}</h5>
+                <div class="clearfix"></div>
+                <span>Rating: {{this.rating}}</span>
+                <p>
+                {{statusSelect}}
+                </p>
+                <p>
+                {{actionButtons}}
+                </p>
+                <p>
+                {{infoButtons}}
+                </p>
+            </div>
+        </div>
+    </div>
+    """ % spine
+
+
 class Book(object):
     title = ''
     author = ''
@@ -32,36 +80,9 @@ class Book(object):
     _orderBy = ('author', 'title')
 
     def getTemplate(self):
-        mod = self.id % 10
-        if not mod:
-            mod = 10
-        spine = '{{myUrl}}/book_%s.png' % mod
-
-        return """
-        <div class="{{statusCssClass}} book" data-toggle="tooltip" title="{{this.title}} - {{this.author}}"  data-placement="bottom" >
-            <img src="%s" class="spine"/>
-            <img src="{{myUrl}}/paper_side.png" class="side"/>
-            <img src="{{myUrl}}/book_back.png" class="back"/>
-            <div class="inner">
-                <img src="{{this.cover_image}}">
-                <div class="paper">
-                    <h4>{{this.title}}</h4>
-                    <h5>{{this.author}}</h5>
-                    <div class="clearfix"></div>
-                    <span>Rating: {{this.rating}}</span>
-                    <p>
-                    {{statusSelect}}
-                    </p>
-                    <p>
-                    {{actionButtons}}
-                    </p>
-                    <p>
-                    {{infoButtons}}
-                    </p>
-                </div>
-            </div>
-        </div>
-        """ % spine
+        if self.manager.c.gui_select == "fancy":
+            return _getFancyTemplate(self.id)
+        return _getNormalTemplate()
 
     def getSearchTerms(self):
         fullName = self.getName()
@@ -74,11 +95,11 @@ class Book(object):
 
 
 class Books(MediaTypeManager):
-    version = "0.5"
+    version = "0.6"
     xdm_version = (0, 5, 0) # this is the greater or equal xdm version it needs
     # we need version 0.4.16 because _oderBy with multiple indexes was introduced
-    _config = {}
-    config_meta = {'plugin_desc': "Simple Books."}
+    _config = {"gui_select": "normal"}
+    config_meta = {'plugin_desc': "Simple Books with two GUIs."}
     order = (Book,)
     download = Book
     # a unique identifier for this mediatype
@@ -86,6 +107,10 @@ class Books(MediaTypeManager):
     addConfig = {}
     addConfig[Indexer] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'Books'}]
     addConfig[Downloader] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'Books'}]
+
+    def _gui_select(self):
+        return {"normal": "Normal",
+                "fancy": "Fancy"}
 
     def makeReal(self, book):
         book.parent = self.root

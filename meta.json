@@ -325,11 +325,11 @@
         "de.lad1337.books": [
             {
                 "major_version": 0, 
-                "minor_version": 5, 
+                "minor_version": 6, 
                 "name": "Books", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 
-                "desc": "Simple Books.", 
+                "desc": "Simple Books with two GUIs.", 
                 "xdm_version": [
                     0, 
                     5, 

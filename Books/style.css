@@ -231,7 +231,7 @@
 .de-lad1337-books .book .paper{
     opacity: 0;
     border-radius: 0 10px 10px 0;
-    background: url(paper.jpg) top right;
+    background: url(images/paper.jpg) top right;
     color: #000;
     font-family: Georgia, Serif;
     
@@ -261,4 +261,16 @@
     width: 80%;
     text-align: right;
     float: right;
+}
+
+
+/* normal gui*/
+.de-lad1337-books .book-container.well{
+    padding: 4px;
+    margin-bottom: 4px;
+}
+
+
+.de-lad1337-books .book-container.well>img{
+    margin-right: 20px;
 }
