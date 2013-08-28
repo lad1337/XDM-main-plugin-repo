@@ -27,17 +27,18 @@ import os
 
 
 class Blackhole(Downloader):
-    version = "0.2"
+    version = "0.3"
     identifier = "de.lad1337.blackhole"
     types = []
-    config_meta = {'plugin_desc': 'This will download the nzb/torrent file into the platform path. It can not check for the status of a game.'
-                   }
+    _config = {}
+    config_meta = {'plugin_desc': 'This will download the download link into a file. It can not check for the status of a download.'}
     useConfigsForElementsAs = 'Path'
 
     def addDownload(self, download):
         b_dir = self._getPath(download.element)
         if not os.path.isdir(b_dir):
-            log.info("Download save to Blackhole at %s is not a valid folder" % b_dir)
+            log.info("Could not save %s at %s, it's not a valid folder" % (download, b_dir))
+            return False
 
         dst = os.path.join(b_dir, '%s.%s' % (self._downloadName(download), self._getDownloadTypeExtension(download.type)))
         r = requests.get(download.url)
