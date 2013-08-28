@@ -98,6 +98,22 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ], 
+        "de.lad1337.simple.mover": [
+	        {
+	            "major_version": 0, 
+	            "minor_version": 1, 
+	            "name": "Mover", 
+	            "type": "PostProcessor", 
+	            "format": "zip", 
+	            "desc": "This will move the final download folder to the given destination.", 
+	            "xdm_version": [
+	                0, 
+	                5, 
+	                3
+	            ], 
+	            "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+	        }
+        ],
         "de.lad1337.music": [
             {
                 "major_version": 0, 
