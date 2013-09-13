@@ -84,7 +84,7 @@ class Platform(object):
             activeString = ' active'
         return """
         <li class="platform%s">
-            <a href="#{{this.name|idSafe}}" data-toggle="tab">{{this.name}}</a>
+            <a href="#{{this.name|idSafe}}" data-toggle="tab" data-id="{{this.id}}">{{this.name}}</a>
             <div class="tab-pane fade in hidden%s" id="{{this.name|idSafe}}">
                 <div class="row-fluid">
                     <ul class="thumbnails">
@@ -100,7 +100,7 @@ class Platform(object):
 
 
 class Games(MediaTypeManager):
-    version = "0.2"
+    version = "0.3"
     _config = {'enabled': True,
                'default_platform_select': '',
                'fanart_as_background': False,
@@ -146,8 +146,10 @@ class Games(MediaTypeManager):
 
     def makeReal(self, game):
         oldPlatform = game.parent
-        for platform in Element.select().where(Element.type == oldPlatform.type, Element.mediaType == self.mt):
-            if platform.getField('id') == oldPlatform.getField('id'):
+        for platform in Element.select().where(Element.type == oldPlatform.type,
+                                               Element.mediaType == self.mt,
+                                               Element.status != common.TEMP):
+            if platform.getField('id', 'tgdb') == oldPlatform.getField('id', 'tgdb'):
                 break
         else:
             log.error('We dont have the platform we need in the db ... what is this?')

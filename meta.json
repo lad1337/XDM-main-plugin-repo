@@ -277,7 +277,7 @@
         "de.lad1337.games": [
             {
                 "major_version": 0, 
-                "minor_version": 2, 
+                "minor_version": 3, 
                 "name": "Games", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 
