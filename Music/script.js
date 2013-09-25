@@ -65,11 +65,6 @@ $(document).ready(function() {
             });
         };
     });
-    
-    
-    
-    
-    
 });
 
 //http://stackoverflow.com/questions/2541481/get-average-color-of-image-via-javascript
@@ -98,7 +93,7 @@ function getAverageRGB(imgEl, borderSelect) {
     try {
         data = context.getImageData(0, 0, width, height);
     } catch(e) {
-        /* security error, img on diff domain */alert('x');
+        console.log('security error, img on diff domain')
         return defaultRGB;
     }
     
