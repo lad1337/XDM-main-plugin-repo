@@ -357,7 +357,7 @@
         "de.lad1337.movies.xbmc": [
             {
                 "major_version": 0, 
-                "minor_version": 3, 
+                "minor_version": 4, 
                 "name": "XBMC Notifier", 
                 "type": "Notifier", 
                 "format": "zip", 
