@@ -1,0 +1,34 @@
+{%set loading_count = this.manager._season_episode_count(this, (common.DOWNLOADING, common.SNATCHED))%}
+{%set wanted_count = this.manager._season_episode_count(this, (common.WANTED,))%}
+{%set done_count = this.manager._season_episode_count(this, (common.DOWNLOADED, common.COMPLETED))%}
+{%set all_count = this.manager._season_episode_count(this)%}
+{%if all_count%}
+    {%set done_ratio = (( (done_count) / all_count ) * 100)|int%}
+    {%set loading_ratio = (( loading_count / all_count ) * 100)|int%}
+    {%set wanted_ratio = (( wanted_count / all_count ) * 100)|int%}
+{%else%}
+    {%set done_ratio = 0%}
+    {%set loading_ratio = 0%}
+    {%set wanted_ratio = 0%}
+{%endif%}
+{%set total = done_ratio + loading_ratio + wanted_ratio%}
+{%if total == 99 %}
+{%set done_ratio = done_ratio + 1%}
+{%elif total > 100%}
+{%set done_ratio = done_ratio - (total - 100)%}
+{%endif%}
+
+
+
+<div class="Season ratio-{{total}}" data-id="{{this.id}}">
+    <img src="{{this.poster_image}}" class="box-shadow"/>
+    <span class="pull-left number">{{this.number}}</span>
+    <div class="progress">
+        <span class="progressbar-back-text">{{done_count}} / {{all_count}}</span>
+        <span class="progressbar-front-text">{{done_count}} / {{all_count}}</span>
+        <div class="bar" style="width: {{done_ratio}}%;" title="collected"></div>
+        <div class="bar bar-warning" style="width: {{loading_ratio}}%;" title="snatched"></div>
+        <div class="bar bar-danger" style="width: {{wanted_ratio}}%;" title="wanted"></div>
+        <!--<input type="checkbox"/>-->
+    </div>
+</div>

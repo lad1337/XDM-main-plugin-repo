@@ -1,0 +1,20 @@
+<tr class="Episode {{statusCssClass}}" data-id="{{this.id}}">
+    <td class="episode-number">{{this.number}}</td>
+    <td class="title">
+        <img src="{{this.screencap_image}}" class="img-rounded" style="margin-right:10px;"/>
+        <span>{{this.title}}</span>
+        <p class="overview">{{this.overview}}</p>
+    </td>
+    <td title="{{this.airdate}}">{{released}}</td>
+    <td>
+        {{statusSelect}}
+        <div class="progressbar-container">
+            {{downloadProgressBar}}
+        </div>
+    </td>
+    <td class="action">
+        {{actionButtonsIcons}}
+        {{infoButtonsIcons}}
+    </td>
+    <td><input type="checkbox"/></td>
+</tr>
