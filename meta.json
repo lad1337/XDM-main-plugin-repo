@@ -165,7 +165,7 @@
         "de.lad1337.newznab": [
             {
                 "major_version": 0, 
-                "minor_version": 5, 
+                "minor_version": 6, 
                 "name": "Newznab", 
                 "type": "Indexer", 
                 "format": "zip", 

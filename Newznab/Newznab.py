@@ -3,21 +3,21 @@
 #
 # This file is part of XDM: eXtentable Download Manager.
 #
-#XDM: eXtentable Download Manager. Plugin based media collection manager.
-#Copyright (C) 2013  Dennis Lutter
+# XDM: eXtentable Download Manager. Plugin based media collection manager.
+# Copyright (C) 2013  Dennis Lutter
 #
-#XDM is free software: you can redistribute it and/or modify
-#it under the terms of the GNU General Public License as published by
-#the Free Software Foundation, either version 3 of the License, or
-#(at your option) any later version.
+# XDM is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#XDM is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
+# XDM is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#You should have received a copy of the GNU General Public License
-#along with this program.  If not, see http://www.gnu.org/licenses/.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see http://www.gnu.org/licenses/.
 
 from xdm.plugins import *
 from lib import requests
@@ -25,7 +25,7 @@ from xdm import helper
 
 
 class Newznab(Indexer):
-    version = "0.5"
+    version = "0.6"
     identifier = "de.lad1337.newznab"
     _config = {'host': 'http://nzbs2go.com',
                'apikey': '',
@@ -69,7 +69,7 @@ class Newznab(Indexer):
             r = requests.get(self._baseUrlApi(self.c.host, self.c.port), params=payload, verify=self.c.verify_ssl_certificate)
             log("Newsnab final search for term %s url %s" % (term, r.url), censor={self.c.apikey: 'apikey'})
             response = r.json()
-            #log.info("jsonobj: " +jsonObject)
+            # log.info("jsonobj: " +jsonObject)
             if not 'item' in response["channel"]:
                 log.info("No search results for %s" % term)
                 continue
@@ -77,7 +77,7 @@ class Newznab(Indexer):
             if type(items).__name__ == 'dict': # we only have on search result
                 items = [items]
             for item in items:
-                #log.info("item: " + item["title"])
+                # log.info("item: " + item["title"])
                 title = item["title"]
                 url = item["link"]
                 ex_id = 0
@@ -141,13 +141,13 @@ class Newznab(Indexer):
         data = {}
         for cat in r.json()['categories']['category']:
             name = cat['@attributes']['name']
-            id = cat['@attributes']['id']
+            attribute_id = cat['@attributes']['id']
             for config in self.c.configs:
                 if config.name in data:
                     continue
                 if self.useConfigsForElementsAs.lower() in config.name.lower():
                     if config.name.lower().endswith(name.lower()):
-                        data[config.name] = id
+                        data[config.name] = attribute_id
 
             for subcat in cat['subcat']:
                 if type(subcat) is not dict:
@@ -182,8 +182,8 @@ class Newznab(Indexer):
                 </script>
         """
 
-    config_meta = {'plugin_desc': 'Generic Newznab indexer.',
-                   'plugin_buttons': {'gather_gategories': {'action': _gatherCategories, 'name': 'Get categories. Experimental!'},
+    config_meta = {'plugin_desc': 'Generic Newznab indexer. Categories are there numerical id of Newznab, use "Get categories"',
+                   'plugin_buttons': {'gather_gategories': {'action': _gatherCategories, 'name': 'Get categories'},
                                       'test_connection': {'action': _testConnection, 'name': 'Test connection'}},
                    }
 
