@@ -15,7 +15,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.music": [
@@ -31,7 +31,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.osxnotifications": [
@@ -47,7 +47,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.music.mp32itunes": [
@@ -63,7 +63,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.traktwatchlist": [
@@ -79,7 +79,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.simple.mover": [
@@ -95,7 +95,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.movie.quality": [
@@ -111,7 +111,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.growl": [
@@ -127,7 +127,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.movie.simplemover": [
@@ -143,7 +143,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.boxcar.TheGamesDB": [
@@ -159,7 +159,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.boxcar": [
@@ -175,7 +175,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.books": [
@@ -191,7 +191,7 @@
                     5, 
                     0
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.tmdb": [
@@ -207,7 +207,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.trakt.tv": [
@@ -223,7 +223,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.boxcar.discogs": [
@@ -239,7 +239,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.sabnzbd": [
@@ -255,7 +255,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.newznab": [
@@ -271,7 +271,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.movies": [
@@ -287,7 +287,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.boxcar.monitor": [
@@ -303,7 +303,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.games": [
@@ -319,7 +319,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.goodreads": [
@@ -335,7 +335,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.tv": [
@@ -351,7 +351,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.games.mover": [
@@ -367,7 +367,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.nzbget": [
@@ -383,7 +383,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.movies.xbmc": [
@@ -399,7 +399,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM/archive/develop.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ]
     }
