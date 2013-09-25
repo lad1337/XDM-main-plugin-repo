@@ -1,5 +1,9 @@
 
 $(document).ready(function() {
+    de_lad1337_movies_init();
+});
+
+function de_lad1337_movies_init(){
     $(".de-lad1337-movies a.trailer").YouTubePopup({'clickOutsideClose':true, 'hideTitleBar':true});
 
     $('.de-lad1337-movies').on('click', '.movie img', function(){
@@ -17,6 +21,5 @@ $(document).ready(function() {
         $('.de-lad1337-movies .overview').popover('hide')
     });
     
-    
     $('.de-lad1337-movies .overview').popover()
-});
+}
