@@ -14,7 +14,7 @@
 
 .de-lad1337-games .game{
     background-color: rgba(255,255,255, 0.5);
-    background-position:top center;
+    background-size: cover;
     height: 420px;
     position: relative;
     border-radius: 8px;
