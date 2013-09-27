@@ -69,7 +69,7 @@
         "de.lad1337.movies": [
             {
                 "major_version": 0, 
-                "minor_version": 4, 
+                "minor_version": 5, 
                 "name": "Movies", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 

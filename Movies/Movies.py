@@ -81,14 +81,14 @@ class Movie(object):
         return [self.getName()]
 
     def getName(self):
-        return '%s (%s)' % (self.name, self.year)
+        return '%s %s' % (self.name, self.year)
 
     def getReleaseDate(self):
         return self.release_date
 
 
 class Movies(MediaTypeManager):
-    version = "0.4"
+    version = "0.5"
     _config = {'enabled': True}
     config_meta = {'plugin_desc': 'Movies'}
     order = (Movie,)
