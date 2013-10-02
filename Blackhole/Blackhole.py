@@ -3,31 +3,32 @@
 #
 # This file is part of XDM: eXtentable Download Manager.
 #
-#XDM: eXtentable Download Manager. Plugin based media collection manager.
-#Copyright (C) 2013  Dennis Lutter
+# XDM: eXtentable Download Manager. Plugin based media collection manager.
+# Copyright (C) 2013  Dennis Lutter
 #
-#XDM is free software: you can redistribute it and/or modify
-#it under the terms of the GNU General Public License as published by
-#the Free Software Foundation, either version 3 of the License, or
-#(at your option) any later version.
+# XDM is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#XDM is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
+# XDM is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#You should have received a copy of the GNU General Public License
-#along with this program.  If not, see http://www.gnu.org/licenses/.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see http://www.gnu.org/licenses/.
 
 # all xdm related plugin stuff you get with this line incl logger functions
 from xdm.plugins import *
 # other libs should be imported as you need them but why dont you have a look at the libs xdm comes with
 from lib import requests
+from xdm import helper
 import os
 
 
 class Blackhole(Downloader):
-    version = "0.3"
+    version = "0.4"
     identifier = "de.lad1337.blackhole"
     types = []
     _config = {}
@@ -40,7 +41,8 @@ class Blackhole(Downloader):
             log.info("Could not save %s at %s, it's not a valid folder" % (download, b_dir))
             return False
 
-        dst = os.path.join(b_dir, '%s.%s' % (self._downloadName(download), self._getDownloadTypeExtension(download.type)))
+        file_name = '%s.%s' % (self._downloadName(download), self._getDownloadTypeExtension(download.type))
+        dst = os.path.join(b_dir, helper.fileNameClean(file_name))
         r = requests.get(download.url)
         if r.status_code == 200:
             with open(dst, 'wb') as f:
