@@ -71,5 +71,5 @@ class Pushover(Notifier):
     # config_meta is at the end because otherwise the sendTest function would not be defined
     config_meta = {'enabled': {'on_enable': [_sendEnabled]},
                    'plugin_buttons': {'sendTest': {'action': _sendTest, 'name': 'Send test'}},
-                   'plugin_desc': 'Simple Pushover notifier. THis uses the XDM Application'
+                   'plugin_desc': 'Simple Pushover notifier. THis uses the XDM Application. Get your user key from https://pushover.net/'
                    }
