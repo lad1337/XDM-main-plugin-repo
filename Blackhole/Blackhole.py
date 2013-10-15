@@ -28,7 +28,7 @@ import os
 
 
 class Blackhole(Downloader):
-    version = "0.4"
+    version = "0.5"
     identifier = "de.lad1337.blackhole"
     types = []
     _config = {}
@@ -43,7 +43,8 @@ class Blackhole(Downloader):
 
         file_name = '%s.%s' % (self._downloadName(download), self._getDownloadTypeExtension(download.type))
         dst = os.path.join(b_dir, helper.fileNameClean(file_name))
-        r = requests.get(download.url)
+        headers = download.extra_data['headers'] if 'headers' in download.extra_data else { }
+        r = requests.get(download.url, headers=headers)
         if r.status_code == 200:
             with open(dst, 'wb') as f:
                 for chunk in r.iter_content():
