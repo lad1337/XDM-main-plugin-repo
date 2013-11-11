@@ -5,7 +5,7 @@
         "de.lad1337.blackhole": [
             {
                 "major_version": 0, 
-                "minor_version": 4, 
+                "minor_version": 5, 
                 "name": "Blackhole", 
                 "type": "Downloader", 
                 "format": "zip", 
