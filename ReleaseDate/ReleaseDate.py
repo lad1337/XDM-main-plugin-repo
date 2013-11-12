@@ -26,12 +26,12 @@ from datetime import datetime, timedelta
 
 
 class ReleaseDate(DownloadFilter):
-    version = "0.1"
+    version = "0.2"
     identifier = 'de.lad1337.filter.releasedate'
     screenName = 'Release Date'
     addMediaTypeOptions = 'runFor'
     stages = [DownloadFilter._pre_search]
-    _config = {'release_threshold_select': '', }
+    _config = {'release_threshold_select': 0}
 
     config_meta = {'release_threshold_select': {'human': 'Time to ignore the release date prior the release date.'}}
 
@@ -49,13 +49,15 @@ class ReleaseDate(DownloadFilter):
 
     def compare(self, element=None, download=None, string=None, forced=False):
         if self.c.skip_on_forced_search and forced:
-            self.FilterResult(True, 'Skipping: foced search')
+            self.FilterResult(True, 'Skipping: forced search')
 
-        self.e.getConfigsFor(element) # this will load all the elements configs
-        # into the the self.e cache
-        # needed for .<config_name_access>
-        thresholdRD = self._releaseThresholdDelta[self.c.release_threshold_select]
-        if (element.getReleaseDate() - thresholdRD) > datetime.datetime.now():
+        if not self.c.release_threshold_select:
+            thresholdRD = timedelta(seconds=0)
+        elif self.c.release_threshold_select not in self._releaseThresholdDelta:
+            return self.FilterResult(True, 'Release date of %s is completely ignored' % element)
+        else:
+            thresholdRD = self._releaseThresholdDelta[self.c.release_threshold_select]
+        if (element.getReleaseDate() - thresholdRD) > datetime.now():
             return self.FilterResult(False, 'To early to search for %s' % element)
 
         return self.FilterResult(True, 'Release date of %s is in the threshold' % element)
