@@ -18,142 +18,30 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ], 
-        "de.lad1337.music": [
+        "de.lad1337.books": [
             {
                 "major_version": 0, 
-                "minor_version": 3, 
-                "name": "Music", 
+                "minor_version": 6, 
+                "name": "Books", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 
-                "desc": "Music support. Good for Albums", 
+                "desc": "Simple Books with two GUIs.", 
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    0
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ], 
-        "de.lad1337.osxnotifications": [
-            {
-                "major_version": 0, 
-                "minor_version": 2, 
-                "name": "OSX Notification Center", 
-                "type": "Notifier", 
-                "format": "zip", 
-                "desc": "Sends Mac OS 10.8 Notification Center notifications. It will appear as \"terminal-notifer\" in the system settings.", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    9
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
-        "de.lad1337.music.mp32itunes": [
-            {
-                "major_version": 0, 
-                "minor_version": 4, 
-                "name": "MP3 2 iTunes", 
-                "type": "PostProcessor", 
-                "format": "zip", 
-                "desc": "This will execute an apple script that adds all mp3's/m4a's to iTunes of the given download. MAC OSX only!", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    9
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
-        "de.lad1337.traktwatchlist": [
-            {
-                "major_version": 0, 
-                "minor_version": 2, 
-                "name": "Trakt Watchlist", 
-                "type": "MediaAdder", 
-                "format": "zip", 
-                "desc": "Add movies from your http://trakt.tv account. Get your apikey at http://trakt.tv/settings/api", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    9
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
-        "de.lad1337.simple.mover": [
+        "de.lad1337.boxcar": [
             {
                 "major_version": 0, 
                 "minor_version": 1, 
-                "name": "Mover", 
-                "type": "PostProcessor", 
-                "format": "zip", 
-                "desc": "This will move the final download folder to the given destination.", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    9
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
-        "de.lad1337.movie.quality": [
-            {
-                "major_version": 0, 
-                "minor_version": 2, 
-                "name": "Movie Quality", 
-                "type": "DownloadFilter", 
-                "format": "zip", 
-                "desc": null, 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    9
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
-        "de.lad1337.pushover.app": [
-            {
-                "major_version": 0, 
-                "minor_version": 1, 
-                "name": "Pushover", 
+                "name": "Boxcar", 
                 "type": "Notifier", 
                 "format": "zip", 
-                "desc": "Simple Pushover notifier. THis uses the XDM Application. Get your user key from https://pushover.net/", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    9
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
-        "de.lad1337.growl": [
-            {
-                "major_version": 0, 
-                "minor_version": 2, 
-                "name": "Growl", 
-                "type": "Notifier", 
-                "format": "zip", 
-                "desc": "Simple Growl notifier.", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    9
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
-        "de.lad1337.movie.simplemover": [
-            {
-                "major_version": 0, 
-                "minor_version": 15, 
-                "name": "Movie Mover", 
-                "type": "PostProcessor", 
-                "format": "zip", 
-                "desc": "This will move all the avi, mkv, iso, mp4 from the path that is given to the path.", 
+                "desc": "Simple Boxcar.io notifier. This uses the official XDM boxcar service and will subscribe you to it when the first message is send.", 
                 "xdm_version": [
                     0, 
                     5, 
@@ -178,54 +66,6 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ], 
-        "de.lad1337.boxcar": [
-            {
-                "major_version": 0, 
-                "minor_version": 1, 
-                "name": "Boxcar", 
-                "type": "Notifier", 
-                "format": "zip", 
-                "desc": "Simple Boxcar.io notifier. This uses the official XDM boxcar service and will subscribe you to it when the first message is send.", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    9
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
-        "de.lad1337.books": [
-            {
-                "major_version": 0, 
-                "minor_version": 6, 
-                "name": "Books", 
-                "type": "MediaTypeManager", 
-                "format": "zip", 
-                "desc": "Simple Books with two GUIs.", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    0
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
-        "de.lad1337.tmdb": [
-            {
-                "major_version": 0, 
-                "minor_version": 13, 
-                "name": "TheMovieDB", 
-                "type": "Provider", 
-                "format": "zip", 
-                "desc": "Movie information from http://www.themoviedb.org/.", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    9
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
         "de.lad1337.boxcar.discogs": [
             {
                 "major_version": 0, 
@@ -234,54 +74,6 @@
                 "type": "Provider", 
                 "format": "zip", 
                 "desc": "Information provider for music from http://www.discogs.com. Note: Image download is limited to 1000 per 24h per IP", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    9
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
-        "de.lad1337.sabnzbd": [
-            {
-                "major_version": 0, 
-                "minor_version": 3, 
-                "name": "Sabnzbd", 
-                "type": "Downloader", 
-                "format": "zip", 
-                "desc": "Sabnzb downloader. Send Nzbs and check for status", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    9
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
-        "de.lad1337.newznab": [
-            {
-                "major_version": 0, 
-                "minor_version": 6, 
-                "name": "Newznab", 
-                "type": "Indexer", 
-                "format": "zip", 
-                "desc": "Generic Newznab indexer. Categories are there numerical id of Newznab, use \"Get categories\"", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    9
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
-        "de.lad1337.movies": [
-            {
-                "major_version": 0, 
-                "minor_version": 5, 
-                "name": "Movies", 
-                "type": "MediaTypeManager", 
-                "format": "zip", 
-                "desc": "Movies", 
                 "xdm_version": [
                     0, 
                     5, 
@@ -306,6 +98,22 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ], 
+        "de.lad1337.filter.releasedate": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "Release Date", 
+                "type": "DownloadFilter", 
+                "format": "zip", 
+                "desc": null, 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    12
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
         "de.lad1337.games": [
             {
                 "major_version": 0, 
@@ -314,22 +122,6 @@
                 "type": "MediaTypeManager", 
                 "format": "zip", 
                 "desc": "Games support. For, Wii, Wii U, Xbox 360, PS3 and PC", 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    9
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
-        "de.lad1337.goodreads": [
-            {
-                "major_version": 0, 
-                "minor_version": 3, 
-                "name": "Goodreads", 
-                "type": "Provider", 
-                "format": "zip", 
-                "desc": "Book information from http://www.goodreads.com/. Get your own developer api key from http://www.goodreads.com/api/keys.", 
                 "xdm_version": [
                     0, 
                     5, 
@@ -354,14 +146,94 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ], 
-        "de.lad1337.nzbget": [
+        "de.lad1337.goodreads": [
             {
                 "major_version": 0, 
                 "minor_version": 3, 
-                "name": "NZBGet", 
-                "type": "Downloader", 
+                "name": "Goodreads", 
+                "type": "Provider", 
                 "format": "zip", 
-                "desc": "NZBGet downloader. Send NZBs and check for status", 
+                "desc": "Book information from http://www.goodreads.com/. Get your own developer api key from http://www.goodreads.com/api/keys.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.growl": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "Growl", 
+                "type": "Notifier", 
+                "format": "zip", 
+                "desc": "Simple Growl notifier.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.imdbwatchlist": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "IMDb Watchlist", 
+                "type": "MediaAdder", 
+                "format": "zip", 
+                "desc": "Add movies from your http://www.imdb.com watchlist.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    12
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.movie.quality": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "Movie Quality", 
+                "type": "DownloadFilter", 
+                "format": "zip", 
+                "desc": null, 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.movie.simplemover": [
+            {
+                "major_version": 0, 
+                "minor_version": 15, 
+                "name": "Movie Mover", 
+                "type": "PostProcessor", 
+                "format": "zip", 
+                "desc": "This will move all the avi, mkv, iso, mp4 from the path that is given to the path.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.movies": [
+            {
+                "major_version": 0, 
+                "minor_version": 5, 
+                "name": "Movies", 
+                "type": "MediaTypeManager", 
+                "format": "zip", 
+                "desc": "Movies", 
                 "xdm_version": [
                     0, 
                     5, 
@@ -378,6 +250,166 @@
                 "type": "Notifier", 
                 "format": "zip", 
                 "desc": "XBMC notifier. Sends screen messages (always) and issues a library scan (only on \"complete\" status).", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.music": [
+            {
+                "major_version": 0, 
+                "minor_version": 3, 
+                "name": "Music", 
+                "type": "MediaTypeManager", 
+                "format": "zip", 
+                "desc": "Music support. Good for Albums", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.music.mp32itunes": [
+            {
+                "major_version": 0, 
+                "minor_version": 4, 
+                "name": "MP3 2 iTunes", 
+                "type": "PostProcessor", 
+                "format": "zip", 
+                "desc": "This will execute an apple script that adds all mp3's/m4a's to iTunes of the given download. MAC OSX only!", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.newznab": [
+            {
+                "major_version": 0, 
+                "minor_version": 6, 
+                "name": "Newznab", 
+                "type": "Indexer", 
+                "format": "zip", 
+                "desc": "Generic Newznab indexer. Categories are there numerical id of Newznab, use \"Get categories\"", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.nzbget": [
+            {
+                "major_version": 0, 
+                "minor_version": 3, 
+                "name": "NZBGet", 
+                "type": "Downloader", 
+                "format": "zip", 
+                "desc": "NZBGet downloader. Send NZBs and check for status", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.osxnotifications": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "OSX Notification Center", 
+                "type": "Notifier", 
+                "format": "zip", 
+                "desc": "Sends Mac OS 10.8 Notification Center notifications. It will appear as \"terminal-notifer\" in the system settings.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.pushover.app": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "Pushover", 
+                "type": "Notifier", 
+                "format": "zip", 
+                "desc": "Simple Pushover notifier. THis uses the XDM Application. Get your user key from https://pushover.net/", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.sabnzbd": [
+            {
+                "major_version": 0, 
+                "minor_version": 3, 
+                "name": "Sabnzbd", 
+                "type": "Downloader", 
+                "format": "zip", 
+                "desc": "Sabnzb downloader. Send Nzbs and check for status", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.simple.mover": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "Mover", 
+                "type": "PostProcessor", 
+                "format": "zip", 
+                "desc": "This will move the final download folder to the given destination.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.tmdb": [
+            {
+                "major_version": 0, 
+                "minor_version": 13, 
+                "name": "TheMovieDB", 
+                "type": "Provider", 
+                "format": "zip", 
+                "desc": "Movie information from http://www.themoviedb.org/.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.traktwatchlist": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "Trakt Watchlist", 
+                "type": "MediaAdder", 
+                "format": "zip", 
+                "desc": "Add movies from your http://trakt.tv account. Get your apikey at http://trakt.tv/settings/api", 
                 "xdm_version": [
                     0, 
                     5, 
