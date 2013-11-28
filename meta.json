@@ -475,7 +475,7 @@
                 "format": "zip", 
                 "desc": "This will move the episode based on a format string.", 
                 "xdm_version": [
-                    0, 
+                    666, 
                     5, 
                     12
                 ], 
