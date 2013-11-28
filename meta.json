@@ -465,6 +465,22 @@
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
+        ], 
+        "de.lad1337.tv.simplemover": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "Episode Mover", 
+                "type": "PostProcessor", 
+                "format": "zip", 
+                "desc": "This will move the episode based on a format string.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    12
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
         ]
     }
 }
