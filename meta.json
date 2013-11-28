@@ -213,7 +213,7 @@
         "de.lad1337.movie.simplemover": [
             {
                 "major_version": 0, 
-                "minor_version": 15, 
+                "minor_version": 16, 
                 "name": "Movie Mover", 
                 "type": "PostProcessor", 
                 "format": "zip", 
@@ -229,7 +229,7 @@
         "de.lad1337.movies": [
             {
                 "major_version": 0, 
-                "minor_version": 5, 
+                "minor_version": 6, 
                 "name": "Movies", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 
