@@ -45,7 +45,7 @@ class Episode(object):
         return ['%s s%02de%02d' % (self.parent.parent.title, self.parent.number, self.number)]
 
     def getName(self):
-        return "%se%s %s" % (self.parent.getName(), self.number, self.title)
+        return "%se%02d %s" % (self.parent.getName(), self.number, self.title)
 
     def getReleaseDate(self):
         return self.airdate
@@ -105,7 +105,7 @@ class Show(object):
         return self.getField('id')
 
 class TV(MediaTypeManager):
-    version = "0.2"
+    version = "0.3"
     single = True
     _config = {'enabled': True}
     config_meta = {'plugin_desc': 'TV'}
