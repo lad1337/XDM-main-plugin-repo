@@ -15,7 +15,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/jmichiel/XDM-main-plugin-repo/archive/tsk_blackhole.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ], 
         "de.lad1337.books": [
@@ -389,7 +389,7 @@
         "de.lad1337.simple.mover": [
             {
                 "major_version": 0, 
-                "minor_version": 1, 
+                "minor_version": 2, 
                 "name": "Mover", 
                 "type": "PostProcessor", 
                 "format": "zip", 
