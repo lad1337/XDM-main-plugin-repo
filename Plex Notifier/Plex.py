@@ -1,10 +1,10 @@
 from xdm.plugins import *
 from xdm import helper
-import requests
+from lib import requests
 import xml.etree.ElementTree as ET
 
 class Plex(Notifier):
-    version = "0.1"
+    version = "0.2"
     identifier = 'de.lad1337.movies.plex'
     screenName = 'Plex Notifier'
     addMediaTypeOptions = "runFor"
