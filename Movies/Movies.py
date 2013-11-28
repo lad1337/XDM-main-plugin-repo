@@ -78,17 +78,17 @@ class Movie(object):
         """
 
     def getSearchTerms(self):
-        return [self.getName()]
+        return ['%s %s' % (self.name, self.year)]
 
     def getName(self):
-        return '%s %s' % (self.name, self.year)
+        return '%s (%s)' % (self.name, self.year)
 
     def getReleaseDate(self):
         return self.release_date
 
 
 class Movies(MediaTypeManager):
-    version = "0.5"
+    version = "0.6"
     _config = {'enabled': True}
     config_meta = {'plugin_desc': 'Movies'}
     order = (Movie,)
