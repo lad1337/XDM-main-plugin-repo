@@ -25,7 +25,7 @@ import shutil
 
 
 class Mover(PostProcessor):
-    version = "0.1"
+    version = "0.2"
     identifier = 'de.lad1337.simple.mover'
     screenName = 'Mover'
     types = []
@@ -49,7 +49,7 @@ class Mover(PostProcessor):
         PostProcessor.__init__(self, instance=instance)
 
 
-    def _postProcessPath(self, element, srcPath):
+    def postProcessPath(self, element, srcPath):
         destPath = self._getPath(element)
         if self.c.copy:
             msg = "Copying %s to %s" % (srcPath, destPath)
