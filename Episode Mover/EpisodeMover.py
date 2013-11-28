@@ -39,7 +39,7 @@ def mkdir_p(path):
 
 class EpisodeMover(PostProcessor):
     identifier = 'de.lad1337.tv.simplemover'
-    version = "0.1"
+    version = "0.2"
     types = ["de.lad1337.tv"]
     _config = {'show_parent_path': "",
                'name_format': '{show_name}/{s#}/{show_name} - s{s#}e{e#} - {title}',
@@ -87,7 +87,7 @@ class EpisodeMover(PostProcessor):
         else:
             allEpisodeFileLocations = [filePath]
 
-        if allEpisodeFileLocations > 1:
+        if len(allEpisodeFileLocations) > 1:
             processLogger("Sorry i found more then one file i don't know what to do...")
             return (False, processLog[0])
 
