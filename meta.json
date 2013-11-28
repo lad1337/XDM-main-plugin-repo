@@ -242,6 +242,22 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ], 
+        "de.lad1337.movies.plex": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "Plex Notifier", 
+                "type": "Notifier", 
+                "format": "zip", 
+                "desc": "Plex notifier. Issues a library scan on \"complete\" status.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    12
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
         "de.lad1337.movies.xbmc": [
             {
                 "major_version": 0, 
