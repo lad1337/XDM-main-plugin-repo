@@ -1,0 +1,2 @@
+class TraktException(Exception):
+    pass

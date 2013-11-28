@@ -1,0 +1,269 @@
+
+
+.de-lad1337-tv .Show,
+.de-lad1337-tv .Show .info,
+.de-lad1337-tv .Show .info>img,
+.de-lad1337-tv .Show .info .progress,
+.de-lad1337-tv .seasons,
+.de-lad1337-tv .seasons img,
+.de-lad1337-tv .seasons .progress{
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.de-lad1337-tv .Episode p.overview{
+    display: none;
+}
+
+.de-lad1337-tv.episode-tooltip p.overview{
+    display: block;
+}
+
+.de-lad1337-tv .Show h3{
+    display: inline;
+    margin-left: 15px;
+    position: relative;
+    top: 7px;
+}
+
+.de-lad1337-tv .Show h4{
+    display: none;
+}
+
+.de-lad1337-tv .Show.active h3,
+.de-lad1337-tv .Show.active h4{
+    color: #fff;
+    text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
+}
+
+
+.de-lad1337-tv .Show.active h3,
+.de-lad1337-tv .Show.active h4{
+    display: inline;
+    margin-left: 15px;
+    position: absolute;
+    top: 7px;
+}
+
+.de-lad1337-tv .Show.active h4{
+    top: 43px;
+}
+
+.de-lad1337-tv .Show .info{
+    padding: 0;
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 0;
+    background-size: cover;
+    margin-top: 10px;
+}
+
+.de-lad1337-tv .Show:not(.active) .info{
+    background-image: none !important;
+}
+
+.de-lad1337-tv .Show.active .info{
+    padding: 10px;
+    float: left;
+    width: calc(80% - 170px);
+}
+
+.de-lad1337-tv .Show .info>img.poster{
+    height: 0px;
+}
+.de-lad1337-tv .Show.active .info>img.poster{
+    height: 300px;
+    cursor: pointer;
+}
+.de-lad1337-tv .Show .info>img.banner{
+    width: 36%;
+    min-width: 260px;
+    border: 0;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px;
+    border-radius: 4px 0 0 4px;
+    cursor: pointer;
+}
+.de-lad1337-tv .Show.active .info>img.banner{
+    width: 0;
+    min-width: 0;
+}
+
+.de-lad1337-tv .Show .info .progress{
+    width: 30%;
+    position: absolute;
+    right: 30px;
+    top: 0;
+    height: 26px;
+    margin-top: 24px;
+    opacity: 1;
+}
+
+.de-lad1337-tv .Show.active .info .progress{
+    opacity: 0;
+    display: none;
+}
+
+.de-lad1337-tv .Show .info>.buttons,
+.de-lad1337-tv .Show.active .info .progress span{
+    display: none;
+}
+
+.de-lad1337-tv .Show.active .info>.buttons{
+    display: inline-block;
+    float: right;
+}
+.de-lad1337-tv .Show.active .info>.buttons>div{
+    margin-bottom: 10px;
+}
+.de-lad1337-tv .Show.active .info>.buttons>div>*:first-child{
+    float: right;
+    
+}
+
+.de-lad1337-tv .Show ul.infos{
+    margin-bottom: 0;
+    display: none;
+    position: absolute;
+    top: 100px;
+    margin-left: 15px;
+}
+
+.de-lad1337-tv .Show.active ul.infos{
+    display: inline;
+}
+
+.de-lad1337-tv .Show ul.infos li{
+    list-style: none;
+}
+
+.de-lad1337-tv .Show ul.infos label{
+    min-width: 66px;
+    margin-bottom: 0;
+    font-weight: bold;
+    cursor: default;
+}
+.de-lad1337-tv .Show.active ul.infos label{
+    display: inline-block;
+}
+
+
+.de-lad1337-tv .seasons{
+    float: right;
+    position: relative;
+    overflow: hidden;
+    width: 0%;
+    height: 0;
+    margin-top: 11px;
+}
+
+.de-lad1337-tv .Show.active .seasons{
+    display: block;
+    width: 20%;
+    height: auto;
+    overflow: visible;
+}
+
+.de-lad1337-tv .seasons .Season{
+    /* if this is set the season image does move too
+    position: relative;*/
+}
+
+.de-lad1337-tv .seasons .Season>img{
+    width: 100px;
+    left: -150px;
+    top: 0;
+    position: absolute;
+    opacity: 0;
+}
+
+
+.de-lad1337-tv .seasons .Season .number{
+    margin-right: 5px;
+    position: absolute;
+    left: -21px;
+    z-index: 10;
+}
+.de-lad1337-tv .seasons .Season.active:not(.ratio-0) .number{
+    color: #fff;
+}
+
+.de-lad1337-tv .seasons .progress{
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 5;
+    cursor: pointer;
+}
+.de-lad1337-tv .Season.active .progress{
+    margin-left: -28px;
+}
+
+.de-lad1337-tv .seasons .Season.active>img{
+    opacity: 1;
+}
+
+.de-lad1337-tv .seasons .Season input[type="checkbox"]{
+    position: absolute;
+    right: 3px;
+    top: 0;
+    z-index: 10;
+    display: none;
+}
+.de-lad1337-tv .seasons .Season:hover input[type="checkbox"],
+.de-lad1337-tv .seasons .Season input[type="checkbox"]:checked{
+    display: inline;
+}
+
+
+.de-lad1337-tv .Episode tr.episode-number{
+    width: 100px;
+}
+
+.de-lad1337-tv .Episode td{
+    vertical-align: middle;
+}
+
+.de-lad1337-tv .Episode .title img{
+    height: 30px;
+    margin-right: 10px;
+    border: 1px solid grey;
+    box-sizing: border-box;
+}
+
+
+.de-lad1337-tv .Episode td.action{
+    width: 145px;
+}
+
+.de-lad1337-tv .Episode td.action .action-delete,
+.de-lad1337-tv .Episode td.action .info-config{
+    display: none;
+}
+
+.de-lad1337-tv .Episode .btn-group>.btn:nth-child(2) {
+    margin-left: 0;
+    -webkit-border-top-left-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    border-top-left-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+
+.de-lad1337-tv .cur-season-container{
+    display: none;
+}
+
+.de-lad1337-tv .cur-season-container th .icon-check{
+    cursor: pointer;
+}
+
+
+.de-lad1337-tv .Show.active .cur-season-container{
+    display: block;
+}
+

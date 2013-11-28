@@ -1,0 +1,86 @@
+
+{%set loading_count = this.manager._episode_count(this, (common.DOWNLOADING, common.SNATCHED))%}
+{%set wanted_count = this.manager._episode_count(this, (common.WANTED,))%}
+{%set done_count = this.manager._episode_count(this, (common.DOWNLOADED, common.COMPLETED))%}
+{%set all_count = this.manager._episode_count(this)%}
+{%if all_count%}
+    {%set done_ratio = (( (done_count) / all_count ) * 100)|int%}
+    {%set loading_ratio = (( loading_count / all_count ) * 100)|int%}
+    {%set wanted_ratio = (( wanted_count / all_count ) * 100)|int%}
+{%else%}
+    {%set done_ratio = 0%}
+    {%set loading_ratio = 0%}
+    {%set wanted_ratio = 0%}
+{%endif%}
+{%set total = done_ratio + loading_ratio + wanted_ratio%}
+{%if total == 99 %}
+{%set done_ratio = done_ratio + 1%}
+{%elif total > 100%}
+{%set done_ratio = done_ratio - (total - 100)%}
+{%endif%}
+<!--
+loading_count: {{loading_count}}
+done_count: {{done_count}}
+all_count: {{all_count}}
+done_ratio: {{done_ratio}}
+loading_ratio: {{loading_ratio}}
+wanted_ratio: {{wanted_ratio}}
+{%set total = done_ratio + loading_ratio + wanted_ratio%}
+total: {{total}}
+-->
+<div class="Show" data-id="{{this.id}}">
+    <div class="info well" style="background-image: linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(255,255,255,0) 100%), url({{this.fanart_image}});">
+        <img src="{{this.poster_image}}" class="poster box-shadow"/><img src="{{this.banner_image}}" class="banner"/>
+        <h3>{{this.title}}</h3>
+        <h4>{{this.year}}</h4>
+        <ul class="infos black-outline">
+            <li><label>Status</label><span>{{this.show_status}}</span></li>
+            <li><label>Runtime</label><span>{{this.runtime}}</span></li>
+            <li><label>Country</label><span>{{this.country}}</span></li>
+            <li><label>Genres</label><span>{{this.genres}}</span></li>
+        </ul>
+        <div class="progress {%if ratio == 100%}progress-success{%endif%}">
+            <span class="progressbar-back-text">{{done_count}} / {{all_count}}</span>
+            <span class="progressbar-front-text">{{done_count}} / {{all_count}}</span>
+            <div class="bar" style="width: {{done_ratio}}%;" title="collected"></div>
+            <div class="bar bar-warning" style="width: {{loading_ratio}}%;" title="snatched"></div>
+            <div class="bar bar-danger" style="width: {{wanted_ratio}}%;" title="wanted"></div>
+        </div>
+        <!--{{this.overview}}-->
+        <div class="buttons">
+            <div>
+                {{actionButtonsVertical}}
+                <div class="clearfix"></div>
+            </div>
+            <div>
+                <a href="javascript:void(0)" class="info-config btn btn-mini"  onclick="showConfigs(this, {{this.id}});return false;">Config</a>
+                <div class="clearfix"></div>
+            </div>
+            <div>
+                {{statusSelect}}
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+    <div class="seasons">
+        <!--<i class="icon-check"></i>-->
+        {{children}}
+    </div>
+    <div class="cur-season-container" style="###background: url({{this.fanart_image}});">
+        <table class="table table-striped table-condensed">
+            <thead>
+                <tr>
+                    <th>Episode</th>
+                    <th>Title</th>
+                    <th>Airdate</th>
+                    <th>Status</th>
+                    <th>Action <span class="pull-right drop-left">{{simpleStatusSelect}}</span></th>
+                    <th><i class="icon-check" title="click: toggle - double click: fill most"></i></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+

@@ -1,0 +1,8 @@
+<div class="show">
+    <img src="{{this.poster_image}}" style="height: 300px;"/>
+    {{this.title}} ({{this.getField('id')}})
+    <p>
+        {{actionButtons}}
+    </p>
+</div>
+
