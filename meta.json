@@ -418,6 +418,22 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ], 
+        "de.lad1337.trakt.tv": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "TraktTV", 
+                "type": "Provider", 
+                "format": "zip", 
+                "desc": "TV show info from http://trakt.tv. Get your api key from http://trakt.tv/settings/api", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    12
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
         "de.lad1337.traktwatchlist": [
             {
                 "major_version": 0, 
@@ -426,6 +442,22 @@
                 "type": "MediaAdder", 
                 "format": "zip", 
                 "desc": "Add movies from your http://trakt.tv account. Get your apikey at http://trakt.tv/settings/api", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    9
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.tv": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "TV", 
+                "type": "MediaTypeManager", 
+                "format": "zip", 
+                "desc": "TV", 
                 "xdm_version": [
                     0, 
                     5, 
