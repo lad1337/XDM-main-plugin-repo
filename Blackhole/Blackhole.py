@@ -71,6 +71,9 @@ class Blackhole(Downloader):
     def _ratePaths(self, base, snatched):
         log.debug("BlackHole rating paths in %s" % (base))
         for dirpath, dirnames, filenames in os.walk(base):
+            for d in dirnames:
+                for r in self._ratePath(d, snatched):
+                    yield (dirpath, None, r[0], r[1])
             for f in filenames:
                 for r in self._ratePath(f, snatched):
                     yield (dirpath, f, r[0], r[1])
@@ -81,8 +84,11 @@ class Blackhole(Downloader):
         if len(rated_paths) > 0:
             if rated_paths[0][3]>self.c.search_threshold:
                 if rated_paths[0][0] == self.c.monitor_path:
-                    return (common.DOWNLOADED, rated_paths[0][2], os.path.join(rated_paths[0][0], rated_paths[0][1]))
+                    path = os.path.join(rated_paths[0][0], rated_paths[0][1])
+                    log.debug('Found download for %s: %s' % (element.name, path))
+                    return (common.DOWNLOADED, rated_paths[0][2], path)
                 else:
+                    log.debug('Found download for %s: %s' % (element.name, rated_paths[0][0]))
                     return (common.DOWNLOADED, rated_paths[0][2], rated_paths[0][0])
         return (common.UNKNOWN, Download(), '')
 
