@@ -96,9 +96,9 @@
     width: 30%;
     position: absolute;
     right: 30px;
-    top: 0;
+    top: 50%;
     height: 26px;
-    margin-top: 24px;
+    margin-top: -10px;
     opacity: 1;
 }
 
