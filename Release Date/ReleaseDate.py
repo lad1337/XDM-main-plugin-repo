@@ -26,7 +26,7 @@ from datetime import datetime, timedelta
 
 
 class ReleaseDate(DownloadFilter):
-    version = "0.2"
+    version = "0.3"
     identifier = 'de.lad1337.filter.releasedate'
     screenName = 'Release Date'
     addMediaTypeOptions = 'runFor'
@@ -34,12 +34,6 @@ class ReleaseDate(DownloadFilter):
     _config = {'release_threshold_select': 0}
 
     config_meta = {'release_threshold_select': {'human': 'Time to ignore the release date prior the release date.'}}
-
-    elementConfig = {'format_select': 'format_select',
-                     'screenSize_select': 'screenSize_select',
-                     'audioCodec_select': 'audioCodec_select',
-                     'any_all_select': 'any_all_select'}
-
 
     _releaseThresholdDelta = {1: timedelta(days=1),
                               2: timedelta(days=2),
