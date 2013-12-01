@@ -39,10 +39,10 @@ def mkdir_p(path):
 
 class EpisodeMover(PostProcessor):
     identifier = 'de.lad1337.tv.simplemover'
-    version = "0.4"
+    version = "0.5"
     types = ["de.lad1337.tv"]
     _config = {'show_parent_path': "",
-               'name_format': '{show_name}/{s#}/{show_name} - s{s#}e{e#} - {title}',
+               'name_format': '{show_name}/Season {s#:0>2}/{show_name} - s{s#:0>2}e{e#:0>2} - {title}',
                }
 
     elementConfig = {'show_parent_path': 'show_parent_path',
@@ -50,7 +50,7 @@ class EpisodeMover(PostProcessor):
 
     screenName = 'Episode Mover'
     addMediaTypeOptions = False
-    config_meta = {'plugin_desc': 'This will move the episode based on a format string.',
+    config_meta = {'plugin_desc': 'This will move the episode based on a format string, format string syntax http://docs.python.org/2/library/string.html#formatspec',
                    'name_format': {'desc': '{show_name}: the show name, {s#}: season number, {s#}: episode number, {title}: episode title'}
                    }
 

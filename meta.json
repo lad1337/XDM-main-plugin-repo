@@ -469,11 +469,11 @@
         "de.lad1337.tv.simplemover": [
             {
                 "major_version": 0, 
-                "minor_version": 4, 
+                "minor_version": 5, 
                 "name": "Episode Mover", 
                 "type": "PostProcessor", 
                 "format": "zip", 
-                "desc": "This will move the episode based on a format string.", 
+                "desc": "This will move the episode based on a format string, format string syntax http://docs.python.org/2/library/string.html#formatspec", 
                 "xdm_version": [
                     0, 
                     5, 
