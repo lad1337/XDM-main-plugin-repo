@@ -469,7 +469,7 @@
         "de.lad1337.tv.simplemover": [
             {
                 "major_version": 0, 
-                "minor_version": 3, 
+                "minor_version": 4, 
                 "name": "Episode Mover", 
                 "type": "PostProcessor", 
                 "format": "zip", 

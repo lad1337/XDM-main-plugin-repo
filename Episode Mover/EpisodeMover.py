@@ -39,11 +39,15 @@ def mkdir_p(path):
 
 class EpisodeMover(PostProcessor):
     identifier = 'de.lad1337.tv.simplemover'
-    version = "0.3"
+    version = "0.4"
     types = ["de.lad1337.tv"]
     _config = {'show_parent_path': "",
                'name_format': '{show_name}/{s#}/{show_name} - s{s#}e{e#} - {title}',
                }
+
+    elementConfig = {'show_parent_path': 'show_parent_path',
+                     'name_format': 'name_format'}
+
     screenName = 'Episode Mover'
     addMediaTypeOptions = False
     config_meta = {'plugin_desc': 'This will move the episode based on a format string.',
@@ -53,7 +57,8 @@ class EpisodeMover(PostProcessor):
     _allowed_extensions = ('.avi', '.mkv', '.iso', '.mp4')
 
     def postProcessPath(self, element, filePath):
-        if not self.c.show_parent_path:
+        self.e.getConfigsFor(element)
+        if not self.e.show_parent_path:
             msg = "Destination path for %s is not set. Stopping PP." % element
             log.warning(msg)
             return (False, msg)
@@ -101,7 +106,7 @@ class EpisodeMover(PostProcessor):
             newFileRoute = u"%s%s" % (self._build_file_name(element), extension)
             processLogger("New Filename shall be: %s" % newFileRoute)
 
-            dst = os.path.join(self.c.show_parent_path, newFileRoute)
+            dst = os.path.join(self.e.show_parent_path, newFileRoute)
             processLogger("Creating folders leading to %s" % dst)
             mkdir_p(os.path.dirname(dst))
             processLogger("Moving File from: %s to: %s" % (curFile, dst))
@@ -134,7 +139,7 @@ class EpisodeMover(PostProcessor):
                "s#": element.parent.number,
                "e#": element.number,
                }
-        name = self.c.name_format.format(**map)
+        name = self.e.name_format.format(**map)
         log.debug("build the name: %s with %s" % (name, map))
         return name
 
