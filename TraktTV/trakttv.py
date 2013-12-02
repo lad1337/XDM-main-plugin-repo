@@ -26,14 +26,18 @@ from lib import dateutil
 import trakt.tv
 
 class TraktTV(Provider):
-    version = "0.2"
+    version = "0.3"
     identifier = "de.lad1337.trakt.tv"
     _tag = 'trakt'
     _additional_tags = ['tvdb']
     single = True
     types = ['de.lad1337.tv']
-    _config = {'api_key': ''}
-    config_meta = {'plugin_desc': 'TV show info from http://trakt.tv. Get your api key from http://trakt.tv/settings/api'}
+    _config = {'api_key': '',
+               'release_delta': 0,
+              }
+    config_meta = {'plugin_desc': 'TV show info from http://trakt.tv. Get your api key from http://trakt.tv/settings/api',
+                   'release_delta': {'human': 'Timedelta for the air time in hours', 'desc': 'e.g. -8 or 12'}
+                  }
 
     def __init__(self, instance='Default'):
         Provider.__init__(self, instance=instance)
@@ -93,7 +97,7 @@ class TraktTV(Provider):
                 episode.setField('overview', _episode['overview'], self.tag)
                 episode.setField('id', _episode['tvdb_id'], "tvdb")
                 if _episode['first_aired_iso']:
-                    airdate = dateutil.parser.parse(_episode['first_aired_iso'])
+                    airdate = dateutil.parser.parse(_episode['first_aired_iso']) - datetime.timedelta(hours=self.c.release_delta)
                     episode.setField('airdate', airdate, self.tag)
                 else:
                     episode.setField('airdate', common.FAKEDATE, self.tag)
