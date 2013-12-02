@@ -105,7 +105,7 @@ class Show(object):
         return self.getField('id')
 
 class TV(MediaTypeManager):
-    version = "0.3"
+    version = "0.4"
     single = True
     _config = {'enabled': True}
     config_meta = {'plugin_desc': 'TV'}

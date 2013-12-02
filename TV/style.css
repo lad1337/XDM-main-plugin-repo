@@ -22,10 +22,14 @@
 }
 
 .de-lad1337-tv .Show h3{
-    display: inline;
-    margin-left: 15px;
-    position: relative;
-    top: 7px;
+    margin-left: 37%;
+    position: absolute;
+    top: 50%;
+    width: 29%;
+    overflow: hidden;
+    white-space: nowrap;
+    margin-top: -18px;
+    text-overflow: ellipsis;
 }
 
 .de-lad1337-tv .Show h4{
@@ -44,7 +48,8 @@
     display: inline;
     margin-left: 15px;
     position: absolute;
-    top: 7px;
+    top: 25px;
+    width: calc(100% - 280px);
 }
 
 .de-lad1337-tv .Show.active h4{
