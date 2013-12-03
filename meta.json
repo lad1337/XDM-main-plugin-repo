@@ -13,7 +13,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -21,7 +21,7 @@
         "de.lad1337.books": [
             {
                 "major_version": 0, 
-                "minor_version": 6, 
+                "minor_version": 7, 
                 "name": "Books", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 
@@ -29,7 +29,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    0
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -45,7 +45,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -61,7 +61,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -77,7 +77,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -93,7 +93,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -109,7 +109,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    12
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -125,7 +125,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -141,7 +141,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -157,7 +157,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -173,7 +173,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -189,7 +189,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    12
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -205,7 +205,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -221,7 +221,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -229,7 +229,7 @@
         "de.lad1337.movies": [
             {
                 "major_version": 0, 
-                "minor_version": 6, 
+                "minor_version": 7, 
                 "name": "Movies", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 
@@ -237,7 +237,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -253,7 +253,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    12
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -269,7 +269,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -277,7 +277,7 @@
         "de.lad1337.music": [
             {
                 "major_version": 0, 
-                "minor_version": 3, 
+                "minor_version": 5, 
                 "name": "Music", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 
@@ -285,7 +285,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -301,7 +301,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -317,7 +317,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -333,7 +333,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -349,7 +349,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -365,7 +365,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -381,7 +381,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -397,7 +397,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -413,7 +413,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -421,7 +421,7 @@
         "de.lad1337.trakt.tv": [
             {
                 "major_version": 0, 
-                "minor_version": 3, 
+                "minor_version": 4, 
                 "name": "TraktTV", 
                 "type": "Provider", 
                 "format": "zip", 
@@ -429,7 +429,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    12
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -437,15 +437,15 @@
         "de.lad1337.traktwatchlist": [
             {
                 "major_version": 0, 
-                "minor_version": 2, 
+                "minor_version": 3, 
                 "name": "Trakt Watchlist", 
                 "type": "MediaAdder", 
                 "format": "zip", 
-                "desc": "Add movies from your http://trakt.tv account. Get your apikey at http://trakt.tv/settings/api", 
+                "desc": "Add movies and TV shows from your http://trakt.tv account. Get your apikey at http://trakt.tv/settings/api", 
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -453,7 +453,7 @@
         "de.lad1337.tv": [
             {
                 "major_version": 0, 
-                "minor_version": 4, 
+                "minor_version": 5, 
                 "name": "TV", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 
@@ -477,7 +477,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    12
+                    14
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }

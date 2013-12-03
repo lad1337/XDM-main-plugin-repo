@@ -3,21 +3,21 @@
 #
 # This file is part of XDM: eXtentable Download Manager.
 #
-#XDM: eXtentable Download Manager. Plugin based media collection manager.
-#Copyright (C) 2013  Dennis Lutter
+# XDM: eXtentable Download Manager. Plugin based media collection manager.
+# Copyright (C) 2013  Dennis Lutter
 #
-#XDM is free software: you can redistribute it and/or modify
-#it under the terms of the GNU General Public License as published by
-#the Free Software Foundation, either version 3 of the License, or
-#(at your option) any later version.
+# XDM is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#XDM is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
+# XDM is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#You should have received a copy of the GNU General Public License
-#along with this program.  If not, see http://www.gnu.org/licenses/.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see http://www.gnu.org/licenses/.
 
 from xdm.plugins import *
 import re
@@ -95,8 +95,8 @@ class Book(object):
 
 
 class Books(MediaTypeManager):
-    version = "0.6"
-    xdm_version = (0, 5, 0) # this is the greater or equal xdm version it needs
+    version = "0.7"
+    xdm_version = (0, 5, 14) # this is the greater or equal xdm version it needs
     # we need version 0.4.16 because _oderBy with multiple indexes was introduced
     _config = {"gui_select": "normal"}
     config_meta = {'plugin_desc': "Simple Books with two GUIs."}
@@ -112,9 +112,9 @@ class Books(MediaTypeManager):
         return {"normal": "Normal",
                 "fancy": "Fancy"}
 
-    def makeReal(self, book):
+    def makeReal(self, book, status):
         book.parent = self.root
-        book.status = common.getStatusByID(self.c.default_new_status_select)
+        book.status = status
         book.save()
         book.downloadImages()
         return True

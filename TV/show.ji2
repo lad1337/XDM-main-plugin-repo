@@ -56,10 +56,6 @@ total: {{total}}
                 <a href="javascript:void(0)" class="info-config btn btn-mini"  onclick="showConfigs(this, {{this.id}});return false;">Config</a>
                 <div class="clearfix"></div>
             </div>
-            <div>
-                {{statusSelect}}
-                <div class="clearfix"></div>
-            </div>
         </div>
         <div class="clearfix"></div>
     </div>

@@ -1,8 +1,21 @@
-<div class="show">
-    <img src="{{this.poster_image}}" style="height: 300px;"/>
-    {{this.title}} ({{this.getField('id')}})
-    <p>
-        {{actionButtons}}
-    </p>
+<div class="Show active {{statusCssClass}}" data-id="{{this.id}}">
+    <div class="info well" style="background-image: linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(255,255,255,0) 100%), url({{this.fanart_image}});">
+        <img src="{{this.poster_image}}" class="poster box-shadow"/><img src="{{this.banner_image}}" class="banner"/>
+        <h3>{{this.title}}</h3>
+        <h4>{{this.year}}</h4>
+        <ul class="infos black-outline">
+            <li><label>Status</label><span>{{this.show_status}}</span></li>
+            <li><label>Runtime</label><span>{{this.runtime}}</span></li>
+            <li><label>Country</label><span>{{this.country}}</span></li>
+            <li><label>Genres</label><span>{{this.genres}}</span></li>
+        </ul>
+        <!--{{this.overview}}-->
+        <div class="buttons">
+            <div>
+                {{actionButtons}}
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
 </div>
-

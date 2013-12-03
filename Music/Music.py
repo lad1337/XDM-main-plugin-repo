@@ -77,7 +77,8 @@ class Artist(object):
 
 
 class Music(MediaTypeManager):
-    version = "0.3"
+    version = "0.5"
+    xdm_version = (0, 5, 14)
     single = True
     _config = {'enabled': True}
     config_meta = {'plugin_desc': 'Music support. Good for Albums'}
@@ -89,14 +90,14 @@ class Music(MediaTypeManager):
     addConfig[Indexer] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'Music'}]
     addConfig[PostProcessor] = [{'type':'path', 'default': None, 'prefix': 'Final path for', 'sufix': 'Music'}]
 
-    def makeReal(self, album):
+    def makeReal(self, album, status):
         oldArtist = album.parent
         for artist in list(Element.select().where(Element.type == oldArtist.type,
                                              Element.mediaType == self.mt,
                                              Element.parent == self.root)):
             if artist.getField('id') == oldArtist.getField('id'):
                 album.parent = artist
-                album.status = common.getStatusByID(self.c.default_new_status_select)
+                album.status = status
                 album.save()
                 album.downloadImages()
                 return True
@@ -106,7 +107,7 @@ class Music(MediaTypeManager):
             newArtist.parent = self.root
             newArtist.save()
             album.parent = newArtist
-            album.status = common.getStatusByID(self.c.default_new_status_select)
+            album.status = status
             album.save()
             for song in list(album.children):
                 song.save()

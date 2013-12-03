@@ -105,7 +105,8 @@ class Show(object):
         return self.getField('id')
 
 class TV(MediaTypeManager):
-    version = "0.4"
+    version = "0.5"
+    xdm_version = (0, 5, 14)
     single = True
     _config = {'enabled': True}
     config_meta = {'plugin_desc': 'TV'}
@@ -118,7 +119,7 @@ class TV(MediaTypeManager):
     addConfig[Indexer] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'TV'}]
     addConfig[PostProcessor] = [{'type':'path', 'default': None, 'prefix': 'Final path for', 'sufix': 'TV'}]
 
-    def makeReal(self, show):
+    def makeReal(self, show, status):
         show.parent = self.root
         show.status = common.getStatusByID(self.c.default_new_status_select)
         show.save()
@@ -127,6 +128,7 @@ class TV(MediaTypeManager):
             season.save()
             common.Q.put(('image.download', {'id': season.id}))
             for episode in list(season.children):
+                episode.status = status
                 episode.save()
                 common.Q.put(('image.download', {'id': episode.id}))
         return True
@@ -136,6 +138,9 @@ class TV(MediaTypeManager):
 
     def homeStatuses(self):
         return common.getEveryStatusBut([common.TEMP])
+
+    def getDownloadableElements(self, asList=True):
+        return self.getElementsWithStatusIn([common.WANTED], asList, [self.download.__name__])
 
     def getUpdateableElements(self, asList=True):
         shows = Element.select().where(Element.type == 'Show',

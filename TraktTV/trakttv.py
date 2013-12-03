@@ -3,21 +3,21 @@
 #
 # This file is part of XDM: eXtentable Download Manager.
 #
-#XDM: eXtentable Download Manager. Plugin based media collection manager.
-#Copyright (C) 2013  Dennis Lutter
+# XDM: eXtentable Download Manager. Plugin based media collection manager.
+# Copyright (C) 2013  Dennis Lutter
 #
-#XDM is free software: you can redistribute it and/or modify
-#it under the terms of the GNU General Public License as published by
-#the Free Software Foundation, either version 3 of the License, or
-#(at your option) any later version.
+# XDM is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#XDM is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
+# XDM is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#You should have received a copy of the GNU General Public License
-#along with this program.  If not, see http://www.gnu.org/licenses/.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see http://www.gnu.org/licenses/.
 
 from xdm.plugins import *
 import datetime
@@ -26,7 +26,7 @@ from lib import dateutil
 import trakt.tv
 
 class TraktTV(Provider):
-    version = "0.3"
+    version = "0.4"
     identifier = "de.lad1337.trakt.tv"
     _tag = 'trakt'
     _additional_tags = ['tvdb']
@@ -106,20 +106,24 @@ class TraktTV(Provider):
 
 
     def getElement(self, id, element=None):
-        tvdb_id = element.getField('id', 'tvdb')
-        
+        tvdb_id = None
+        if element is not None:
+            tvdb_id = element.getField('id', 'tvdb')
+        if id:
+            tvdb_id = id
+        if tvdb_id is None:
+            return False
+
         mediaType = MediaType.get(MediaType.identifier == 'de.lad1337.tv')
         mtm = common.PM.getMediaTypeManager('de.lad1337.tv')[0]
         fakeRoot = mtm.getFakeRoot(tvdb_id)
-        
+
         _show = trakt.tv.show.summary(tvdb_id, True)
         self._build_show(_show, fakeRoot, mediaType)
-    
-        for ele in fakeRoot.decendants + [_show]:
-            if element is not None:
-                if ele.getField('id', 'tvdb') == id:
-                    return ele
-                
+
+        for ele in fakeRoot.decendants:
+            if int(ele.getField('id', 'tvdb')) == int(tvdb_id):
+                return ele
         return False
-    
-    
+
+

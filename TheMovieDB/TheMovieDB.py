@@ -3,21 +3,21 @@
 #
 # This file is part of XDM: eXtentable Download Manager.
 #
-#XDM: eXtentable Download Manager. Plugin based media collection manager.
-#Copyright (C) 2013  Dennis Lutter
+# XDM: eXtentable Download Manager. Plugin based media collection manager.
+# Copyright (C) 2013  Dennis Lutter
 #
-#XDM is free software: you can redistribute it and/or modify
-#it under the terms of the GNU General Public License as published by
-#the Free Software Foundation, either version 3 of the License, or
-#(at your option) any later version.
+# XDM is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#XDM is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
+# XDM is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#You should have received a copy of the GNU General Public License
-#along with this program.  If not, see http://www.gnu.org/licenses/.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see http://www.gnu.org/licenses/.
 
 from xdm.plugins import *
 from lib.dateutil.parser import *
@@ -40,7 +40,7 @@ class Tmdb(Provider):
     def __init__(self, instance='Default'):
         Provider.__init__(self, instance=instance)
         tmdb.configure('5c235bb1b487932ebf0a9935c8b39b0a', self.c.info_language_select)
-        
+
     @profileMeMaybe
     def searchForElement(self, term=''):
         self.progress.reset()
@@ -90,14 +90,18 @@ class Tmdb(Provider):
         releaseDateTime = parse(releaseDate)
 
         movie.setField('release_date', releaseDateTime, self.tag)
-        index = 0
-        for index, youtubeTrailer in enumerate(tmdbMovie.get_trailers()['youtube']):
-            trailerIDFieldName = 'youtube_trailer_id_%s' % index
-            trailerNameFieldName = 'youtube_trailer_name_%s' % index
-            movie.setField(trailerIDFieldName, youtubeTrailer['source'], self.tag)
-            movie.setField(trailerNameFieldName, youtubeTrailer['name'], self.tag)
+        trailer_count = 0
+        try:
+            for index, youtubeTrailer in enumerate(tmdbMovie.get_trailers()['youtube']):
+                trailerIDFieldName = 'youtube_trailer_id_%s' % index
+                trailerNameFieldName = 'youtube_trailer_name_%s' % index
+                movie.setField(trailerIDFieldName, youtubeTrailer['source'], self.tag)
+                movie.setField(trailerNameFieldName, youtubeTrailer['name'], self.tag)
+                trailer_count += 1
+        except ValueError:
+            pass
 
-        movie.setField('tailer_count', index + 1, self.tag)
+        movie.setField('tailer_count', trailer_count, self.tag)
         movie.saveTemp()
 
     def getElement(self, id, element=None):
@@ -109,7 +113,7 @@ class Tmdb(Provider):
         self._createMovie(fakeRoot, mediaType, tmdbMovie)
 
         for ele in fakeRoot.decendants:
-            #print ele, ele.getField('id', self.tag)
+            # print ele, ele.getField('id', self.tag)
             if str(ele.getField('id', self.tag)) == str(id):
                 return ele
         else:

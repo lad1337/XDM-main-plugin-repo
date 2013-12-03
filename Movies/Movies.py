@@ -88,7 +88,8 @@ class Movie(object):
 
 
 class Movies(MediaTypeManager):
-    version = "0.6"
+    version = "0.7"
+    xdm_version = (0, 5, 14)
     _config = {'enabled': True}
     config_meta = {'plugin_desc': 'Movies'}
     order = (Movie,)
@@ -99,9 +100,9 @@ class Movies(MediaTypeManager):
     addConfig[Indexer] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'Movies'}]
     addConfig[Downloader] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'Movies'}]
 
-    def makeReal(self, movie):
+    def makeReal(self, movie, status):
         movie.parent = self.root
-        movie.status = common.getStatusByID(self.c.default_new_status_select)
+        movie.status = status
         movie.save()
         movie.downloadImages()
         return True
