@@ -145,6 +145,8 @@ class TV(MediaTypeManager):
     def getUpdateableElements(self, asList=True):
         shows = Element.select().where(Element.type == 'Show',
                                        Element.parent == self.root)
+        # TODO: filter out ended shows but give a grace period
+        # return [s for s in shows if s.getField('show_status') != "Ended"]
         if asList:
             return list(shows)
         return shows

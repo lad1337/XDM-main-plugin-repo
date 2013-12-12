@@ -1,6 +1,6 @@
 
 from xdm.plugins import *
-from lib import requests
+import requests
 import hashlib
 import json
 

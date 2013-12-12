@@ -22,7 +22,7 @@
 # all xdm related plugin stuff you get with this line incl logger functions
 from xdm.plugins import *
 # other libs should be imported as you need them but why dont you have a look at the libs xdm comes with
-from lib import requests
+import requests
 from xdm import helper
 import os
 

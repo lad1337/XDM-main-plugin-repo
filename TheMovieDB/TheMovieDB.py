@@ -20,7 +20,7 @@
 # along with this program.  If not, see http://www.gnu.org/licenses/.
 
 from xdm.plugins import *
-from lib.dateutil.parser import *
+from dateutil.parser import *
 import tmdb
 
 

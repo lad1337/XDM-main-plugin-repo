@@ -20,7 +20,7 @@
 #along with this program.  If not, see http://www.gnu.org/licenses/.
 
 from xdm.plugins import *
-from lib import requests
+import requests
 
 import xmlrpclib
 from base64 import standard_b64encode

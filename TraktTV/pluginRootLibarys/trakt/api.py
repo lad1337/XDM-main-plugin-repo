@@ -3,7 +3,7 @@ try:
     from urllib import quote_plus
 except ImportError:
     from urllib.parse import quote_plus
-from lib import requests
+import requests
 from trakt.errors import TraktException
 __all__ = (
     'Shows',

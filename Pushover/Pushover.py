@@ -20,7 +20,7 @@
 # along with this program.  If not, see http://www.gnu.org/licenses/.
 
 from xdm.plugins import *
-from lib import requests
+import requests
 
 XDM_PUSHOVER_PROVIDER_KEY = 'ajHCoK7Uz1wt36AGs3yVZGMtWZhLL9'
 

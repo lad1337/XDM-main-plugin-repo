@@ -21,7 +21,7 @@
 
 from xdm.plugins import *
 import datetime
-from lib import dateutil
+import dateutil
 
 import trakt.tv
 
