@@ -22,19 +22,19 @@
 from xdm.plugins import *
 from lib import requests
 from xdm import helper
-
+from collections import OrderedDict
 
 class Newznab(Indexer):
     version = "0.6"
     identifier = "de.lad1337.newznab"
-    _config = {'host': 'http://nzbs2go.com',
-               'apikey': '',
-               'port': None,
-               'enabled': True,
-               'comment_on_download': False,
-               'retention': 900,
-               'verify_ssl_certificate': True
-               }
+    _config = OrderedDict([('host', 'http://nzbs2go.com'),
+               ('apikey', ''),
+               ('port', None),
+               ('enabled', True),
+               ('comment_on_download', False),
+               ('retention', 900),
+               ('verify_ssl_certificate', True)
+               ])
 
     types = ['de.lad1337.nzb']
 
@@ -173,8 +173,7 @@ class Newznab(Indexer):
 
     def getConfigHtml(self):
         return """<script>
-                function newsznab_""" + self.instance + """_spreadCategories(data){
-                  console.log(data);
+                function newsznab_""" + self.instance + """_spreadCategories(data){console.log(data);
                   $.each(data, function(k,i){
                       $('#""" + helper.idSafe(self.name) + """ input[name$="'+k+'"]').val(i)
                   });
