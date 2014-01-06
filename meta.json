@@ -15,7 +15,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.books": [
@@ -31,7 +31,7 @@
                     5, 
                     14
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.boxcar": [
@@ -47,7 +47,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.boxcar.TheGamesDB": [
@@ -63,7 +63,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.boxcar.discogs": [
@@ -79,7 +79,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.boxcar.monitor": [
@@ -95,7 +95,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.filter.releasedate": [
@@ -111,7 +111,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.games": [
@@ -127,7 +127,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.games.mover": [
@@ -143,7 +143,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.goodreads": [
@@ -159,7 +159,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.growl": [
@@ -175,7 +175,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.imdbwatchlist": [
@@ -191,7 +191,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.movie.quality": [
@@ -207,7 +207,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.movie.simplemover": [
@@ -223,7 +223,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.movies": [
@@ -239,7 +239,7 @@
                     5, 
                     14
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.movies.plex": [
@@ -255,7 +255,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.movies.xbmc": [
@@ -271,7 +271,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.music": [
@@ -287,7 +287,7 @@
                     5, 
                     14
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.music.mp32itunes": [
@@ -303,7 +303,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.newznab": [
@@ -319,7 +319,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.nzbget": [
@@ -335,7 +335,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.osxnotifications": [
@@ -351,7 +351,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.pms.downloader": [
@@ -367,7 +367,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.pms.index": [
@@ -383,7 +383,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.pushover.app": [
@@ -399,7 +399,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.sabnzbd": [
@@ -415,7 +415,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.simple.mover": [
@@ -431,7 +431,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.tmdb": [
@@ -447,7 +447,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.trakt.tv": [
@@ -463,7 +463,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.traktwatchlist": [
@@ -479,7 +479,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.tv": [
@@ -495,7 +495,7 @@
                     5, 
                     9
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.tv.simplemover": [
@@ -511,7 +511,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
         "de.lad1337.xem.names": [
@@ -527,7 +527,7 @@
                     5, 
                     15
                 ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ]
     }
