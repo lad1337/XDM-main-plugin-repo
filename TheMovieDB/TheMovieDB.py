@@ -25,7 +25,7 @@ import tmdb
 
 
 class Tmdb(Provider):
-    version = "0.13"
+    version = "0.14"
     identifier = "de.lad1337.tmdb"
     _tag = 'tmdb'
     screenName = 'TheMovieDB'

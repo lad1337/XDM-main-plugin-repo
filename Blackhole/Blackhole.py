@@ -28,7 +28,7 @@ import os
 
 
 class Blackhole(Downloader):
-    version = "0.5"
+    version = "0.6"
     identifier = "de.lad1337.blackhole"
     types = []
     _config = {}

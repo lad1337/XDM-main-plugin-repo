@@ -1,10 +1,30 @@
+# Author: Dennis Lutter <lad1337@gmail.com>
+# URL: https://github.com/lad1337/XDM-main-plugin-repo/
+#
+# This file is part of a XDM plugin.
+#
+# XDM plugin.
+# Copyright (C) 2013  Dennis Lutter
+#
+# This plugin is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This plugin is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see http://www.gnu.org/licenses/.
 
 from xdm.plugins import *
 import requests
 import csv
 
 class ImdbWatchlist(MediaAdder):
-    version = "0.1"
+    version = "0.2"
     identifier = "de.lad1337.imdbwatchlist"
     addMediaTypeOptions = False
     screenName = 'IMDb Watchlist'

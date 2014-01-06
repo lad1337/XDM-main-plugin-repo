@@ -25,7 +25,7 @@ from xdm import helper
 from collections import OrderedDict
 
 class Newznab(Indexer):
-    version = "0.6"
+    version = "0.7"
     identifier = "de.lad1337.newznab"
     _config = OrderedDict([('host', 'http://nzbs2go.com'),
                ('apikey', ''),

@@ -22,9 +22,9 @@
 import os
 from xdm.plugins import *
 from datetime import datetime, timedelta
-from lib import requests
+import requests
 import json
-from lib.dateutil import parser
+from dateutil import parser
 
 my_install_folder = os.path.dirname(__file__)
 

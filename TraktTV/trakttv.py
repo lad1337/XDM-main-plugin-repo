@@ -26,7 +26,7 @@ from dateutil import parser
 import trakt.tv
 
 class TraktTV(Provider):
-    version = "0.4"
+    version = "0.5"
     identifier = "de.lad1337.trakt.tv"
     _tag = 'trakt'
     _additional_tags = ['tvdb']

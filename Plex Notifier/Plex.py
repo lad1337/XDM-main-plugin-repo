@@ -4,7 +4,7 @@ import requests
 import xml.etree.ElementTree as ET
 
 class Plex(Notifier):
-    version = "0.2"
+    version = "0.3"
     identifier = 'de.lad1337.movies.plex'
     screenName = 'Plex Notifier'
     addMediaTypeOptions = "runFor"

@@ -3,28 +3,28 @@
 #
 # This file is part of XDM: eXtentable Download Manager.
 #
-#XDM: eXtentable Download Manager. Plugin based media collection manager.
-#Copyright (C) 2013  Dennis Lutter
+# XDM: eXtentable Download Manager. Plugin based media collection manager.
+# Copyright (C) 2013  Dennis Lutter
 #
-#XDM is free software: you can redistribute it and/or modify
-#it under the terms of the GNU General Public License as published by
-#the Free Software Foundation, either version 3 of the License, or
-#(at your option) any later version.
+# XDM is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#XDM is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
+# XDM is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#You should have received a copy of the GNU General Public License
-#along with this program.  If not, see http://www.gnu.org/licenses/.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see http://www.gnu.org/licenses/.
 
 from xdm.plugins import *
 import requests
 
 
 class Sabnzbd(Downloader):
-    version = "0.3"
+    version = "0.4"
     identifier = "de.lad1337.sabnzbd"
     _config = {'port': 8083,
                'host': 'http://localhost',
@@ -111,7 +111,7 @@ class Sabnzbd(Downloader):
 
     def getElementStaus(self, element):
         """returns a Status and path"""
-        #log("Checking for status of %s in Sabnzbd" % element)
+        # log("Checking for status of %s in Sabnzbd" % element)
         download = Download()
         download.status = common.UNKNOWN
         if not self._history:
@@ -122,7 +122,7 @@ class Sabnzbd(Downloader):
             for i in curList:
                 element_id = self._findElementID(i[curListIdentifier])
                 download_id = self._findDownloadID(i[curListIdentifier])
-                #log("Game ID: %s Download ID: %s" % (game_id, download_id))
+                # log("Game ID: %s Download ID: %s" % (game_id, download_id))
                 if element_id != element.id:
                     continue
 

@@ -29,7 +29,7 @@ from dateutil.parser import parser as dateParser
 
 
 class TheGamesDB(Provider):
-    version = "0.11"
+    version = "0.12"
     identifier = "de.lad1337.boxcar.TheGamesDB"
     _tag = 'tgdb'
     single = True

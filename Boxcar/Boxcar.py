@@ -26,7 +26,7 @@ XDM_BOXCAR_PROVIDER_KEY = 'QiKnUXljz0S1Gw1zlyk8'
 
 
 class Boxcar(Notifier):
-    version = "0.1"
+    version = "0.2"
     identifier = "de.lad1337.boxcar"
     screenName = "Boxcar"
     addMediaTypeOptions = False

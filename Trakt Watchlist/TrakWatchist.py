@@ -13,7 +13,7 @@ showWatchlistURL = baseURL + "user/watchlist/shows.json/"
 unwatchlistShowURL = baseURL + "show/unwatchlist/"
 
 class TraktWatchlist(MediaAdder):
-    version = "0.3"
+    version = "0.4"
     identifier = "de.lad1337.traktwatchlist"
     addMediaTypeOptions = False
     screenName = 'Trakt Watchlist'

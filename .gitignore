@@ -29,7 +29,11 @@ nosetests.xml
 # Translations
 *.mo
 
+# caches
+*cache.json
+
 # Mr Developer
 .mr.developer.cfg
 .project
 .pydevproject
+.idea
