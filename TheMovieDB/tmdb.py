@@ -14,7 +14,7 @@ try:
 except:
     import json as simplejson
 
-from lib import requests
+import requests
 
 config = {}
 

@@ -1,6 +1,6 @@
 from xdm.plugins import *
 from xdm import helper
-from lib import requests
+import requests
 import xml.etree.ElementTree as ET
 
 class Plex(Notifier):

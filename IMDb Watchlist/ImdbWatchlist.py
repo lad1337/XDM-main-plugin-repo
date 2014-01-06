@@ -1,6 +1,6 @@
 
 from xdm.plugins import *
-from lib import requests
+import requests
 import csv
 
 class ImdbWatchlist(MediaAdder):
@@ -38,7 +38,7 @@ class ImdbWatchlist(MediaAdder):
             yield line.encode('utf-8')
 
     # get movie watchlist
-    def _getImdbWatchlist(self):        
+    def _getImdbWatchlist(self):
         try:
             r = requests.get(self.c.watchlist_url)
             r.encoding = 'utf-8'

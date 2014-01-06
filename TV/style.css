@@ -22,7 +22,7 @@
 }
 
 .de-lad1337-tv .Show h3{
-    margin-left: 37%;
+    margin-left: calc(36% + 15px);
     position: absolute;
     top: 50%;
     width: 29%;

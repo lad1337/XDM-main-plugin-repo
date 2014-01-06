@@ -1,7 +1,7 @@
-__version_info__ = (1,1,1)
+__version_info__ = (1, 1, 1)
 __version__ = '1.1.1'
 
-from lib import requests
+import requests
 import json
 import urllib
 import httplib
@@ -146,7 +146,7 @@ class Artist(APIBase):
     @property
     def releases(self):
         # TODO: Implement fetch many release IDs
-        #return [Release(r.get('id') for r in self.data.get('releases')]
+        # return [Release(r.get('id') for r in self.data.get('releases')]
         if not self._releases:
             self._params.update({'releases': '1'})
             self._clear_cache()
@@ -180,7 +180,7 @@ class Release(APIBase):
     @property
     def labels(self):
         if not self._labels:
-            self._labels =  [Label(l['name']) for l in self.data.get('labels', [])]
+            self._labels = [Label(l['name']) for l in self.data.get('labels', [])]
         return self._labels
 
     @property

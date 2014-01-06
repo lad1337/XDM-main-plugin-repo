@@ -1,31 +1,31 @@
 # Author: Dennis Lutter <lad1337@gmail.com>
-# URL: https://github.com/lad1337/XDM
+# URL: https://github.com/lad1337/XDM-main-plugin-repo/
 #
-# This file is part of XDM: eXtentable Download Manager.
+# This file is part of a XDM plugin.
 #
-#XDM: eXtentable Download Manager. Plugin based media collection manager.
-#Copyright (C) 2013  Dennis Lutter
+# XDM plugin.
+# Copyright (C) 2013  Dennis Lutter
 #
-#XDM is free software: you can redistribute it and/or modify
-#it under the terms of the GNU General Public License as published by
-#the Free Software Foundation, either version 3 of the License, or
-#(at your option) any later version.
+# This plugin is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#XDM is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
+# This plugin is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#You should have received a copy of the GNU General Public License
-#along with this program.  If not, see http://www.gnu.org/licenses/.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see http://www.gnu.org/licenses/.
 
 from xdm.plugins import *
 
 import datetime
 import xml.etree.ElementTree as ET
-from lib import requests
+import requests
 import re
-from lib.dateutil.parser import parser as dateParser
+from dateutil.parser import parser as dateParser
 
 
 class TheGamesDB(Provider):
@@ -59,7 +59,7 @@ class TheGamesDB(Provider):
                     imageSiteTag = fanartTag.find('thumb')
                 if imageSiteTag is not None:
                     return base_url + imageSiteTag.text
-        #print "could not find a fanart"
+        # print "could not find a fanart"
         return ""
 
     def _genresStr(self, tag):
@@ -115,8 +115,8 @@ class TheGamesDB(Provider):
             g.setField('release_date', datetime.datetime.now(), self.tag)
 
         if trailer is not None:
-            #http://stackoverflow.com/questions/2639582/python-small-regex-problem
-            yid = re.search(r'(?<=\?v\=)[\w-]+', trailer.text) #the games db uses youtube urls
+            # http://stackoverflow.com/questions/2639582/python-small-regex-problem
+            yid = re.search(r'(?<=\?v\=)[\w-]+', trailer.text) # the games db uses youtube urls
             g.setField('trailer', yid.group(0), self.tag)
         else:
             g.setField('trailer', '', self.tag)
@@ -157,7 +157,7 @@ class TheGamesDB(Provider):
             payload['name'] = term
         else:
             payload['id'] = id
-        #r = requests.get('http://thegamesdb.net/api/GetGame.php', params=payload)
+        # r = requests.get('http://thegamesdb.net/api/GetGame.php', params=payload)
         r = requests.get(url, params=payload)
         log('tgdb search url ' + r.url)
         root = ET.fromstring(r.text.encode('utf-8'))
@@ -179,7 +179,7 @@ class TheGamesDB(Provider):
         id = int(id)
         root = self._searchForElement(id=id)
         for game in root.decendants:
-            #print game, game.getField('id', self.tag), 'vs', id
+            # print game, game.getField('id', self.tag), 'vs', id
             if game.getField('id', self.tag) == id:
                 return game
         else:
