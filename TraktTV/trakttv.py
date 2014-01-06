@@ -21,7 +21,7 @@
 
 from xdm.plugins import *
 import datetime
-from lib import dateutil
+from lib.dateutil import parser
 
 import trakt.tv
 
@@ -97,7 +97,7 @@ class TraktTV(Provider):
                 episode.setField('overview', _episode['overview'], self.tag)
                 episode.setField('id', _episode['tvdb_id'], "tvdb")
                 if _episode['first_aired_iso']:
-                    airdate = dateutil.parser.parse(_episode['first_aired_iso']) - datetime.timedelta(hours=self.c.release_delta)
+                    airdate = parser.parse(_episode['first_aired_iso']) - datetime.timedelta(hours=self.c.release_delta)
                     episode.setField('airdate', airdate, self.tag)
                 else:
                     episode.setField('airdate', common.FAKEDATE, self.tag)
