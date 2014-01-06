@@ -24,7 +24,7 @@ import requests
 import re
 import xml.etree.ElementTree as ET
 
-class Fanzb(Indexer):
+class Fanzub(Indexer):
     version = "0.1"
     identifier = "de.lad1337.fanzub"
     types = ['de.lad1337.nzb']

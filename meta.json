@@ -98,6 +98,22 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
             }
         ], 
+        "de.lad1337.fanzub": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "Fanzub", 
+                "type": "Indexer", 
+                "format": "zip", 
+                "desc": "Anime usenet indexer", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    15
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/develop.zip"
+            }
+        ], 
         "de.lad1337.filter.releasedate": [
             {
                 "major_version": 0, 
