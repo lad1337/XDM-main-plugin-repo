@@ -95,7 +95,7 @@ class Book(object):
 
 
 class Books(MediaTypeManager):
-    version = "0.7"
+    version = "0.8"
     xdm_version = (0, 5, 14) # this is the greater or equal xdm version it needs
     # we need version 0.4.16 because _oderBy with multiple indexes was introduced
     _config = {"gui_select": "normal"}
