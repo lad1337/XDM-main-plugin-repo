@@ -25,7 +25,7 @@ import re
 import xml.etree.ElementTree as ET
 
 class Fanzub(Indexer):
-    version = "0.1"
+    version = "0.2"
     identifier = "de.lad1337.fanzub"
     types = ['de.lad1337.nzb']
     addMediaTypeOptions = "runFor"
@@ -33,6 +33,9 @@ class Fanzub(Indexer):
     config_meta = {'plugin_desc': 'Anime usenet indexer'}
 
     def searchForElement(self, element):
+        if "anime" not in element.manager.identifier:
+            return []
+
         payload = {"cat": "anime",
                    "max": 100
                    }
@@ -51,6 +54,8 @@ class Fanzub(Indexer):
 
             for item in items:
                 title = item.find("title").text
+                if "- {:>02}".format(element.number) not in title:
+                    continue
                 url = item.find("link").text
                 ex_id = re.search("/(\d+)", url).group(1)
                 curSize = int(item.find("enclosure").attrib["length"])
