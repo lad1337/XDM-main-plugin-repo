@@ -72,7 +72,7 @@ class Movie(object):
                 <span style="color:#fff;display:block;">{{released}}</span>
                 {%endif%}
                 {{statusSelect}}
-                <a href="#" class="btn btn-mini btn-info pull-right overview" data-placement="bottom" data-toggle="popover" title="Overview for {{this.getName()}}" data-content="{{overview}}" data-container=".de-lad1337-movies">Overview</a>
+                <a href="javascript:void()" class="btn btn-mini btn-info pull-right overview" data-placement="bottom" data-toggle="popover" title="Overview for {{this.getName()}}" data-content="{{overview}}" data-container=".de-lad1337-movies">Overview</a>
             </div>
         </div>
         """
@@ -86,10 +86,12 @@ class Movie(object):
     def getReleaseDate(self):
         return self.release_date
 
+    def getIdentifier(self, tag):
+        return self.getField('id', tag)
 
 class Movies(MediaTypeManager):
-    version = "0.7"
-    xdm_version = (0, 5, 14)
+    version = "0.8"
+    xdm_version = (0, 5, 17)
     _config = {'enabled': True}
     config_meta = {'plugin_desc': 'Movies'}
     order = (Movie,)
