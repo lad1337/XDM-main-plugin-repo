@@ -3,21 +3,21 @@
 #
 # This file is part of XDM: eXtentable Download Manager.
 #
-#XDM: eXtentable Download Manager. Plugin based media collection manager.
-#Copyright (C) 2013  Dennis Lutter
+# XDM: eXtentable Download Manager. Plugin based media collection manager.
+# Copyright (C) 2013  Dennis Lutter
 #
-#XDM is free software: you can redistribute it and/or modify
-#it under the terms of the GNU General Public License as published by
-#the Free Software Foundation, either version 3 of the License, or
-#(at your option) any later version.
+# XDM is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#XDM is distributed in the hope that it will be useful,
-#but WITHOUT ANY WARRANTY; without even the implied warranty of
-#MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#GNU General Public License for more details.
+# XDM is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
 #
-#You should have received a copy of the GNU General Public License
-#along with this program.  If not, see http://www.gnu.org/licenses/.
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see http://www.gnu.org/licenses/.
 
 from xdm.plugins import *
 from xdm import helper
@@ -100,7 +100,7 @@ class Platform(object):
 
 
 class Games(MediaTypeManager):
-    version = "0.3"
+    version = "0.4"
     _config = {'enabled': True,
                'default_platform_select': '',
                'fanart_as_background': False,
@@ -111,7 +111,7 @@ class Games(MediaTypeManager):
                    'row_width_select': {'human': 'Number of tiles in a row'}}
     order = (Platform, Game)
     download = Game
-    #TODO: implement that stuff or dont ... donno
+    # TODO: implement that stuff or dont ... donno
     """# if a value for a interval is smaller then 24h it will create a shedular in that interval on longer intervals
     # it will write the next check date into the config db and a generic shedular will check that every 12h
     schedule = {'update': {Game: {'default': 122400}, Platform: {'default': 3600*21}}, # update all games every 24h and update the Platforms every 21 days
@@ -144,7 +144,7 @@ class Games(MediaTypeManager):
         # dont be confused its the bootstrap grid thing
         return {3: 4, 4: 3, 6: 2}
 
-    def makeReal(self, game):
+    def makeReal(self, game, status):
         oldPlatform = game.parent
         for platform in Element.select().where(Element.type == oldPlatform.type,
                                                Element.mediaType == self.mt,
@@ -155,7 +155,7 @@ class Games(MediaTypeManager):
             log.error('We dont have the platform we need in the db ... what is this?')
             return False
         game.parent = platform
-        game.status = common.getStatusByID(self.c.default_new_status_select)
+        game.status = status
         game.save()
         game.downloadImages()
         return True
