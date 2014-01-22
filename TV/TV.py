@@ -86,7 +86,6 @@ class Show(object):
     runtime = ''
 
     _orderBy = 'title'
-    _orderReverse = True
 
     def getTemplate(self):
         fp = os.path.join(location, "show.ji2")
@@ -105,7 +104,7 @@ class Show(object):
         return self.getField('id', tag)
 
 class TV(MediaTypeManager):
-    version = "0.6"
+    version = "0.7"
     xdm_version = (0, 5, 17)
     single = True
     _config = {'enabled': True}
