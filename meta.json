@@ -245,7 +245,7 @@
         "de.lad1337.movies": [
             {
                 "major_version": 0, 
-                "minor_version": 7, 
+                "minor_version": 8, 
                 "name": "Movies", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 
@@ -253,7 +253,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    14
+                    17
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -501,7 +501,7 @@
         "de.lad1337.tv": [
             {
                 "major_version": 0, 
-                "minor_version": 5, 
+                "minor_version": 6, 
                 "name": "TV", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 
@@ -509,7 +509,7 @@
                 "xdm_version": [
                     0, 
                     5, 
-                    9
+                    17
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
