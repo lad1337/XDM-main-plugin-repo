@@ -50,8 +50,8 @@ class Episode(object):
     def getReleaseDate(self):
         return self.airdate
 
-    def getIdentifier(self):
-        return self.number
+    def getIdentifier(self, tag):
+        return self.getField("number")
 
 class Season(object):
     number = 0
@@ -68,8 +68,8 @@ class Season(object):
     def getName(self):
         return "%s s%02d" % (self.parent.title, self.number)
 
-    def getIdentifier(self):
-        return self.number
+    def getIdentifier(self, tag):
+        return self.getField("number")
 
 class Show(object):
     title = ''
@@ -101,19 +101,18 @@ class Show(object):
     def getName(self):
         return self.title
 
-    def getIdentifier(self):
-        return self.getField('id')
+    def getIdentifier(self, tag):
+        return self.getField('id', tag)
 
 class TV(MediaTypeManager):
-    version = "0.5"
-    xdm_version = (0, 5, 14)
+    version = "0.6"
+    xdm_version = (0, 5, 17)
     single = True
     _config = {'enabled': True}
     config_meta = {'plugin_desc': 'TV'}
     order = (Show, Season, Episode)
     download = Episode
     identifier = 'de.lad1337.tv'
-    xdm_version = (0, 5, 9)
     addConfig = {}
     addConfig[Downloader] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'TV'}]
     addConfig[Indexer] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'TV'}]
