@@ -30,7 +30,7 @@ import shutil
 
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
-    version = "0.16"
+    version = "0.17"
     _config = {"replace_space_with": " ",
                'final_movie_path': ""
                }
@@ -82,6 +82,7 @@ class MovieMover(PostProcessor):
         processLogger("Renaming and moving Movie")
         success = True
         allMovieFileLocations.sort()
+        dest = None
         for index, curFile in enumerate(allMovieFileLocations):
             processLogger("Processing movie: %s" % curFile)
             try:
@@ -117,4 +118,4 @@ class MovieMover(PostProcessor):
         except IOError:
             pass
 
-        return (success, processLog[0])
+        return (success, dest, processLog[0])
