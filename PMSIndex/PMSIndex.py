@@ -30,7 +30,7 @@ import difflib
 
 
 class PMSIndex(Indexer):
-    version = "0.1"
+    version = "0.2"
     identifier = "de.lad1337.pms.index"
     addMediaTypeOptions = ['de.lad1337.music']
     _config = {}
@@ -76,12 +76,7 @@ class PMSIndex(Indexer):
         d.external_id = str(uuid4())
         d.type = 'de.lad1337.pms'
         d.extra_data["songs"] = found_songs
-
         return [d]
-
-    def commentOnDownload(self, msg, download):
-        return True
-
 
 class PMS(DownloadType):
     version = "0.1"

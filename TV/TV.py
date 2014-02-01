@@ -18,12 +18,20 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see http://www.gnu.org/licenses/.
+# pylint: disable=E1101
 
 from xdm.plugins import *
 import os
 
 location = os.path.abspath(os.path.dirname(__file__))
 
+string_cache = {}
+def getTemplate(name):
+    if name not in string_cache:
+        fp = os.path.join(location, "%s.ji2" % name)
+        with open (fp, "r") as template:
+            string_cache[name] = template.read()
+    return string_cache[name]
 
 class Episode(object):
     title = ''
@@ -37,12 +45,10 @@ class Episode(object):
     _orderReverse = True
 
     def getTemplate(self):
-        fp = os.path.join(location, "episode.ji2")
-        with open (fp, "r") as template:
-            return template.read()
+        return getTemplate("episode")
 
     def getSearchTerms(self):
-        return ['%s s%02de%02d' % (self.parent.parent.title, self.parent.number, self.number)]
+        return ['%s s%02de%02d' % (self.parent.parent.title, self.parent.number, self.number)] #
 
     def getName(self):
         return "%se%02d %s" % (self.parent.getName(), self.number, self.title)
@@ -61,9 +67,7 @@ class Season(object):
     _orderReverse = True
 
     def getTemplate(self):
-        fp = os.path.join(location, "season.ji2")
-        with open (fp, "r") as template:
-            return template.read()
+        return getTemplate("season")
 
     def getName(self):
         return "%s s%02d" % (self.parent.title, self.number)
@@ -88,14 +92,10 @@ class Show(object):
     _orderBy = 'title'
 
     def getTemplate(self):
-        fp = os.path.join(location, "show.ji2")
-        with open (fp, "r") as template:
-            return template.read()
+        return getTemplate("show")
 
     def getSearchTemplate(self):
-        fp = os.path.join(location, "show_search.ji2")
-        with open (fp, "r") as template:
-            return template.read()
+        return getTemplate("show_search")
 
     def getName(self):
         return self.title
@@ -104,7 +104,7 @@ class Show(object):
         return self.getField('id', tag)
 
 class TV(MediaTypeManager):
-    version = "0.7"
+    version = "0.8"
     xdm_version = (0, 5, 17)
     single = True
     _config = {'enabled': True}
