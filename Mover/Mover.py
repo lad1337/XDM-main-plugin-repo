@@ -22,10 +22,11 @@
 from xdm.plugins import *
 from xdm import helper
 import shutil
+from os import path
 
 
 class Mover(PostProcessor):
-    version = "0.1"
+    version = "0.2"
     identifier = 'de.lad1337.simple.mover'
     screenName = 'Mover'
     types = []
@@ -49,8 +50,9 @@ class Mover(PostProcessor):
         PostProcessor.__init__(self, instance=instance)
 
 
-    def _postProcessPath(self, element, srcPath):
+    def postProcessPath(self, element, srcPath):
         destPath = self._getPath(element)
+        log("Destination for %s is %s" %(srcPath, destPath))
         if self.c.copy:
             msg = "Copying %s to %s" % (srcPath, destPath)
             shutil.copytree(srcPath, destPath)
@@ -59,5 +61,6 @@ class Mover(PostProcessor):
             shutil.move(srcPath, destPath)
 
         log.info(msg)
-        return (True, msg)
+        final_location = path.abspath(path.join(destPath, path.basename(srcPath)))
+        return (True, final_location, msg)
 

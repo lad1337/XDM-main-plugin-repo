@@ -39,7 +39,7 @@ def mkdir_p(path):
 
 class EpisodeMover(PostProcessor):
     identifier = 'de.lad1337.tv.simplemover'
-    version = "0.5"
+    version = "0.6"
     types = ["de.lad1337.tv"]
     _config = {'show_parent_path': "",
                'name_format': '{show_name}/Season {s#:0>2}/{show_name} - s{s#:0>2}e{e#:0>2} - {title}',
@@ -101,6 +101,7 @@ class EpisodeMover(PostProcessor):
 
         curFile = allEpisodeFileLocations[0]
         processLogger("Processing episode: %s" % curFile)
+        dst = None
         try:
             extension = os.path.splitext(curFile)[1]
             newFileRoute = u"%s%s" % (self._build_file_name(element), extension)
@@ -130,7 +131,7 @@ class EpisodeMover(PostProcessor):
         except IOError:
             pass
 
-        return (success, processLog[0])
+        return (success, dst, processLog[0])
 
     def _build_file_name(self, element):
         # '{show_name}/{s#}/{show_name} - s{s#}e{e#} - {title}'
@@ -142,5 +143,4 @@ class EpisodeMover(PostProcessor):
         name = self.e.name_format.format(**map)
         log.debug("build the name: %s with %s" % (name, map))
         return name
-
 

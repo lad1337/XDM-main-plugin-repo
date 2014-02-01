@@ -92,8 +92,8 @@ $(document).ready(function() {
     	        my: 'bottom left',  // Position my top left...
     	        at: 'top center', // at the bottom right of...
     	    }
-    	})
-    });    
+    	});
+    });
     
 });
 
