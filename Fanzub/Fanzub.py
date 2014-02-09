@@ -25,7 +25,7 @@ import re
 import xml.etree.ElementTree as ET
 
 class Fanzub(Indexer):
-    version = "0.2"
+    version = "0.3"
     identifier = "de.lad1337.fanzub"
     types = ['de.lad1337.nzb']
     addMediaTypeOptions = "runFor"
@@ -46,10 +46,10 @@ class Fanzub(Indexer):
             r = requests.get("http://fanzub.com/rss", params=payload)
             log("Fanzub final search for term %s url %s" % (term, r.url))
             try:
-                xml = ET.fromstring(r.text)
+                xml = ET.fromstring(r.text.encode("utf-8"))
                 items = xml.findall("channel/item")
-            except Exception:
-                log.exception(u"Error trying to load FANZUB RSS feed")
+            except:
+                log.error(u"Error trying to load FANZUB RSS feed")
                 continue
 
             for item in items:
