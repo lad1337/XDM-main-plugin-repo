@@ -226,22 +226,6 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ], 
-        "de.lad1337.movie.quality": [
-            {
-                "major_version": 0, 
-                "minor_version": 2, 
-                "name": "Movie Quality", 
-                "type": "DownloadFilter", 
-                "format": "zip", 
-                "desc": null, 
-                "xdm_version": [
-                    0, 
-                    5, 
-                    18
-                ], 
-                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
-            }
-        ], 
         "de.lad1337.movie.simplemover": [
             {
                 "major_version": 0, 
@@ -538,6 +522,22 @@
                 "type": "PostProcessor", 
                 "format": "zip", 
                 "desc": "This will move the episode based on a format string, format string syntax http://docs.python.org/2/library/string.html#formatspec", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    18
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.video.quality": [
+            {
+                "major_version": 0, 
+                "minor_version": 2, 
+                "name": "Video Quality", 
+                "type": "DownloadFilter", 
+                "format": "zip", 
+                "desc": "Filter by format, screensize and audio codec", 
                 "xdm_version": [
                     0, 
                     5, 

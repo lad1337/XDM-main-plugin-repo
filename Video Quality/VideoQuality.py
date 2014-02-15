@@ -23,10 +23,10 @@ from xdm.plugins import *
 import guessit
 
 
-class MovieQuality(DownloadFilter):
+class VideoQuality(DownloadFilter):
     version = "0.2"
-    identifier = 'de.lad1337.movie.quality'
-    screenName = 'Movie Quality'
+    identifier = 'de.lad1337.video.quality'
+    screenName = 'Video Quality'
     addMediaTypeOptions = 'runFor'
     _config = {'format_select': '',
                'screenSize_select': '',
@@ -37,6 +37,9 @@ class MovieQuality(DownloadFilter):
                      'screenSize_select': 'screenSize_select',
                      'audioCodec_select': 'audioCodec_select',
                      'any_all_select': 'any_all_select'}
+
+    config_meta = {'plugin_desc': 'Filter by format, screensize and audio codec'
+                   }
 
     def compare(self, element=None, download=None, string=None):
         guess = guessit.guess_movie_info(download.name, info=['filename'])
