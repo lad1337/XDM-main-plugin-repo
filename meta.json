@@ -341,7 +341,7 @@
         "de.lad1337.nzbget": [
             {
                 "major_version": 0, 
-                "minor_version": 5, 
+                "minor_version": 6, 
                 "name": "NZBGet", 
                 "type": "Downloader", 
                 "format": "zip", 
