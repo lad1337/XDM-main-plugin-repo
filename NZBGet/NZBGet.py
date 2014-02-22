@@ -27,7 +27,7 @@ from base64 import standard_b64encode
 
 
 class NZBGet(Downloader):
-    version = "0.6"
+    version = "0.7"
     identifier = "de.lad1337.nzbget"
     _config = {'port': 6789,
                'host': 'localhost',
@@ -48,7 +48,10 @@ class NZBGet(Downloader):
         return "%s://%s:%s@%s:%s/xmlrpc" % (protocol, user, pw, host, port)
 
     def addDownload(self, download):
-        server = xmlrpclib.Server(self._baseUrl(self.c.host, self.c.port, self.c.password, self.c.user, self.c.ssl))
+        server = xmlrpclib.Server(
+            self._baseUrl(self.c.host, self.c.port, self.c.password, self.c.user, self.c.ssl),
+            encoding="utf-8"
+        )
         server.writelog("INFO", "XDM connected to drop of %s any moment now." % download)
         log('Downloading nzb myself because that means we have more control.')
 
@@ -58,11 +61,13 @@ class NZBGet(Downloader):
         if not cat:
             cat = ''
         name = u"%s.nzb" % self._downloadName(download)
-        nzbgetResponse = server.append(name.encode('utf-8'),
-                                cat,
-                                0,
-                                False,
-                                data)
+        nzbgetResponse = server.append(
+            name.encode('utf-8'),
+            cat,
+            0,
+            False,
+            data
+        )
         return nzbgetResponse
 
     def getDownloadPercentage(self, element):
