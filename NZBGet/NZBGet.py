@@ -27,7 +27,7 @@ from base64 import standard_b64encode
 
 
 class NZBGet(Downloader):
-    version = "0.4"
+    version = "0.5"
     identifier = "de.lad1337.nzbget"
     _config = {'port': 6789,
                'host': 'localhost',
@@ -57,7 +57,7 @@ class NZBGet(Downloader):
         cat = self._getCategory(download.element)
         if not cat:
             cat = ''
-        nzbgetResponse = server.append(self._downloadName(download) + ".nzb",
+        nzbgetResponse = server.append(u"%s.nzb" % self._downloadName(download),
                                 cat,
                                 0,
                                 False,
