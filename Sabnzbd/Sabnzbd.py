@@ -25,10 +25,16 @@ import requests
 
 class Sabnzbd(Downloader):
     version = "0.4"
-    identifier = "de.lad1337.sabnzbd"
-    _config = {'port': 8083,
-               'host': 'http://localhost',
-               'apikey': ''}
+    identifier = "de.pannal.sabnzbd"
+    _config = {
+        'port': 8083,
+        'host': 'http://localhost',
+        'apikey': '',
+        'downloadName': u'{download-name} (XDM.{element-id}-{download-id})' #'{title} (XDM.{element-id}-{download-id}'
+    }
+    config_meta = {
+        'downloadName': '{title}: the title of the element; {element-id}; {download-id}; {download-name}: original name returned by indexer; {download-size}; {external-id}; {type}'
+    }
     _history = []
     _queue = []
     types = ['de.lad1337.nzb']
@@ -48,6 +54,18 @@ class Sabnzbd(Downloader):
             port = self.c.port
 
         return "%s:%s/sabnzbd/api" % (host, port)
+
+    def _downloadName(self, download):
+        map = {
+            "title": download.element.getName(),
+            "element-id": download.element.id,
+            "download-id": download.id,
+            "download-name": download.name,
+            "download-size": download.size,
+            "external-id": download.external_id,
+            "type": download.type,
+        }
+        return self.c.downloadName.format(**map)
 
     def addDownload(self, download):
         payload = {'apikey': self.c.apikey,
