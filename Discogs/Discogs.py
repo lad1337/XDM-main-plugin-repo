@@ -27,7 +27,7 @@ discogs.user_agent = '%s +http://xdm.lad1337.de' % common.getVersionHuman()
 
 
 class Discogs(Provider):
-    version = "9999.99999"
+    version = "0.12"
     identifier = "de.lad1337.boxcar.discogs"
     _tag = 'discogs'
     single = True
