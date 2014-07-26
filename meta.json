@@ -25,7 +25,7 @@
                 "name": "Blackhole", 
                 "type": "Downloader", 
                 "format": "zip", 
-                "desc": "This will download the download link into a file. It can not check for the status of a download.", 
+                "desc": "This will download the download link into a file. It can search a folder to check for the status of a download.", 
                 "xdm_version": [
                     0, 
                     5, 
