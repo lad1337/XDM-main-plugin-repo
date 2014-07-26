@@ -20,34 +20,49 @@
 # along with this program.  If not, see http://www.gnu.org/licenses/.
 
 from xdm.plugins import *
-import requests
+import requests, urlparse
 
 
 class Sabnzbd(Downloader):
     version = "0.4"
-    identifier = "de.lad1337.sabnzbd"
-    _config = {'port': 8083,
-               'host': 'http://localhost',
-               'apikey': ''}
+    identifier = "de.pannal.sabnzbd"
+    _config = {
+        'port': 8083,
+        'host': 'http://localhost',
+        'apikey': '',
+        'downloadName': u'{download-name} (XDM.{element-id}-{download-id})' #'{title} (XDM.{element-id}-{download-id}'
+    }
+    config_meta = {
+        'downloadName': '{title}: the title of the element; {element-id}; {download-id}; {download-name}: original name returned by indexer; {download-size}; {external-id}; {type}'
+    }
     _history = []
     _queue = []
     types = ['de.lad1337.nzb']
 
-    def _baseUrl(self, host='', port=0):
-        if not host:
-            host = self.c.host
-            if not host.startswith('http'):
-                log("Fixing url. Adding http://")
-                self.c.host = "http://%s" % host
-            host = self.c.host
-        else:
-            if not host.startswith('http'):
-                host = "http://%s" % host
+    def _baseUrl(self, host=None, port=0):
+        host = host or self.c.host
+
+        host = "http://%s" % host if not host.startswith("http") else host
+
+        parsedHost = urlparse.urlparse(host)
+        host = self.c.host = parsedHost.hostname
 
         if not port:
-            port = self.c.port
+            port = parsedHost.port or self.c.port
 
-        return "%s:%s/sabnzbd/api" % (host, port)
+        return "%s://%s:%s/sabnzbd/api" % (parsedHost.scheme or "http", host, port)
+
+    def _downloadName(self, download):
+        map = {
+            "title": download.element.getName(),
+            "element-id": download.element.id,
+            "download-id": download.id,
+            "download-name": download.name,
+            "download-size": download.size,
+            "external-id": download.external_id,
+            "type": download.type,
+        }
+        return self.c.downloadName.format(**map)
 
     def addDownload(self, download):
         payload = {'apikey': self.c.apikey,
