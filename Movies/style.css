@@ -82,6 +82,8 @@
 .de-lad1337-movies .movie .inner ul{
     margin: 0;
     list-style: none;
+    max-height: 111px;
+    overflow-y: scroll;
 }
 
 .de-lad1337-movies .movie .inner ul li{
