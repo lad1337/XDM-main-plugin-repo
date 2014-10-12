@@ -90,7 +90,7 @@ class Movie(object):
         return self.getField('id', tag)
 
 class Movies(MediaTypeManager):
-    version = "0.8"
+    version = "0.9"
     xdm_version = (0, 5, 17)
     _config = {'enabled': True}
     config_meta = {'plugin_desc': 'Movies'}
