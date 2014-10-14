@@ -7,7 +7,7 @@ CHANGE_ON = [common.IGNORE, common.PP_FAIL]
 CHANGE_TO = common.DOWNLOADED
 
 class PlexStatus(MediaAdder):
-    version = "0.1"
+    version = "0.2"
     identifier = "de.lad1337.plexstatus"
     addMediaTypeOptions = False
     _config = {'host': 'localhost',
