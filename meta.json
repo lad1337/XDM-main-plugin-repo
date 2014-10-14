@@ -370,6 +370,22 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ], 
+        "de.lad1337.plexstatus": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "PlexStatus", 
+                "type": "MediaAdder", 
+                "format": "zip", 
+                "desc": "Sets the status of Episodes to Geladen if found in plex. But only for Ignorieren,Post Processing Fail episodes", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    18
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
         "de.lad1337.pms.downloader": [
             {
                 "major_version": 0, 

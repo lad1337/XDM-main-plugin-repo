@@ -25,7 +25,7 @@ import requests, urlparse
 
 class Sabnzbd(Downloader):
     version = "0.4"
-    identifier = "de.pannal.sabnzbd"
+    identifier = "de.lad1337.sabnzbd"
     _config = {
         'port': 8083,
         'host': 'http://localhost',
