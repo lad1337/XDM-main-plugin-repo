@@ -7,7 +7,7 @@ CHANGE_ON = [common.IGNORE, common.PP_FAIL]
 CHANGE_TO = common.DOWNLOADED
 
 class PlexStatus(MediaAdder):
-    version = "0.2"
+    version = "0.3"
     identifier = "de.lad1337.plexstatus"
     addMediaTypeOptions = False
     _config = {'host': 'localhost',
@@ -22,20 +22,46 @@ class PlexStatus(MediaAdder):
     def __init__(self, instance='Default'):
         MediaAdder.__init__(self, instance=instance)
 
+    def _get_all_names(self, show, xem_name_plugin):
+        if xem_name_plugin is None:
+            return [show.title]
+        else:
+            xem_names = [show.title]
+            for xem_name_data in xem_name_plugin._names_for_show(show):
+                for xem_name, season in xem_name_data.items():
+                    xem_names.append(xem_name)
+            return xem_names
+
     def runShedule(self):
         if not self.c.host:
             return []
         server = PlexServer(self.c.host, self.c.port)
 
         mtm = common.PM.getMediaTypeManager("de.lad1337.tv")[0]
+
+        xem_name_plugin = None
+        try:
+            xem_name_plugin = common.PM.getSearchTermFilters("de.lad1337.xem.names")[0]
+        except IndexError:
+            log("plugin de.lad1337.xem.names not installed no alternative title search on plex")
+        else:
+            if tuple(map(int, xem_name_plugin.version.split("."))) < (0, 3):
+                log("plugin de.lad1337.xem.names lower version then 0.3")
+                xem_name_plugin = None
+
         shows = Element.select().where(Element.type == 'Show',
                                        Element.parent == mtm.root)
         for show in shows:
-            try:
-                plex_show = server.library.findShows(show.title)[0]
-            except IndexError:
-                log.warning("could not find {} in plex".format(show))
-                continue
+            show_titles = self._get_all_names(show, xem_name_plugin)
+            for title in show_titles:
+                try:
+                    plex_show = server.library.findShows(title)[0]
+                except IndexError:
+                    log.warning("could not find {} in plex".format(title))
+                    continue
+                else:
+                    break
+
             seasons = list(show.children)
             plex_seasons = plex_show.seasons
 
@@ -56,13 +82,13 @@ class PlexStatus(MediaAdder):
                         e for e in plex_episodes if e.index == episode.number]
                     if not plex_episode:
                         log.debug(
-                            "episode {episode} not found in plex".format(
+                            u"episode {episode} not found in plex".format(
                                 episode=episode))
                         continue
 
                     episode.status = CHANGE_TO
                     log.info(
-                        "plex status setting {} to {}".format(
+                        u"plex status setting {} to {}".format(
                             episode, episode.status))
                     episode.save()
 

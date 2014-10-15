@@ -373,7 +373,7 @@
         "de.lad1337.plexstatus": [
             {
                 "major_version": 0, 
-                "minor_version": 2, 
+                "minor_version": 3, 
                 "name": "PlexStatus", 
                 "type": "MediaAdder", 
                 "format": "zip", 
@@ -565,7 +565,7 @@
         "de.lad1337.xem.names": [
             {
                 "major_version": 0, 
-                "minor_version": 2, 
+                "minor_version": 3, 
                 "name": "XEMNames", 
                 "type": "SearchTermFilter", 
                 "format": "zip", 

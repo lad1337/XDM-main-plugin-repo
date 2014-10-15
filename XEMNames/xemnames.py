@@ -29,7 +29,7 @@ from dateutil import parser
 my_install_folder = os.path.dirname(__file__)
 
 class XEMNames(SearchTermFilter):
-    version = "0.2"
+    version = "0.3"
     identifier = "de.lad1337.xem.names"
     addMediaTypeOptions = 'runFor'
     config_meta = {'plugin_desc': 'Gets additional names for TV shows from http://thexem.de',
@@ -40,25 +40,31 @@ class XEMNames(SearchTermFilter):
             log("i only work for Episodes, i got a %s" % element.type)
             return terms
         show = element.parent.parent
+        new_names = []
+        for xem_name_data in self._names_for_show(show):
+            for xem_name, season in xem_name_data.items():
+                if element.parent.number == season or season == -1:
+                    data = {"show_name": xem_name,
+                            "s#": element.parent.number,
+                            "e#": element.number
+                            }
+                    cur_name = u"{show_name} s{s#:0>2}e{e#:0>2}".format(**data)
+                    new_names.append(cur_name)
+        terms = new_names + terms
+        return terms
+
+    def _names_for_show(self, show):
         tvdb_id = str(show.getField('id', 'tvdb'))
         if not tvdb_id:
             log("no tvdb_id found for %s" % show)
-            return terms
+            return []
         names = self._getNames()
         if tvdb_id in names:
             log("found the show by tvdb id on xem")
-            new_names = []
-            for xem_name_data in names[tvdb_id]:
-                for xem_name, season in xem_name_data.items():
-                    if element.parent.number == season or season == -1:
-                        data = {"show_name": xem_name,
-                                "s#": element.parent.number,
-                                "e#": element.number
-                                }
-                        cur_name = u"{show_name} s{s#:0>2}e{e#:0>2}".format(**data)
-                        new_names.append(cur_name)
-            terms = new_names + terms
-        return terms
+            return names[tvdb_id]
+        else:
+            return []
+
 
     def _getNames(self):
         cache_file_path = os.path.join(my_install_folder, 'cache.json')
