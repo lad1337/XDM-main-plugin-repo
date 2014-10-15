@@ -565,7 +565,7 @@
         "de.lad1337.xem.names": [
             {
                 "major_version": 0, 
-                "minor_version": 4, 
+                "minor_version": 5, 
                 "name": "XEMNames", 
                 "type": "SearchTermFilter", 
                 "format": "zip", 

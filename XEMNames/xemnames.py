@@ -29,7 +29,7 @@ from dateutil import parser
 my_install_folder = os.path.dirname(__file__)
 
 class XEMNames(SearchTermFilter):
-    version = "0.4"
+    version = "0.5"
     identifier = "de.lad1337.xem.names"
     addMediaTypeOptions = 'runFor'
 
@@ -81,7 +81,9 @@ class XEMNames(SearchTermFilter):
         return out
 
     def _force_recache(self):
-        self._getNames(True)
+        name_data = self._getNames(True)
+        return (True, {}, 'Recached {} show infos'.format(len(name_data)))
+    _force_recache.args = []
 
     config_meta = {
         'plugin_desc': 'Gets additional names for TV shows from http://thexem.de',
