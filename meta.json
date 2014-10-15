@@ -373,7 +373,7 @@
         "de.lad1337.plexstatus": [
             {
                 "major_version": 0, 
-                "minor_version": 3, 
+                "minor_version": 4, 
                 "name": "PlexStatus", 
                 "type": "MediaAdder", 
                 "format": "zip", 

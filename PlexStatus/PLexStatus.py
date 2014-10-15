@@ -7,7 +7,7 @@ CHANGE_ON = [common.IGNORE, common.PP_FAIL]
 CHANGE_TO = common.DOWNLOADED
 
 class PlexStatus(MediaAdder):
-    version = "0.3"
+    version = "0.4"
     identifier = "de.lad1337.plexstatus"
     addMediaTypeOptions = False
     _config = {'host': 'localhost',
@@ -61,6 +61,8 @@ class PlexStatus(MediaAdder):
                     continue
                 else:
                     break
+            else:
+                continue
 
             seasons = list(show.children)
             plex_seasons = plex_show.seasons
