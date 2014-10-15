@@ -29,11 +29,10 @@ from dateutil import parser
 my_install_folder = os.path.dirname(__file__)
 
 class XEMNames(SearchTermFilter):
-    version = "0.3"
+    version = "0.4"
     identifier = "de.lad1337.xem.names"
     addMediaTypeOptions = 'runFor'
-    config_meta = {'plugin_desc': 'Gets additional names for TV shows from http://thexem.de',
-                  }
+
     _hidden_config = {'last_cache': ''}
     def compare(self, element, terms):
         if element.type != "Episode":
@@ -66,9 +65,9 @@ class XEMNames(SearchTermFilter):
             return []
 
 
-    def _getNames(self):
+    def _getNames(self, force=False):
         cache_file_path = os.path.join(my_install_folder, 'cache.json')
-        if not self.hc.last_cache or not os.path.isfile(cache_file_path) or parser.parse(self.hc.last_cache) < datetime.now() - timedelta(days=2):
+        if (not self.hc.last_cache or not os.path.isfile(cache_file_path) or parser.parse(self.hc.last_cache) < datetime.now() - timedelta(days=2)) or force:
             log("getting new names from xem")
             r = requests.get("http://thexem.de/map/allNames?origin=tvdb&seasonNumbers=1")
             names = r.json()["data"]
@@ -80,3 +79,11 @@ class XEMNames(SearchTermFilter):
         with open(os.path.join(my_install_folder, 'cache.json'), "r") as cache:
             out = json.loads(cache.read())
         return out
+
+    def _force_recache(self):
+        self._getNames(True)
+
+    config_meta = {
+        'plugin_desc': 'Gets additional names for TV shows from http://thexem.de',
+        'plugin_buttons': {'force_recache': {'action': _force_recache, 'name': 'Force recache'}},
+    }
