@@ -18,6 +18,9 @@
 {%elif total > 100%}
 {%set done_ratio = done_ratio - (total - 100)%}
 {%endif%}
+
+{%set next_episode = this.manager._get_next_episode(this) %}
+
 <!--
 loading_count: {{loading_count}}
 done_count: {{done_count}}
@@ -33,6 +36,9 @@ total: {{total}}
         <img src="{{this.poster_image}}" class="poster box-shadow"/><img src="{{this.banner_image}}" class="banner"/>
         <h3>{{this.title}}</h3>
         <h4>{{this.year}}</h4>
+        {%if next_episode %}
+        <h5>Next: {{next_episode.airdate|relativeTime}} - {{this.manager._next_episode_detail_field(next_episode)}}</h5>
+        {%endif%}
         <ul class="infos black-outline">
             <li><label>Status</label><span>{{this.show_status}}</span></li>
             <li><label>Runtime</label><span>{{this.runtime}}</span></li>

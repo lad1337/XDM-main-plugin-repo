@@ -517,7 +517,7 @@
         "de.lad1337.tv": [
             {
                 "major_version": 0, 
-                "minor_version": 8, 
+                "minor_version": 9, 
                 "name": "TV", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 

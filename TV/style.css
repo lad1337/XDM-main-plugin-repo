@@ -21,7 +21,8 @@
     display: block;
 }
 
-.de-lad1337-tv .Show h3{
+.de-lad1337-tv .Show h3,
+.de-lad1337-tv .Show h5{
     margin-left: calc(36% + 15px);
     position: absolute;
     top: 50%;
@@ -36,15 +37,22 @@
     display: none;
 }
 
+.de-lad1337-tv .Show h5{
+    margin-top: 14px;
+    color: #808080;
+}
+
 .de-lad1337-tv .Show.active h3,
-.de-lad1337-tv .Show.active h4{
+.de-lad1337-tv .Show.active h4,
+.de-lad1337-tv .Show.active h5{
     color: #fff;
     text-shadow: -1px -1px 1px #000, 1px -1px 1px #000, -1px 1px 1px #000, 1px 1px 1px #000;
 }
 
 
 .de-lad1337-tv .Show.active h3,
-.de-lad1337-tv .Show.active h4{
+.de-lad1337-tv .Show.active h4,
+.de-lad1337-tv .Show.active h5{
     display: inline;
     margin-left: 15px;
     position: absolute;
@@ -54,6 +62,10 @@
 
 .de-lad1337-tv .Show.active h4{
     top: 43px;
+}
+
+.de-lad1337-tv .Show.active h5{
+    top: 278px;
 }
 
 .de-lad1337-tv .Show .info{

@@ -22,6 +22,7 @@
 
 from xdm.plugins import *
 import os
+from operator import attrgetter
 
 location = os.path.abspath(os.path.dirname(__file__))
 
@@ -104,10 +105,13 @@ class Show(object):
         return self.getField('id', tag)
 
 class TV(MediaTypeManager):
-    version = "0.8"
+    version = "0.9"
     xdm_version = (0, 5, 17)
     single = True
-    _config = {'enabled': True}
+    _config = {
+        'enabled': True,
+        'show_next_on_overview': True,
+        'next_episode_info_select': 'both'}
     config_meta = {'plugin_desc': 'TV'}
     order = (Show, Season, Episode)
     download = Episode
@@ -169,3 +173,33 @@ class TV(MediaTypeManager):
         else:
             return Element.select().where(Element.type == 'Episode',
                                           Element.parent == season).count()
+
+    def _next_episode_info_select(self):
+        return {
+            "title": "Episode title",
+            "sxxexx": "Season and Epsiode number",
+            "both": "Both"
+        }
+
+    def _get_next_episode(self, show):
+        if not show.manager.c.show_next_on_overview:
+            return None
+        _prev_episode = None
+        now = datetime.datetime.now()
+        for season in sorted(show.children, key=attrgetter("number"), reverse=True):
+            for episode in sorted(season.children, key=attrgetter("number"), reverse=True):
+                if episode.airdate == common.FAKEDATE:
+                    continue
+                if now <= episode.airdate:
+                    _prev_episode = episode
+                elif now > episode.airdate:
+                    return _prev_episode
+
+    def _next_episode_detail_field(self, episode):
+        if self.c.next_episode_info_select == "title":
+            return getattr(episode, "title")
+        if self.c.next_episode_info_select == "sxxexx":
+            return "s{0:02d}e{1:02d}".format(episode.number, episode.parent.number)
+        if self.c.next_episode_info_select == "both":
+            return "s{0:02d}e{1:02d} - {2}".format(
+                episode.number, episode.parent.number, episode.title)
