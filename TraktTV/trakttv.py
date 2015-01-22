@@ -26,7 +26,7 @@ from dateutil import parser
 import trakt.tv
 
 class TraktTV(Provider):
-    version = "0.7"
+    version = "0.8"
     identifier = "de.lad1337.trakt.tv"
     _tag = 'trakt'
     _additional_tags = ['tvdb']
@@ -124,7 +124,7 @@ class TraktTV(Provider):
         self._build_show(_show, fakeRoot, mediaType)
 
         for ele in fakeRoot.decendants:
-            if int(ele.getField('show_id', 'tvdb')) == int(tvdb_id):
+            if int(ele.getField('id', 'tvdb')) == int(tvdb_id):
                 return ele
         return False
 

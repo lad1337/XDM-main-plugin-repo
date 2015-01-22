@@ -485,7 +485,7 @@
         "de.lad1337.trakt.tv": [
             {
                 "major_version": 0, 
-                "minor_version": 7,
+                "minor_version": 8,
                 "name": "TraktTV", 
                 "type": "Provider", 
                 "format": "zip", 
