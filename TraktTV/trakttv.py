@@ -26,7 +26,7 @@ from dateutil import parser
 import trakt.tv
 
 class TraktTV(Provider):
-    version = "0.5"
+    version = "0.6"
     identifier = "de.lad1337.trakt.tv"
     _tag = 'trakt'
     _additional_tags = ['tvdb']
@@ -84,7 +84,8 @@ class TraktTV(Provider):
             season.parent = show
             season.type = 'Season'
             season.setField('number', _simple_season['season'], self.tag)
-            season.setField('poster_image', _simple_season['images']['poster'], self.tag)
+            if "images" in _simple_season:
+                season.setField('poster_image', _simple_season['images']['poster'], self.tag)
             season.saveTemp()
             for _episode in _simple_season['episodes']:
                 episode = Element()
@@ -97,7 +98,9 @@ class TraktTV(Provider):
                 episode.setField('overview', _episode['overview'], self.tag)
                 episode.setField('id', _episode['tvdb_id'], "tvdb")
                 if _episode['first_aired_iso']:
-                    airdate = parser.parse(_episode['first_aired_iso']) - datetime.timedelta(hours=self.c.release_delta)
+                    airdate = parser.parse(
+                        (_episode['first_aired_iso'])
+                        - datetime.timedelta(hours=self.c.release_delta))
                     episode.setField('airdate', airdate, self.tag)
                 else:
                     episode.setField('airdate', common.FAKEDATE, self.tag)
@@ -105,12 +108,12 @@ class TraktTV(Provider):
                 episode.saveTemp()
 
 
-    def getElement(self, id, element=None):
+    def getElement(self, show_id, element=None, tag=None):
         tvdb_id = None
         if element is not None:
-            tvdb_id = element.getField('id', 'tvdb')
-        if id:
-            tvdb_id = id
+            tvdb_id = element.getField('show_id', 'tvdb')
+        if show_id:
+            tvdb_id = show_id
         if tvdb_id is None:
             return False
 
@@ -122,7 +125,7 @@ class TraktTV(Provider):
         self._build_show(_show, fakeRoot, mediaType)
 
         for ele in fakeRoot.decendants:
-            if int(ele.getField('id', 'tvdb')) == int(tvdb_id):
+            if int(ele.getField('show_id', 'tvdb')) == int(tvdb_id):
                 return ele
         return False
 
