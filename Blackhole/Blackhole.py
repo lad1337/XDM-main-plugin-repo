@@ -28,7 +28,7 @@ import os, re
 
 
 class Blackhole(Downloader):
-    version = "0.6"
+    version = "0.7"
     identifier = "de.lad1337.blackhole"
     types = []
     _config = {'monitor_path':'',
@@ -79,6 +79,9 @@ class Blackhole(Downloader):
                     yield (dirpath, f, r[0], r[1])
 
     def getElementStaus(self, element):
+        if not self.c.monitor_path:
+            return (common.UNKNOWN, Download(), 'No monitor path set')
+
         snatched = [d for d in element.downloads if d.status == common.SNATCHED]
         rated_paths = sorted(self._ratePaths(self.c.monitor_path, snatched), key=lambda x:x[-1], reverse=True)
         if len(rated_paths) > 0:

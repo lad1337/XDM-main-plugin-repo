@@ -26,7 +26,7 @@ from dateutil import parser
 import trakt.tv
 
 class TraktTV(Provider):
-    version = "0.6"
+    version = "0.7"
     identifier = "de.lad1337.trakt.tv"
     _tag = 'trakt'
     _additional_tags = ['tvdb']
@@ -98,8 +98,7 @@ class TraktTV(Provider):
                 episode.setField('overview', _episode['overview'], self.tag)
                 episode.setField('id', _episode['tvdb_id'], "tvdb")
                 if _episode['first_aired_iso']:
-                    airdate = parser.parse(
-                        (_episode['first_aired_iso'])
+                    airdate = (parser.parse(_episode['first_aired_iso'])
                         - datetime.timedelta(hours=self.c.release_delta))
                     episode.setField('airdate', airdate, self.tag)
                 else:
