@@ -2,6 +2,22 @@
     "name": "XDM main repo", 
     "info_url": "https://github.com/lad1337/XDM-main-plugin-repo/", 
     "plugins": {
+        "de.lad1337.anime": [
+            {
+                "major_version": 0, 
+                "minor_version": 4, 
+                "name": "Anime", 
+                "type": "MediaTypeManager", 
+                "format": "zip", 
+                "desc": "Anime support", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    18
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
         "de.lad1337.anime.simplemover": [
             {
                 "major_version": 0, 
@@ -21,11 +37,27 @@
         "de.lad1337.blackhole": [
             {
                 "major_version": 0, 
-                "minor_version": 7,
+                "minor_version": 7, 
                 "name": "Blackhole", 
                 "type": "Downloader", 
                 "format": "zip", 
                 "desc": "This will download the download link into a file. It can search a folder to check for the status of a download.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    18
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.blackwhitelist": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "BlackWhiteList", 
+                "type": "DownloadFilter", 
+                "format": "zip", 
+                "desc": "Element specific black and white list filter.", 
                 "xdm_version": [
                     0, 
                     5, 
@@ -466,6 +498,22 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ], 
+        "de.lad1337.simpleanidb": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "AniDB", 
+                "type": "Provider", 
+                "format": "zip", 
+                "desc": "Anime info from http://anidb.net", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    18
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
         "de.lad1337.tmdb": [
             {
                 "major_version": 0, 
@@ -485,7 +533,7 @@
         "de.lad1337.trakt.tv": [
             {
                 "major_version": 0, 
-                "minor_version": 8,
+                "minor_version": 8, 
                 "name": "TraktTV", 
                 "type": "Provider", 
                 "format": "zip", 
@@ -565,7 +613,7 @@
         "de.lad1337.xem.names": [
             {
                 "major_version": 0, 
-                "minor_version": 5, 
+                "minor_version": 6, 
                 "name": "XEMNames", 
                 "type": "SearchTermFilter", 
                 "format": "zip", 
