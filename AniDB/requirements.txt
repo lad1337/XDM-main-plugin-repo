@@ -1,0 +1,1 @@
+git+git://github.com/lad1337/simpleanidb.git#egg=simpleanidb

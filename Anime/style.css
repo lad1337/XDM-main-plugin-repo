@@ -1,0 +1,225 @@
+.de-lad1337-anime .Show,
+.de-lad1337-anime .Show .info,
+.de-lad1337-anime .Show .info>img,
+.de-lad1337-anime .Show .info .progress,
+.de-lad1337-anime .seasons,
+.de-lad1337-anime .seasons img,
+.de-lad1337-anime .seasons .progress{
+    -webkit-transition: all 0.4s ease-in-out;
+    -moz-transition: all 0.4s ease-in-out;
+    -o-transition: all 0.4s ease-in-out;
+    transition: all 0.4s ease-in-out;
+}
+
+.de-lad1337-anime .Anime{
+    position: relative;
+}
+
+.de-lad1337-anime .Show{
+    display: inline-block;
+    position: relative;
+    padding: 10px 40px 0 0;
+    width: 136px;
+    vertical-align: top;
+}
+
+.de-lad1337-anime .Show.status-temp,
+.de-lad1337-anime .Show.status-temp .info,
+.de-lad1337-anime .Show.status-temp.active
+.de-lad1337-anime .Show.status-temp.active .info{
+    width: 100%;
+}
+
+.de-lad1337-anime .Show.active{
+    width: 100%;
+    padding-right:0;
+}
+
+.de-lad1337-anime .Show .info{
+    width: 136px;
+    display: inline-block;
+}
+
+.de-lad1337-anime .Show h2{
+    font-size: 14px;
+    line-height: 16px;
+    text-align: center;
+}
+
+.de-lad1337-anime .Show .poster{
+    height: 200px;
+    position: relative;
+}
+
+.de-lad1337-anime .Show>.info .progress{
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+    width: 136px;
+    border-radius: 0;
+    margin: 0;
+    opacity: 0;
+}
+
+.de-lad1337-anime .Show.active>.info .progress,
+.de-lad1337-anime .poster:hover .progress{
+    opacity: 1;
+}
+
+.de-lad1337-anime .episodes-container{
+    display: none;
+    width: calc(100% - 160px);
+    float: right;
+}
+
+.de-lad1337-anime .episodes-container th .icon-check{
+    cursor: pointer;
+}
+
+.de-lad1337-anime .Show.active .episodes-container{
+    display: block;
+}
+
+.de-lad1337-anime .Episode tr.episode-number{
+    width: 100px;
+}
+
+.de-lad1337-anime .Episode td{
+    vertical-align: middle;
+}
+
+.de-lad1337-anime .Episode .title img{
+    height: 30px;
+    margin-right: 10px;
+    border: 1px solid grey;
+    box-sizing: border-box;
+}
+
+.de-lad1337-anime .Episode td.action{
+    width: 145px;
+}
+
+.de-lad1337-anime .Episode td.action .action-delete,
+.de-lad1337-anime .Episode td.action .info-config{
+    display: none;
+}
+
+.de-lad1337-anime .Episode .btn-group>.btn:nth-child(2) {
+    margin-left: 0;
+    -webkit-border-top-left-radius: 4px;
+    -moz-border-radius-topleft: 4px;
+    border-top-left-radius: 4px;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+.de-lad1337-anime .episodes-container{
+    display: none;
+}
+
+.de-lad1337-anime .episodes-container th .icon-check{
+    cursor: pointer;
+}
+
+.de-lad1337-anime .Episode p.overview{
+    display: none;
+}
+
+.de-lad1337-anime.episode-tooltip p.overview{
+    display: block;
+}
+
+.de-lad1337-anime .Show>.info .buttons{
+    display: none;
+}
+
+.de-lad1337-anime .Show.active>.info .buttons{
+    display: inline-block;
+    left: 0;
+    top: 280px;
+}
+
+
+.de-lad1337-anime .Show.active>.info .buttons ul.external{
+    margin:10px 0 0 0;
+}
+
+.de-lad1337-anime .Show.active>.info .buttons ul.external li{
+    list-style: none;
+}
+
+.de-lad1337-anime .episodes-container table{
+    min-height: 200px;
+    background-size: cover;
+}
+
+.de-lad1337-anime .episodes-container table.loading{
+    background-size: 40px 40px;
+}
+
+.de-lad1337-anime .episodes-container .table td{
+    border-top: none;
+}
+
+.de-lad1337-anime div.dataTables_paginate {
+    float: right;
+    margin: 0;
+}
+
+
+.de-lad1337-anime .Episode .sxxexx{
+    visibility: hidden;
+}
+.de-lad1337-anime .Episode:hover .sxxexx{
+    visibility: visible;
+}
+.de-lad1337-anime .buttons .btn.switch{
+    
+}
+
+/* entire container, keeps perspective */
+.de-lad1337-anime .episodes-container {
+    -webkit-perspective: 1200;
+    perspective: 1200;
+}
+/* flip the pane when hovered */
+.de-lad1337-anime .episodes-container.flipped .flipper {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+
+/* flip speed goes here */
+.de-lad1337-anime .flipper {
+    transition: 0.6s;
+    -webkit-transform-style: preserve-3d;
+    transform-style: preserve-3d;
+
+}
+
+/* hide back of pane during swap */
+.de-lad1337-anime .episodes-container .front,
+.de-lad1337-anime .episodes-container .front *,
+.de-lad1337-anime .episodes-container .details{
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    top: 0;
+    left: 0;
+}
+
+/* front pane, placed above back */
+.de-lad1337-anime .flipper .front {
+    z-index: 2;
+}
+.de-lad1337-anime .flipped .flipper .front {
+    z-index: 0;
+    opacity: 0;
+}
+/* back, initially hidden pane */
+.de-lad1337-anime .flipper .details {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+    top: 0;
+    position: absolute;
+}

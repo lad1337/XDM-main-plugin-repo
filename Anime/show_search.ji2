@@ -1,0 +1,9 @@
+<div class="Show active {{statusCssClass}}" data-id="{{this.id}}">
+    <div class="info">
+
+        <h2>{{this.title}} {{actionButtons}}</h2>
+        <h2>{{this.start_date}}</h2>
+        {{this.description}}
+        <div class="clearfix"></div>
+    </div>
+</div>

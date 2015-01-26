@@ -29,54 +29,90 @@ from dateutil import parser
 my_install_folder = os.path.dirname(__file__)
 
 class XEMNames(SearchTermFilter):
-    version = "0.5"
+    version = "0.6"
     identifier = "de.lad1337.xem.names"
     addMediaTypeOptions = 'runFor'
 
-    _hidden_config = {'last_cache': ''}
+    _hidden_config = {
+        'last_cache_tvdb': '',
+        'last_cache_anidb': ''
+    }
     def compare(self, element, terms):
         if element.type != "Episode":
             log("i only work for Episodes, i got a %s" % element.type)
             return terms
-        show = element.parent.parent
+
         new_names = []
-        for xem_name_data in self._names_for_show(show):
-            for xem_name, season in xem_name_data.items():
-                if element.parent.number == season or season == -1:
-                    data = {"show_name": xem_name,
-                            "s#": element.parent.number,
-                            "e#": element.number
-                            }
-                    cur_name = u"{show_name} s{s#:0>2}e{e#:0>2}".format(**data)
-                    new_names.append(cur_name)
+        manager = element.manager
+        if "tv" in manager.identifier:
+            show = element.parent.parent
+            new_names = self._build_terms_for_tv(
+                element, self._names_for_show(show))
+        if "anime" in manager.identifier:
+            show = element.parent
+            new_names = self._build_terms_for_anime(
+                element, self._names_for_show(show))
+
         terms = new_names + terms
         return terms
 
+    def _build_terms_for_anime(self, episode, names_data):
+        new_terms = []
+        for xem_name_data in names_data:
+            for xem_name, season in xem_name_data.items():
+                if season != -1:
+                    continue
+                new_terms.append(
+                    "{show_name} {number:0>2}".format(
+                        show_name=xem_name,
+                        number=episode.number)
+                )
+        return new_terms
+
+    def _build_terms_for_tv(self, episode, names_data):
+        new_terms = []
+        for xem_name_data in names_data:
+            for xem_name, season in xem_name_data.items():
+                if episode.parent.number == season or season == -1:
+                    data = {"show_name": xem_name,
+                            "s#": episode.parent.number,
+                            "e#": episode.number
+                            }
+                    cur_name = u"{show_name} s{s#:0>2}e{e#:0>2}".format(**data)
+                    new_terms.append(cur_name)
+        return new_terms
+
     def _names_for_show(self, show):
-        tvdb_id = str(show.getField('id', 'tvdb'))
-        if not tvdb_id:
-            log("no tvdb_id found for %s" % show)
-            return []
-        names = self._getNames()
-        if tvdb_id in names:
-            log("found the show by tvdb id on xem")
-            return names[tvdb_id]
-        else:
-            return []
+        all_names = []
+        for type in ("tvdb", "anidb"):
+            orign_id = str(show.getField('id', type))
+            log("{}_id for {} is {}".format(type, show, orign_id))
+            if not orign_id:
+                continue
+            names = self._getNames(type)
+            if orign_id in names:
+                all_names += names[orign_id]
+        return all_names
 
-
-    def _getNames(self, force=False):
-        cache_file_path = os.path.join(my_install_folder, 'cache.json')
-        if (not self.hc.last_cache or not os.path.isfile(cache_file_path) or parser.parse(self.hc.last_cache) < datetime.now() - timedelta(days=2)) or force:
+    def _getNames(self, origin, force=False):
+        cache_file_path = os.path.join(my_install_folder, 'cache.{}.json'.format(origin))
+        last_cache = getattr(self.hc, "last_cache_{}".format(origin))
+        if (not last_cache or not os.path.isfile(cache_file_path) or parser.parse(last_cache) < datetime.now() - timedelta(days=1)) or force:
             log("getting new names from xem")
-            r = requests.get("http://thexem.de/map/allNames?origin=tvdb&seasonNumbers=1")
+            params = {
+                "origin": origin,
+                "seasonNumbers": 1
+            }
+            r = requests.get("http://thexem.de/map/allNames", params=params)
             names = r.json()["data"]
             log("saving xem names to %s" % cache_file_path)
             with open(cache_file_path, "w") as cache:
                 cache.write(json.dumps(names))
-            self.hc.last_cache = str(datetime.now())
+            setattr(
+                self.hc, "last_cache_{}".format(origin), str(datetime.now()))
 
-        with open(os.path.join(my_install_folder, 'cache.json'), "r") as cache:
+
+        with open(cache_file_path, "r") as cache:
             out = json.loads(cache.read())
         return out
 
