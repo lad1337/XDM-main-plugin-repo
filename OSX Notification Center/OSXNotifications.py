@@ -5,7 +5,7 @@ class OSXNotifications(Notifier):
     screenName = 'OSX Notification Center'
     identifier = 'de.lad1337.osxnotifications'
     version = "0.2"
-    _config = {}
+    config = {}
     single = True
 
     def _sendEnable(self):

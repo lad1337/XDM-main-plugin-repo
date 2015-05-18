@@ -29,7 +29,7 @@ from base64 import standard_b64encode
 class NZBGet(Downloader):
     version = "0.7"
     identifier = "de.lad1337.nzbget"
-    _config = {'port': 6789,
+    config = {'port': 6789,
                'host': 'localhost',
                'user': 'nzbget',
                'password': '',

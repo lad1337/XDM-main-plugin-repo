@@ -28,7 +28,7 @@ class VideoQuality(DownloadFilter):
     identifier = 'de.lad1337.video.quality'
     screenName = 'Video Quality'
     addMediaTypeOptions = 'runFor'
-    _config = {'format_select': '',
+    config = {'format_select': '',
                'screenSize_select': '',
                'audioCodec_select': '',
                'any_all_select': ''}

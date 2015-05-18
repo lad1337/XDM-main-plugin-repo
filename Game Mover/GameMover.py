@@ -28,7 +28,7 @@ import shutil
 
 
 class GameMover(PostProcessor):
-    _config = {"replace_space_with": "_",
+    config = {"replace_space_with": "_",
                }
     version = "0.2"
     identifier = 'de.lad1337.games.mover'

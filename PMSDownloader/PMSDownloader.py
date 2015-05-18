@@ -38,7 +38,7 @@ class PMSDownloader(Downloader):
     identifier = "de.lad1337.pms.downloader"
     types = ['de.lad1337.pms']
     addMediaTypeOptions = False
-    _config = {'tempoary_download_path': xdm.TEMPPATH,
+    config = {'tempoary_download_path': xdm.TEMPPATH,
                'final_download_path': os.path.expanduser("~/Download")}
     config_meta = {'plugin_desc': 'This will download the download link into a file. It can not check for the status of a download.'}
 

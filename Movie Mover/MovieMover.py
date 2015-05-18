@@ -31,7 +31,7 @@ import shutil
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
     version = "0.17"
-    _config = {"replace_space_with": " ",
+    config = {"replace_space_with": " ",
                'final_movie_path': ""
                }
     screenName = 'Movie Mover'

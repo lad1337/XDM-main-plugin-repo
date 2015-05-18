@@ -25,9 +25,10 @@ import xml.etree.ElementTree as ET
 
 BASE_URL = 'http://www.goodreads.com'
 
+OAuth = common.PM.getPluginByIdentifier("de.lad1337.oauth").OAuth
 
 class Goodreads(Provider):
-    _config = {'api_key': ''}
+    config = {'api_key': ''}
     config_meta = {'plugin_desc': 'Book information from http://www.goodreads.com/. Get your own developer api key from http://www.goodreads.com/api/keys.'}
     version = "0.4"
     identifier = "de.lad1337.goodreads"
@@ -35,6 +36,12 @@ class Goodreads(Provider):
     screenName = 'Goodreads'
     single = True
     types = ['de.lad1337.books']
+
+    oauth = OAuth(
+        "TWmiwUX5XviBfpEryYuAaQ",
+        "sRTit8mnXF9CPq3GBtbkh1GmIT8lFK0esj5NAAlLek",
+        base_url="http://www.goodreads.com"
+    )
 
     def searchForElement(self, term=''):
         self.progress.reset()

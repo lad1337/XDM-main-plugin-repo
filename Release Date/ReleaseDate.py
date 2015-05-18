@@ -31,7 +31,7 @@ class ReleaseDate(DownloadFilter):
     screenName = 'Release Date'
     addMediaTypeOptions = 'runFor'
     stages = [DownloadFilter._pre_search]
-    _config = {'release_threshold_select': 0}
+    config = {'release_threshold_select': 0}
 
     config_meta = {'release_threshold_select': {'human': 'Time to ignore the release date prior the release date.'}}
 

@@ -28,7 +28,7 @@ class ImdbWatchlist(MediaAdder):
     identifier = "de.lad1337.imdbwatchlist"
     addMediaTypeOptions = False
     screenName = 'IMDb Watchlist'
-    _config = {'watchlist_url': ''}
+    config = {'watchlist_url': ''}
     config_meta = {'plugin_desc': 'Add movies from your http://www.imdb.com watchlist.',
                    'watchlist_url': {'human': 'URL of your CSV watchlist on IMDb'}}
 

@@ -30,7 +30,7 @@ class Boxcar(Notifier):
     identifier = "de.lad1337.boxcar"
     screenName = "Boxcar"
     addMediaTypeOptions = False
-    _config = {'email': '',
+    config = {'email': '',
                'screenname': 'XDM'}
 
     def _sendTest(self, email, screenname):

@@ -31,8 +31,10 @@ class Blackhole(Downloader):
     version = "0.7"
     identifier = "de.lad1337.blackhole"
     types = []
-    _config = {'monitor_path':'',
-               'search_threshold':0.75}
+    config = {
+        'monitor_path': '',
+        'search_threshold': 0.75
+    }
     config_meta = {'plugin_desc': 'This will download the download link into a file. It can search a folder to check for the status of a download.',
                    'monitor_path':{'human':'Finished Downloads will be at', 'desc':'The path where Blackhole will be searching for finished downloads'},
                    'search_threshold':{'human':'Search Threshold for Finished Downloads', 'desc':'a number between 0.0 and 1.0 indicating how well a found file name must match the download filename to trigger a finished download'}}

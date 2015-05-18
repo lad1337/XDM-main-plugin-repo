@@ -30,7 +30,7 @@ class Mover(PostProcessor):
     identifier = 'de.lad1337.simple.mover'
     screenName = 'Mover'
     types = []
-    _config = {'copy': False}
+    config = {'copy': False}
     config_meta = {'plugin_desc': 'This will move the final download folder to the given destination.',
                    'copy': {'desc': 'If this is on the Folder will be copied instead of moved.'}}
     useConfigsForElementsAs = 'Path'
@@ -41,11 +41,12 @@ class Mover(PostProcessor):
             sufix = mtm.type
             h_name = '%s for %s' % (prefix, sufix)
             c_name = helper.replace_some('%s %s %s' % (mtm.name, prefix.lower(), sufix))
-            self._config[c_name] = None
-            self.config_meta[c_name] = {'human': h_name,
-                                        'type': self.useConfigsForElementsAs.lower(),
-                                        'mediaType': mtm.mt,
-                                        'element': mtm.root}
+            self.config[c_name] = None
+            self.config_meta[c_name] = {
+                'human': h_name,
+                'type': self.useConfigsForElementsAs.lower(),
+                'mediaType': mtm.mt,
+                'element': mtm.root}
 
         PostProcessor.__init__(self, instance=instance)
 

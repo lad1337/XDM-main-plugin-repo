@@ -29,7 +29,7 @@ class MP32iTunes(PostProcessor):
     identifier = 'de.lad1337.music.mp32itunes'
     version = "0.4"
     screenName = 'MP3 2 iTunes'
-    _config = {'delete_files': False,
+    config = {'delete_files': False,
                'update_match': False,
                'hide_itunes': False}
     addMediaTypeOptions = 'runFor'

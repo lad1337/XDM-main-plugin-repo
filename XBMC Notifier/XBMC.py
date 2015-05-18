@@ -6,7 +6,7 @@ class XBMC(Notifier):
     identifier = 'de.lad1337.movies.xbmc'
     screenName = 'XBMC Notifier'
     addMediaTypeOptions = False
-    _config = {'host': 'http://localhost',
+    config = {'host': 'http://localhost',
                'port': 8080,
                'username': '',
                'password': ''}

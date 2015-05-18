@@ -65,7 +65,7 @@ class Game(object):
     def getSearchTerms(self):
         return [self.name]
 
-    def getName(self):
+    def get_name(self):
         return '%s' % self.name
 
     def getReleaseDate(self):
@@ -95,20 +95,23 @@ class Platform(object):
         </li>
         """ % (activeString, activeString)
 
-    def getName(self):
+    def get_name(self):
         return '%s' % self.alias
 
 
 class Games(MediaTypeManager):
     version = "0.4"
-    _config = {'enabled': True,
-               'default_platform_select': '',
-               'fanart_as_background': False,
-               'row_width_select': 4}
-    config_meta = {'plugin_desc': 'Games support. For, Wii, Wii U, Xbox 360, PS3 and PC',
-                   'default_platform_select': {'human': 'Default active platform'},
-                   'fanart_as_background': {'desc': 'If we have a fanart image use it as the background for the game tile.'},
-                   'row_width_select': {'human': 'Number of tiles in a row'}}
+    config = {
+        'enabled': True,
+        'default_platform_select': '',
+        'fanart_as_background': False,
+        'row_width_select': 4}
+    config_meta = {
+        'plugin_desc': 'Games support. For, Wii, Wii U, Xbox 360, PS3 and PC',
+        'default_platform_select': {'human': 'Default active platform'},
+        'fanart_as_background': {'desc': 'If we have a fanart image use it as the background for the game tile.'},
+        'row_width_select': {'human': 'Number of tiles in a row'}
+    }
     order = (Platform, Game)
     download = Game
     # TODO: implement that stuff or dont ... donno
@@ -128,15 +131,16 @@ class Games(MediaTypeManager):
     addConfig = {}
     addConfig[Indexer] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'Games'}]
     defaultElements = {}
-    defaultElements[Platform] = [{'tgdb':{'name': 'Nintendo Wii', 'alias':'Wii', 'id': 9}},
-                                 {'tgdb':{'name': 'Microsoft Xbox 360', 'alias': 'Xbox360', 'id': 15}},
-                                 {'tgdb':{'name': 'Sony Playstation 3', 'alias': 'PS3', 'id': 12}},
-                                 {'tgdb':{'name': 'PC', 'alias': 'PC', 'id': 1}},
-                                 {'tgdb':{'name': 'Nintendo Wii U', 'alias': 'WiiU', 'id': 38}}]
+    defaultElements[Platform] = [
+        {'tgdb':{'name': 'Nintendo Wii', 'alias':'Wii', 'id': 9}},
+        {'tgdb':{'name': 'Microsoft Xbox 360', 'alias': 'Xbox360', 'id': 15}},
+        {'tgdb':{'name': 'Sony Playstation 3', 'alias': 'PS3', 'id': 12}},
+        {'tgdb':{'name': 'PC', 'alias': 'PC', 'id': 1}},
+        {'tgdb':{'name': 'Nintendo Wii U', 'alias': 'WiiU', 'id': 38}}]
 
     def _default_platform_select(self):
         out = {}
-        for platform in Element.select().where(Element.mediaType == self.mt, Element.type == 'Platform'):
+        for platform in Element.objects(media_type=self.mt, type='Platform'):
             out[platform.alias] = platform.name
         return out
 
@@ -144,7 +148,7 @@ class Games(MediaTypeManager):
         # dont be confused its the bootstrap grid thing
         return {3: 4, 4: 3, 6: 2}
 
-    def makeReal(self, game, status):
+    def make_real(self, game, status):
         oldPlatform = game.parent
         for platform in Element.select().where(Element.type == oldPlatform.type,
                                                Element.mediaType == self.mt,

@@ -33,7 +33,7 @@ class PMSIndex(Indexer):
     version = "0.2"
     identifier = "de.lad1337.pms.index"
     addMediaTypeOptions = ['de.lad1337.music']
-    _config = {}
+    config = {}
     config_meta = {'plugin_desc': 'Generic Newznab indexer. Categories are there numerical id of Newznab, use "Get categories"'}
     types = ['de.lad1337.pms']
 
@@ -82,7 +82,7 @@ class PMS(DownloadType):
     version = "0.1"
     identifier = 'de.lad1337.pms'
     extension = 'mp3'
-    _config = {'enabled': True}
+    config = {'enabled': True}
     config_meta = {'plugin_desc': 'NZB / Usenet download type.'}
 
 

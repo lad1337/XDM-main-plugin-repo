@@ -30,7 +30,7 @@ class Pushover(Notifier):
     identifier = "de.lad1337.pushover.app"
     screenName = "Pushover"
     addMediaTypeOptions = False
-    _config = {'user_key': ''}
+    config = {'user_key': ''}
 
     def _sendTest(self, user_key):
         log("Testing Pushover")

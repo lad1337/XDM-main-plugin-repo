@@ -29,7 +29,7 @@ class Fanzub(Indexer):
     identifier = "de.lad1337.fanzub"
     types = ['de.lad1337.nzb']
     addMediaTypeOptions = "runFor"
-    _config = {}
+    config = {}
     config_meta = {'plugin_desc': 'Anime usenet indexer'}
 
     def searchForElement(self, element):

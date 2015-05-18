@@ -26,14 +26,14 @@ class Episode(object):
         with open (fp, "r") as template:
             return template.read()
 
-    def getName(self):
-        return "%s e%02d %s" % (self.parent.getName(), self.number, self.title)
+    def get_name(self):
+        return "%s e%02d %s" % (self.parent.get_name(), self.number, self.title)
 
     def getReleaseDate(self):
         return self.airdate
 
     def getIdentifier(self, tag=None):
-        return self.number
+        return self.get_field('number', tag)
 
 class Show(object):
     title = ''
@@ -45,11 +45,11 @@ class Show(object):
     synonyms = ''
     _orderBy = 'title'
 
-    def getName(self):
+    def get_name(self):
         return self.title
 
     def getIdentifier(self, tag=None):
-        return self.getField('id', tag)
+        return self.get_field('id', tag)
 
     def getTemplate(self):
         fp = os.path.join(location, "show.ji2")
@@ -61,10 +61,11 @@ class Show(object):
         with open (fp, "r") as template:
             return template.read()
 
+
 class Anime(MediaTypeManager):
     version = "0.4"
     single = True
-    _config = {'enabled': True,
+    config = {'enabled': True,
                'page_size': 15}
 
     config_meta = {'plugin_desc': 'Anime support'}
@@ -75,16 +76,6 @@ class Anime(MediaTypeManager):
     addConfig[Downloader] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'Anime'}]
     addConfig[Indexer] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'Anime'}]
     addConfig[PostProcessor] = [{'type':'path', 'default': None, 'prefix': 'Final path for', 'sufix': 'Anime'}]
-
-    def makeReal(self, show, status):
-        show.parent = self.root
-        log("{}{}{}".format(show, status, common.getStatusByID(self.c.default_new_status_select)))
-        show.status = common.getStatusByID(self.c.default_new_status_select)
-        show.save()
-        common.Q.put(('image.download', {'id': show.id}))
-        for episode in list(show.children):
-            episode.save()
-        return True
 
     def headInject(self):
         return """
@@ -97,9 +88,14 @@ class Anime(MediaTypeManager):
 
     def _episode_count(self, anime, statuses=False):
         if statuses:
-            return Element.select().where(Element.type == 'Episode',
-                                          Element.parent == anime,
-                                          Element.status << statuses).count()
+            return Element.objects(
+                type="Episode",
+                parent=anime,
+                status__in=statuses
+            ).count()
         else:
-            return Element.select().where(Element.type == 'Episode',
-                                          Element.parent == anime).count()
+
+            return Element.objects(
+                type="Episode",
+                parent=anime
+            ).count()

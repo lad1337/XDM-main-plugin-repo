@@ -17,7 +17,7 @@ class TraktWatchlist(MediaAdder):
     identifier = "de.lad1337.traktwatchlist"
     addMediaTypeOptions = False
     screenName = 'Trakt Watchlist'
-    _config = {'username': '',
+    config = {'username': '',
                'password': '',
                'apikey': '',
                'remove_movies': True,

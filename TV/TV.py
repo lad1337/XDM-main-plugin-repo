@@ -108,7 +108,7 @@ class TV(MediaTypeManager):
     version = "0.9"
     xdm_version = (0, 5, 17)
     single = True
-    _config = {
+    config = {
         'enabled': True,
         'show_next_on_overview': True,
         'next_episode_info_select': 'both'}
@@ -121,7 +121,7 @@ class TV(MediaTypeManager):
     addConfig[Indexer] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'TV'}]
     addConfig[PostProcessor] = [{'type':'path', 'default': None, 'prefix': 'Final path for', 'sufix': 'TV'}]
 
-    def makeReal(self, show, status):
+    def make_real(self, show, status):
         show.parent = self.root
         show.status = common.getStatusByID(self.c.default_new_status_select)
         show.save()

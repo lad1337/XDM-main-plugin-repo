@@ -10,7 +10,7 @@ class PlexStatus(MediaAdder):
     version = "0.4"
     identifier = "de.lad1337.plexstatus"
     addMediaTypeOptions = False
-    _config = {'host': 'localhost',
+    config = {'host': 'localhost',
                'port': 32400}
 
     config_meta = {'plugin_desc': 'Sets the status of Episodes to {} if found in plex. But only for {} episodes'.format(

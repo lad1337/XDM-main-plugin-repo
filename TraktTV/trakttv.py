@@ -25,6 +25,8 @@ from dateutil import parser
 
 import trakt.tv
 
+OAuth = common.PM.getPluginByIdentifier("de.lad1337.oauth").OAuth
+
 class TraktTV(Provider):
     version = "0.8"
     identifier = "de.lad1337.trakt.tv"
@@ -32,12 +34,27 @@ class TraktTV(Provider):
     _additional_tags = ['tvdb']
     single = True
     types = ['de.lad1337.tv']
-    _config = {'api_key': '',
-               'release_delta': 0,
-              }
-    config_meta = {'plugin_desc': 'TV show info from http://trakt.tv. Get your api key from http://trakt.tv/settings/api',
-                   'release_delta': {'human': 'Timedelta for the air time in hours', 'desc': 'e.g. -8 or 12'}
-                  }
+
+    oauth_client_id = "8224c88cc14f27ab6e0d894dec500f7c46bd5de71fdc1b27cac6be8c027f023b"
+    oauth_client_secret = "1f2d6776d86e0265585b3b6488bc62892079cfa9298a69aa363e61b4d7b8fccd"
+    oauth_authorize_url = "http://trakt.tv/oauth/authorize"
+    oauth_token_url = "http://trakt.tv/oauth/token"
+
+    oauth = OAuth(
+        "8224c88cc14f27ab6e0d894dec500f7c46bd5de71fdc1b27cac6be8c027f023b",
+        "1f2d6776d86e0265585b3b6488bc62892079cfa9298a69aa363e61b4d7b8fccd",
+        base_url="http://trakt.tv"
+    )
+
+    config = {
+        'api_key': '',
+        'release_delta': 0,
+        "oauth_token": ""
+    }
+    config_meta = {
+        'plugin_desc': 'TV show info from http://trakt.tv.',
+        'release_delta': {'human': 'Timedelta for the air time in hours', 'desc': 'e.g. -8 or 12'}
+    }
 
     def __init__(self, instance='Default'):
         Provider.__init__(self, instance=instance)

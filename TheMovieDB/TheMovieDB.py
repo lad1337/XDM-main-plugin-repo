@@ -31,7 +31,7 @@ class Tmdb(Provider):
     screenName = 'TheMovieDB'
     single = True
     types = ['de.lad1337.movies']
-    _config = {'enabled': True,
+    config = {'enabled': True,
                'img_size_select': 'm',
                'info_language_select': 'en'}
 

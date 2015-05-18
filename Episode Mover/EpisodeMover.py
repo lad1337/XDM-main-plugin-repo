@@ -41,7 +41,7 @@ class EpisodeMover(PostProcessor):
     identifier = 'de.lad1337.tv.simplemover'
     version = "0.6"
     types = ["de.lad1337.tv"]
-    _config = {'show_parent_path': "",
+    config = {'show_parent_path': "",
                'name_format': '{show_name}/Season {s#:0>2}/{show_name} - s{s#:0>2}e{e#:0>2} - {title}',
                }
 

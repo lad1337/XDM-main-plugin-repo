@@ -8,7 +8,7 @@ class Plex(Notifier):
     identifier = 'de.lad1337.movies.plex'
     screenName = 'Plex Notifier'
     addMediaTypeOptions = "runFor"
-    _config = {'host': 'http://localhost',
+    config = {'host': 'http://localhost',
                'port': 32400,
                'section_select': ''}
 

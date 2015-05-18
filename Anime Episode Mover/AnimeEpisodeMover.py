@@ -41,7 +41,7 @@ class AnimeEpisodeMover(PostProcessor):
     identifier = 'de.lad1337.anime.simplemover'
     version = "0.1"
     types = ["de.uranime.anime"]
-    _config = {'show_parent_path': "",
+    config = {'show_parent_path': "",
                'name_format': '{show_name}/{show_name} - {e#:0>2} - {title}',
                }
 

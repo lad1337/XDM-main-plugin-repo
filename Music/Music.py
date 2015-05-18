@@ -80,7 +80,7 @@ class Music(MediaTypeManager):
     version = "0.5"
     xdm_version = (0, 5, 14)
     single = True
-    _config = {'enabled': True}
+    config = {'enabled': True}
     config_meta = {'plugin_desc': 'Music support. Good for Albums'}
     order = (Artist, Album, Song)
     download = Album
@@ -90,7 +90,7 @@ class Music(MediaTypeManager):
     addConfig[Indexer] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'Music'}]
     addConfig[PostProcessor] = [{'type':'path', 'default': None, 'prefix': 'Final path for', 'sufix': 'Music'}]
 
-    def makeReal(self, album, status):
+    def make_real(self, album, status):
         oldArtist = album.parent
         for artist in list(Element.select().where(Element.type == oldArtist.type,
                                              Element.mediaType == self.mt,

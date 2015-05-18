@@ -33,7 +33,7 @@ class XEMNames(SearchTermFilter):
     identifier = "de.lad1337.xem.names"
     addMediaTypeOptions = 'runFor'
 
-    _hidden_config = {
+    _hiddenconfig = {
         'last_cache_tvdb': '',
         'last_cache_anidb': ''
     }

@@ -34,7 +34,7 @@ class TheGamesDB(Provider):
     _tag = 'tgdb'
     single = True
     types = ['de.lad1337.games']
-    _config = {'enabled': True}
+    config = {'enabled': True}
     config_meta = {'plugin_desc': 'THE information provider for games. Missing anything? check out http://thegamesdb.net'
                    }
     _pCache = {}

@@ -36,7 +36,7 @@ class Movie(object):
     def getTemplate(self):
         # this is this object !!
         # each field can be accesed directly
-        # special stiff like {{actions}} will be explained defined later
+        # special stuff like {{actions}} will be explained later
         # {{image}} will return the field value
         # {{this.image}} will return the local src
         # {{this.getField('image')}} will return the image obj. str(Image) is the local src
@@ -80,19 +80,19 @@ class Movie(object):
     def getSearchTerms(self):
         return ['%s %s' % (self.name, self.year)]
 
-    def getName(self):
+    def get_name(self):
         return '%s (%s)' % (self.name, self.year)
 
     def getReleaseDate(self):
         return self.release_date
 
     def getIdentifier(self, tag):
-        return self.getField('id', tag)
+        return self.get_field('id', tag)
 
 class Movies(MediaTypeManager):
     version = "0.9"
     xdm_version = (0, 5, 17)
-    _config = {'enabled': True}
+    config = {'enabled': True}
     config_meta = {'plugin_desc': 'Movies'}
     order = (Movie,)
     download = Movie
@@ -101,13 +101,6 @@ class Movies(MediaTypeManager):
     addConfig = {}
     addConfig[Indexer] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'Movies'}]
     addConfig[Downloader] = [{'type':'category', 'default': None, 'prefix': 'Category for', 'sufix': 'Movies'}]
-
-    def makeReal(self, movie, status):
-        movie.parent = self.root
-        movie.status = status
-        movie.save()
-        movie.downloadImages()
-        return True
 
     def headInject(self):
         return self._defaultHeadInject()

@@ -25,6 +25,7 @@ from libs import discogs_client as discogs
 import re
 discogs.user_agent = '%s +http://xdm.lad1337.de' % common.getVersionHuman()
 
+OAuth = common.PM.getPluginByIdentifier("de.lad1337.oauth").OAuth
 
 class Discogs(Provider):
     xdm_version = (99, 99, 99)
@@ -33,14 +34,27 @@ class Discogs(Provider):
     _tag = 'discogs'
     single = True
     types = ['de.lad1337.music']
-    _config = {'enabled': True,
+    config = {'enabled': True,
                'search_range_select': 'master'}
-    config_meta = {'plugin_desc': 'Information provider for music from http://www.discogs.com. Note: Image download is limited to 1000 per 24h per IP'
-                   }
+    config_meta = {
+        'plugin_desc': 'Information provider for music from http://www.discogs.com. Note: Image download is limited to 1000 per 24h per IP'
+    }
 
-    search_range_select_map = {'master': {'t': 'Master Releases', 'c': ('MasterRelease',)},
-                               'both': {'t': 'Master & Normal Releases', 'c': ('MasterRelease', 'Release')},
-                               'releases': {'t': 'Releases', 'c': ('Release',)}}
+    search_range_select_map = {
+        'master': {'t': 'Master Releases', 'c': ('MasterRelease',)},
+        'both': {'t': 'Master & Normal Releases', 'c': ('MasterRelease', 'Release')},
+        'releases': {'t': 'Releases', 'c': ('Release',)}
+    }
+
+    oauth = OAuth(
+        "mjdbIivOosoimlstofrw",
+        "rspGOethLnnrIBLoLijcmiRmaMXirugB",
+        "http://api.discogs.com/oauth/request_token",
+        "http://www.discogs.com/oauth/authorize",
+        "http://api.discogs.com/oauth/access_token",
+        headers={"user-agent": discogs.user_agent}
+    )
+
 
     def _search_range_select(self):
         out = {}
