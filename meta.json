@@ -162,6 +162,22 @@
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
         ], 
+        "de.lad1337.filesize": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "File Size", 
+                "type": "DownloadFilter", 
+                "format": "zip", 
+                "desc": "This plugin will filter out downloads by file size.", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    18
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
         "de.lad1337.filter.releasedate": [
             {
                 "major_version": 0, 
@@ -373,11 +389,27 @@
         "de.lad1337.nzbget": [
             {
                 "major_version": 0, 
-                "minor_version": 7, 
+                "minor_version": 8, 
                 "name": "NZBGet", 
                 "type": "Downloader", 
                 "format": "zip", 
                 "desc": "NZBGet downloader. Send NZBs and check for status", 
+                "xdm_version": [
+                    0, 
+                    5, 
+                    18
+                ], 
+                "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
+            }
+        ], 
+        "de.lad1337.oauth": [
+            {
+                "major_version": 0, 
+                "minor_version": 1, 
+                "name": "OAuth", 
+                "type": "System", 
+                "format": "zip", 
+                "desc": null, 
                 "xdm_version": [
                     0, 
                     5, 

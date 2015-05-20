@@ -27,13 +27,12 @@ from base64 import standard_b64encode
 
 
 class NZBGet(Downloader):
-    version = "0.7"
+    version = "0.8"
     identifier = "de.lad1337.nzbget"
     _config = {'port': 6789,
                'host': 'localhost',
                'user': 'nzbget',
                'password': '',
-               'respect_script_status': True,
                'ssl': False}
 
     _history = []
@@ -95,37 +94,41 @@ class NZBGet(Downloader):
     def getElementStaus(self, element):
         """returns a Status and path"""
         # log("Checking for status of %s in Sabnzbd" % element)
-        download = Download()
-        download.status = common.UNKNOWN
         if not self._history:
             self._getHistory()
         if not self._queue:
             self._getQueue()
 
-        for curListNameKey, curList in (('NZBName', self._queue), ('Name', self._history)):
-            for i in curList:
-                element_id = self._findElementID(i[curListNameKey])
-                download_id = self._findDownloadID(i[curListNameKey])
-                if element_id != element.id:
-                    continue
-                try:
-                    download = Download.get(Download.id == download_id)
-                except Download.DoesNotExist:
-                    pass
-                if curListNameKey == 'NZBName': # if we found it in the queue we are downloading it !
-                    return (common.DOWNLOADING, download, '')
+        def fake_download():
+            download = Download()
+            download.status = common.UNKNOWN
+            return download
 
-                if curListNameKey == 'Name': # history
-                    if self.c.respect_script_status: # do we respect script statuses ?
-                        if i['ParStatus'] == 'FAILURE' or i['ScriptStatus'] == 'FAILURE' or i['UnpackStatus'] == 'FAILURE':
-                            return (common.FAILED, download, '')
+        for queue_item in self._queue:
+            this_element, download = self._get_download(element, queue_item, "NZBName")
+            if this_element:
+                return common.DOWNLOADING, download or fake_download(), ''
 
-                    if i['ParStatus'] == 'FAILURE' or i['UnpackStatus'] == 'FAILURE':
-                        return (common.FAILED, download, '')
-                    else:
-                        return (common.DOWNLOADED, download, i['DestDir'])
-        else:
-            return (common.UNKNOWN, download, '')
+        for history_item in self._history:
+            this_element, download = self._get_download(element, history_item, "Name")
+            if not this_element:
+                continue
+            status = history_item["Status"]
+            if "FAILURE" in status or "DELETED" in status:
+                return common.FAILED, download or fake_download(), ""
+            if "SUCCESS" in status:
+                return common.DOWNLOADED, download or fake_download(), history_item["DestDir"]
+
+        return common.UNKNOWN, fake_download(), ""
+
+    def _get_download(self, element, item, key):
+        element_id, download_id, = self._findIDs(item[key])
+        if element_id != element.id:
+            return False, None
+        try:
+            return True, Download.get(Download.id == download_id)
+        except Download.DoesNotExist:
+            return True, None
 
     def _testConnection(self, host, port, password, user, ssl):
         url = self._baseUrl(host, port, password, user, ssl)
@@ -142,7 +145,6 @@ class NZBGet(Downloader):
                    'plugin_buttons': {'test_connection': {'action': _testConnection, 'name': 'Test connection'}},
                    'host': {'desc': 'Host without(!) the protocol scheme. NO http:// or http:// just localhost', 'on_live_change': _testConnection},
                    'port': {'on_live_change': _testConnection},
-                   'respect_script_status': {'human': 'Respect script statuses', 'desc': 'If this is on a failed script from NZBGet will report FAILED to XDM.'},
                    'ssl': {'human': 'SSL', 'desc': 'Sorry untested!', 'on_live_change': _testConnection},
                    'password': {'on_live_change': _testConnection}
                    }
