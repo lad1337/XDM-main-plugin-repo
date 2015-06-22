@@ -31,9 +31,9 @@ wanted_ratio: {{wanted_ratio}}
 {%set total = done_ratio + loading_ratio + wanted_ratio%}
 total: {{total}}
 -->
-<div class="Show" data-id="{{this.id}}">
+<div class="Show {{statusCssClass}}" data-id="{{this.id}}">
     <div class="info well" style="background-image: linear-gradient(to right, rgba(0,0,0,1) 0%,rgba(255,255,255,0) 100%), url({{this.fanart_image}});">
-        <img src="{{this.poster_image}}" class="poster box-shadow"/><img src="{{this.banner_image}}" class="banner"/>
+        <img src="{{this.poster_image}}" class="poster box-shadow"/><img src="{{this.banner_image}}" class="banner btn-striped"/>
         <h3>{{this.title}}</h3>
         <h4>{{this.year}}</h4>
         {%if next_episode %}

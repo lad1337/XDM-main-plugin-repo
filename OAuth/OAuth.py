@@ -4,7 +4,7 @@
 # This file is part of a XDM plugin.
 #
 # XDM plugin.
-# Copyright (C) 2013  Dennis Lutter
+# Copyright (C) 2015  Dennis Lutter
 #
 # This plugin is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -19,14 +19,81 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see http://www.gnu.org/licenses/.
 
-import urllib
-import urlparse
-import time
+import json
 from xdm.plugins import *
 from xdm import common
-import oauth2 as oauth
+
+from requests_oauthlib import OAuth1Session
+from oauthlib.oauth1 import Client
+
+from requests_oauthlib import OAuth2Session
 
 
+def redirect_url_base():
+    host = common.SYSTEM.c.socket_host
+    if host == "0.0.0.0":
+        host = "localhost"
+    protocol = "https" if common.SYSTEM.c.https else "http"
+    port = common.SYSTEM.c.port
+    port_suffix = "" if port == 80 else ":%s" % port
+    webroot = common.SYSTEM.c.webRoot
+
+    local_base = "{protocol}://{host}{port_suffix}{webroot}".format(
+        **locals()
+    )
+
+    return "{}/oauth".format(local_base)
+
+def save_tokens(plugin, tokens):
+    for key, value in tokens.items():
+        setattr(plugin.hc, key, value)
+
+
+class MyHeaderClientOAuth1(Client):
+    def __init__(self, *args, **kwargs):
+        self.extra_headers = kwargs.pop("extra_headers") if "extra_headers" in kwargs else None
+        super(MyHeaderClientOAuth1, self).__init__(*args, **kwargs)
+
+    def _render(self, *args, **kwargs):
+        uri, headers, body = super(MyHeaderClientOAuth1, self)._render(*args, **kwargs)
+        if self.extra_headers:
+            headers.update(self.extra_headers)
+        return uri, headers, body
+
+class OAuthBase(object):
+
+    def _init_session(self):
+        pass
+
+    def set_plugin(self, plugin):
+        self.plugin = plugin
+        self._init_session()
+        if not self.authorized:
+            self.message_user_to_authenticate()
+
+    def info(self):
+        data = self._info()
+        return True, data, "OAuth info"
+
+    @property
+    def authorized(self):
+        return self.session.authorized
+
+    def reset(self):
+        for key in self.keys:
+            setattr(self.plugin.hc, key, "")
+        self._init_session()
+
+    def message_user_to_authenticate(self):
+        common.MM.createWarning(
+            "{plugin} authentication".format(plugin=self.plugin),
+            confirmJavascript="oauth_start(this, '{p.identifier}', '{p.instance}')".format(
+                p=self.plugin
+            ),
+            uuid="oauth_warning_{p.identifier}_{p.instance}".format(
+                p=self.plugin
+            )
+        )
 
 class OAuth(System):
     identifier = "de.lad1337.oauth"
@@ -35,66 +102,181 @@ class OAuth(System):
     addMediaTypeOptions = False
     config = {"enabled": True}
 
-    class OAuth(object):
+    class OAuth2(OAuthBase):
+        keys = [
+            "oauth_token_keys", "token_type", "refresh_token", "access_token",
+            "scope", "created_at", "expires_in", "expires_at"]
 
-        def __init__(self, consumer_key, consumer_secret,
-            request_token_url=None, authorize_url=None, token_url=None,
-            base_url=None,
-            add_callback=True,
-            headers=None):
+        def __init__(self,
+            client_id,
+            client_secret,
+            scope=None,
+            headers=None,
+            authorization_url=None,
+            token_url=None):
 
-            if base_url and base_url.endswith("/"):
-                base_url = base_url[:-1]
-
-            if request_token_url is None:
-                request_token_url = base_url + "/oauth/request_token"
-            self.request_token_url = request_token_url
-            if authorize_url is None:
-                authorize_url = base_url + "/oauth/authorize"
-            self.authorize_url = authorize_url
-            if token_url is None:
-                token_url = base_url + "/oauth/access_token"
+            self.authorization_url = authorization_url
             self.token_url = token_url
 
-            self.add_callback = add_callback
+            self.plugin = None
+            self.session = None
+            self.client_id = client_id
+            self.client_secret = client_secret
+            self.scope = scope
+            self.headers = headers or {}
 
-            self.caller_plugin = None
-            self.consumer = oauth.Consumer(
-                key=consumer_key, secret=consumer_secret)
-            self.client = oauth.Client(self.consumer)
-            self.headers = headers
+        def _init_session(self, verifier=None):
+            self.session = OAuth2Session(
+                self.client_id,
+                scope=self.scope,
+                redirect_uri=self.callback_uri,
+                token=self.token
+            )
+            log.debug("OAuth2: init session for: {} Authorized: {}".format(
+                self.plugin, self.authorized))
 
-        def set_plugin(self, plugin):
-            self.caller_plugin = plugin
+        def _info(self):
+            return self.token
+
+        @property
+        def callback_uri(self):
+            return "{base}/v2/".format(base=redirect_url_base())
 
         @property
         def request_access_url(self):
-            resp, content = self.client.request(
-                self.request_token_url,
-                "GET",
-                headers=self.headers or None)
-            if resp['status'] != '200':
-                raise Exception("Invalid response %s." % resp['status'])
-            request_token = dict(urlparse.parse_qsl(content))
-            return "{}?oauth_token={}{}".format(
-                self.authorize_url,
-                request_token['oauth_token'],
-                "&oauth_callback=%s" % self.redirect_url if self.add_callback else ""
+            self.reset()
+            state = "{p.identifier}|{p.instance}".format(p=self.plugin)
+            url, _ = self.session.authorization_url(
+                self.authorization_url,
+                state=state
             )
+            return url
 
+        def get_access_token(self, code):
+            oauth_tokens = self.session.fetch_token(
+                self.token_url,
+                code=code,
+                client_secret=self.client_secret
+            )
+            for key, value in oauth_tokens.items():
+                if key == "scope":
+                    value = json.dumps(value)
+                setattr(self.plugin.hc, key, value)
+            self.plugin.hc.oauth_token_keys = json.dumps(oauth_tokens.keys())
+            return self.authorized
 
         @property
-        def redirect_url(self):
-            host = common.SYSTEM.c.socket_host
-            if host == "0.0.0.0":
-                host = "localhost"
-            protocol = "https" if common.SYSTEM.c.https else "http"
-            port = common.SYSTEM.c.port
-            port_suffix = "" if port == 80 else ":%s" % port
-            webroot = common.SYSTEM.c.webRoot
+        def token(self):
+            try:
+                oauth_token_keys = json.loads(self.plugin.hc.oauth_token_keys)
+            except (ValueError, AttributeError):
+                return
+            token = {}
+            for key in oauth_token_keys:
+                value = getattr(self.plugin.hc, key)
+                if key == "scope":
+                    value = json.loads(value)
+                token[key] = value
+            return token
 
-            local_base = "{protocol}://{host}{port_suffix}{webroot}".format(
-                **locals()
+        @property
+        def access_token(self):
+            return self.token["access_token"]
+
+
+    class OAuth1(OAuthBase):
+        keys = [
+            "resource_owner_key",
+            "resource_owner_secret",
+            "oauth_token",
+            "oauth_token_secret"]
+
+        def __init__(self,
+            consumer_key,
+            consumer_secret,
+            request_token_url=None,
+            authorize_url=None,
+            token_url=None,
+            headers=None
+            ):
+
+            self.request_token_url = request_token_url
+            self.authorize_url = authorize_url
+            self.token_url = token_url
+
+            self.plugin = None
+            self.session = None
+            self.consumer_key = consumer_key
+            self.consumer_secret = consumer_secret
+            self.headers = headers or {}
+
+        def _init_session(self, verifier=None):
+            self.session = OAuth1Session(
+                self.consumer_key,
+                client_secret=self.consumer_secret,
+                resource_owner_key=self.resource_owner_key,
+                resource_owner_secret=self.resource_owner_secret,
+                callback_uri=self.callback_uri,
+                client_class=MyHeaderClientOAuth1,
+                extra_headers=self.headers,
+                verifier=verifier
+            )
+            log.debug("OAuth1: init session for: {} Authorized: {}".format(
+                self.plugin, self.authorized))
+
+
+        def _info(self):
+            return dict(
+                consumer_key=self.consumer_key,
+                client_secret=self.consumer_secret,
+                resource_owner_key=self.resource_owner_key,
+                resource_owner_secret=self.resource_owner_secret,
+                extra_headers=self.headers
             )
 
-            return "{}/oauth_token".format(local_base)
+        @property
+        def callback_uri(self):
+            return "{base}/v1/{p.identifier}|{p.instance}".format(
+                base=redirect_url_base(),
+                p=self.plugin
+            )
+
+        @property
+        def resource_owner_key(self):
+            try:
+                return self.plugin.hc.resource_owner_key or None
+            except AttributeError:
+                return None
+
+        @property
+        def resource_owner_secret(self):
+            try:
+                return self.plugin.hc.resource_owner_secret or None
+            except AttributeError:
+                return None
+
+        @property
+        def request_access_url(self):
+            self.reset()
+            fetch_response = self.session.fetch_request_token(self.request_token_url)
+            # we need to transform these keys, so they get added to the
+            # session in the next step
+            save_tokens(self.plugin, {
+                "resource_owner_key": fetch_response["oauth_token"],
+                "resource_owner_secret": fetch_response["oauth_token_secret"]
+                })
+            return self.session.authorization_url(self.authorize_url)
+
+        def get_access_token(self, oauth_token, oauth_verifier):
+            self._init_session(oauth_verifier)
+            """
+            self.session.parse_authorization_response(
+                "foo?oauth_token={oauth_token}&oauth_verifier={oauth_verifier}".format(
+                    oauth_token=oauth_token,
+                    oauth_verifier=oauth_verifier
+                )
+            )
+            """
+            oauth_tokens = self.session.fetch_access_token(self.token_url)
+            save_tokens(self.plugin, oauth_tokens)
+            return self.authorized

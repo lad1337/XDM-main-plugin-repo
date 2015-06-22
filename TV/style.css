@@ -98,6 +98,7 @@
 .de-lad1337-tv .Show .info>img.banner{
     width: 36%;
     min-width: 260px;
+    max-height: 75px;
     border: 0;
     -webkit-border-radius: 4px 0 0 4px;
     -moz-border-radius: 4px 0 0 4px;

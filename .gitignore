@@ -1,4 +1,5 @@
 *.py[cod]
+*pylintOutput.txt
 
 # C extensions
 *.so

@@ -27,12 +27,16 @@ import os
 import re
 import shutil
 
+def fix_name(name, replaceSpace):
+    return helper.fileNameClean(name.replace(" ", replaceSpace))
+
 
 class MovieMover(PostProcessor):
     identifier = 'de.lad1337.movie.simplemover'
-    version = "0.17"
+    version = "0.18"
     _config = {"replace_space_with": " ",
-               'final_movie_path': ""
+               "final_movie_path": "",
+               "file_pattern": "{name} ({year})"
                }
     screenName = 'Movie Mover'
     addMediaTypeOptions = ['de.lad1337.movies']
@@ -57,9 +61,6 @@ class MovieMover(PostProcessor):
             log.info(message)
             createdDate = time.strftime("%a %d %b %Y / %X", time.localtime()) + ": "
             processLog[0] = processLog[0] + createdDate + message + "\n"
-
-        def fixName(name, replaceSpace):
-            return helper.fileNameClean(name.replace(" ", replaceSpace))
 
         allMovieFileLocations = []
         if os.path.isdir(filePath):
@@ -91,9 +92,9 @@ class MovieMover(PostProcessor):
                     newFileName = u"%s CD%s%s" % (element.getName(), (index + 1), extension)
                 else:
                     newFileName = element.getName() + extension
-                newFileName = fixName(newFileName, self.c.replace_space_with)
+                newFileName = fix_name(newFileName, self.c.replace_space_with)
                 processLogger("New Filename shall be: %s" % newFileName)
-                destFolder = os.path.join(destPath, fixName(element.getName(), self.c.replace_space_with))
+                destFolder = os.path.join(destPath, fix_name(element.getName(), self.c.replace_space_with))
                 if not os.path.isdir(destFolder):
                     os.mkdir(destFolder)
                 dest = os.path.join(destFolder, newFileName)
@@ -106,7 +107,7 @@ class MovieMover(PostProcessor):
 
         processLogger("File processing done")
         # write process log
-        logFileName = fixName("%s.log" % element.getName(), self.c.replace_space_with)
+        logFileName = fix_name("%s.log" % element.getName(), self.c.replace_space_with)
         logFilePath = os.path.join(filePath, logFileName)
         try:
             # This tries to open an existing file but creates a new file if necessary.
@@ -119,3 +120,15 @@ class MovieMover(PostProcessor):
             pass
 
         return (success, dest, processLog[0])
+
+    def _generate_final_file_name(self, movie, extension, index=0, file_count=1):
+        pattern = self.c.file_pattern
+        movie_data = {
+            "name"
+        }
+
+        if file_count > 1:
+            newFileName = u"%s CD%s%s" % (movie.getName(), (index + 1), extension)
+        else:
+            newFileName = movie.getName() + extension
+

@@ -21,6 +21,7 @@
 # pylint: disable=E1101
 
 from xdm.plugins import *
+from xdm.tasks import updateElement
 import os
 from operator import attrgetter
 
@@ -126,13 +127,9 @@ class TV(MediaTypeManager):
         show.status = common.getStatusByID(self.c.default_new_status_select)
         show.save()
         common.Q.put(('image.download', {'id': show.id}))
-        for season in list(show.children):
-            season.save()
-            common.Q.put(('image.download', {'id': season.id}))
-            for episode in list(season.children):
-                episode.status = status
-                episode.save()
-                common.Q.put(('image.download', {'id': episode.id}))
+        common.Q.put(
+            ("element.update", {'id': show.id, "status": show.status.id})
+        )
         return True
 
     def headInject(self):
@@ -199,7 +196,7 @@ class TV(MediaTypeManager):
         if self.c.next_episode_info_select == "title":
             return getattr(episode, "title")
         if self.c.next_episode_info_select == "sxxexx":
-            return "s{0:02d}e{1:02d}".format(episode.number, episode.parent.number)
+            return u"s{0:02d}e{1:02d}".format(episode.number, episode.parent.number)
         if self.c.next_episode_info_select == "both":
-            return "s{0:02d}e{1:02d} - {2}".format(
+            return u"s{0:02d}e{1:02d} - {2}".format(
                 episode.number, episode.parent.number, episode.title)

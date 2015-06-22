@@ -21,15 +21,18 @@
 
 from xdm.plugins import *
 
-from libs import discogs_client as discogs
+import discogs_client
 import re
-discogs.user_agent = '%s +http://xdm.lad1337.de' % common.getVersionHuman()
 
+user_agent = '%s +http://xdm.lad1337.de' % common.getVersionHuman()
+
+
+OAuth = common.PM.getPluginByIdentifier("de.lad1337.oauth").OAuth1
 
 class Discogs(Provider):
     xdm_version = (99, 99, 99)
-    version = "0.12"
-    identifier = "de.lad1337.boxcar.discogs"
+    version = "0.13"
+    identifier = "de.lad1337.music.discogs"
     _tag = 'discogs'
     single = True
     types = ['de.lad1337.music']
@@ -42,47 +45,51 @@ class Discogs(Provider):
                                'both': {'t': 'Master & Normal Releases', 'c': ('MasterRelease', 'Release')},
                                'releases': {'t': 'Releases', 'c': ('Release',)}}
 
+    oauth = OAuth(
+        "mjdbIivOosoimlstofrw",
+        "rspGOethLnnrIBLoLijcmiRmaMXirugB",
+        request_token_url="https://api.discogs.com/oauth/request_token",
+        authorize_url="https://www.discogs.com/oauth/authorize",
+        token_url="https://api.discogs.com/oauth/access_token",
+        headers={"User-Agent": user_agent}
+    )
+
+    def __init__(self, instance):
+        super(Discogs, self).__init__(instance)
+        # https://github.com/discogs/discogs_client
+        self.d = discogs_client.Client(
+            user_agent,
+            consumer_key=self.oauth.consumer_key,
+            consumer_secret=self.oauth.consumer_secret,
+            token=self.oauth.resource_owner_key,
+            secret=self.oauth.resource_owner_secret
+        )
+
     def _search_range_select(self):
         out = {}
         for i, o in self.search_range_select_map.items():
             out[i] = o['t']
         return out
 
-    def searchForElement(self, term='', id=0):
+    def searchForElement(self, term=''):
 
         self.progress.reset()
         # artist = discogs.Artist('Aphex Twin')
         mediatype = MediaType.get(MediaType.identifier == 'de.lad1337.music')
         mtm = common.PM.getMediaTypeManager('de.lad1337.music')[0]
 
-        if id:
-            try:
-                id = int(id)
-                addType = 'album'
-            except ValueError:
-                addType = 'artist'
 
-            if addType == 'album':
-                res = [discogs.Release(id), discogs.MasterRelease(id)]
-            elif addType == 'artist':
-                res = [discogs.Artist(id)]
-        else:
-            log('Discogs searching for %s' % term)
-            s = discogs.Search(term)
-            res = s.results()
+        results = self.d.search(term, type='release')
 
         fakeRoot = mtm.getFakeRoot(term)
-        filtered = [album for album in res if album.__class__.__name__ in self.search_range_select_map[self.c.search_range_select]['c']]
-        self.progress.total = len(filtered)
 
-        for release in filtered:
+        self.progress.total = 10
+
+        for index, release in enumerate(results):
             self.progress.addItem()
-            # print '\n\n\n\n\n\n\n', release.data['formats'], release.data['status']
-            if release.__class__.__name__ == 'Release':
-                if release.data['formats'][0]['name'] != 'CD' or not release.data['year']:
-                    continue
             self._createAlbum(fakeRoot, mediatype, release)
-
+            if index >= 10:
+                break
         return fakeRoot
 
     def _createAlbum(self, fakeRoot, mediaType, release):
@@ -121,22 +128,25 @@ class Discogs(Provider):
                 trackElement.mediaType = mediaType
                 trackElement.parent = albumElement
                 trackElement.type = 'Song'
-                trackElement.setField('title', track['title'], self.tag)
-                trackElement.setField('length', track['duration'], self.tag)
-                trackElement.setField('position', track['position'], self.tag)
+                trackElement.setField('title', track.title, self.tag)
+                trackElement.setField('length', track.duration, self.tag)
+                trackElement.setField('position', track.position, self.tag)
                 trackElement.saveTemp()
             albumElement.downloadImages()
 
-    def getElement(self, id, element=None):
+    def getElement(self, id, element=None, tag=None):
         mt = MediaType.get(MediaType.identifier == 'de.lad1337.music')
         mtm = common.PM.getMediaTypeManager('de.lad1337.music')[0]
         fakeRoot = mtm.getFakeRoot('%s ID: %s' % (self.tag, id))
-        release = discogs.Release(id)
-        master = discogs.MasterRelease(id)
+        release = self.d.release(id)
+        master = self.d.master(id)
         # print release
         # print master
-        self._createAlbum(fakeRoot, mt, release)
-        self._createAlbum(fakeRoot, mt, master)
+        for release_type in (master, release):
+            try:
+                self._createAlbum(fakeRoot, mt, release_type)
+            except AttributeError:
+                pass
 
         for ele in fakeRoot.decendants:
             if element is None:

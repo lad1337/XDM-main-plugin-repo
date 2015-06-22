@@ -66,7 +66,8 @@ class Ann(Provider):
         showElement.setField('id', anime.id, self.tag)
         showElement.setField('start_date', anime.start_date, self.tag)
         showElement.setField('end_date', anime.end_date, self.tag)
-        showElement.setField('poster_image', anime.picture.url, self.tag)
+        if anime.picture:
+            showElement.setField('poster_image', anime.picture.url, self.tag)
         showElement.setField(
             'description',
             anime.description or "No description available",
