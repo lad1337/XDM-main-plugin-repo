@@ -341,15 +341,15 @@
         "de.lad1337.music.discogs": [
             {
                 "major_version": 0, 
-                "minor_version": 13, 
+                "minor_version": 14, 
                 "name": "Discogs", 
                 "type": "Provider", 
                 "format": "zip", 
                 "desc": "Information provider for music from http://www.discogs.com. Note: Image download is limited to 1000 per 24h per IP", 
                 "xdm_version": [
-                    99, 
-                    99, 
-                    99
+                    0, 
+                    5, 
+                    19
                 ], 
                 "download_url": "https://github.com/lad1337/XDM-main-plugin-repo/archive/master.zip"
             }
@@ -405,7 +405,7 @@
         "de.lad1337.oauth": [
             {
                 "major_version": 0, 
-                "minor_version": 1, 
+                "minor_version": 2, 
                 "name": "OAuth", 
                 "type": "System", 
                 "format": "zip", 
@@ -565,7 +565,7 @@
         "de.lad1337.trakt.tv": [
             {
                 "major_version": 0, 
-                "minor_version": 8, 
+                "minor_version": 9, 
                 "name": "TraktTV", 
                 "type": "Provider", 
                 "format": "zip", 
@@ -581,7 +581,7 @@
         "de.lad1337.traktwatchlist": [
             {
                 "major_version": 0, 
-                "minor_version": 5, 
+                "minor_version": 6, 
                 "name": "Trakt Watchlist", 
                 "type": "MediaAdder", 
                 "format": "zip", 
@@ -597,7 +597,7 @@
         "de.lad1337.tv": [
             {
                 "major_version": 0, 
-                "minor_version": 9, 
+                "minor_version": 10, 
                 "name": "TV", 
                 "type": "MediaTypeManager", 
                 "format": "zip", 

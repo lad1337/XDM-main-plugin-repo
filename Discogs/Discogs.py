@@ -30,8 +30,7 @@ user_agent = '%s +http://xdm.lad1337.de' % common.getVersionHuman()
 OAuth = common.PM.getPluginByIdentifier("de.lad1337.oauth").OAuth1
 
 class Discogs(Provider):
-    xdm_version = (99, 99, 99)
-    version = "0.13"
+    version = "0.14"
     identifier = "de.lad1337.music.discogs"
     _tag = 'discogs'
     single = True

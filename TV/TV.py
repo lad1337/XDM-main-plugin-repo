@@ -106,7 +106,7 @@ class Show(object):
         return self.getField('id', tag)
 
 class TV(MediaTypeManager):
-    version = "0.9"
+    version = "0.10"
     xdm_version = (0, 5, 17)
     single = True
     _config = {

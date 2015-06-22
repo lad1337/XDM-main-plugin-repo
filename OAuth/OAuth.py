@@ -97,7 +97,7 @@ class OAuthBase(object):
 
 class OAuth(System):
     identifier = "de.lad1337.oauth"
-    version = "0.1"
+    version = "0.2"
     single = True
     addMediaTypeOptions = False
     config = {"enabled": True}

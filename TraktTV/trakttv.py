@@ -31,7 +31,7 @@ OAuth = common.PM.getPluginByIdentifier("de.lad1337.oauth").OAuth2
 base_url = "https://api.trakt.tv"
 
 class TraktTV(Provider):
-    version = "0.8"
+    version = "0.9"
     identifier = "de.lad1337.trakt.tv"
     _tag = 'trakt'
     single = True

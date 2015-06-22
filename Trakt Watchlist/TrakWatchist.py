@@ -8,7 +8,7 @@ import logging
 
 
 class TraktWatchlist(MediaAdder):
-    version = "0.5"
+    version = "0.6"
     identifier = "de.lad1337.traktwatchlist"
     addMediaTypeOptions = False
     screenName = 'Trakt Watchlist'
